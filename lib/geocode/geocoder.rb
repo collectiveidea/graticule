@@ -1,25 +1,26 @@
 
 module Geocode
   
+  def self.service(name)
+    Geocode.const_get "#{name}_geocoder".camelize
+  end
+
   # The Geocode class is the base class for all geocoder implementations. The
   # geocoders must implement:
   # 
-  #  * authorize(money, creditcard, options = {})
-  #  * purchase(money, creditcard, options = {})
-  #  * capture(money, authorization, options = {})
-  #  * credit(money, identification, options = {})  
-  #  * recurring(money, identification, options = {})  
-  #  * store(money, identification, options = {})  
-  #  * unstore(money, identification, options = {})  
-  #  
-  
+  # * locate(address)  
+  #
   class Geocoder
     def initialize
       raise NotImplementedError
     end
-    
-    def self.service(name)
-      Geocode.const_get "#{name}_geocoder".camelize
-    end
   end
+  
+  # Base error class
+  class Error < RuntimeError; end
+  class CredentialsError < Error; end
+
+  # Raised when you try to locate an invalid address.
+  class AddressError < Error; end
+
 end

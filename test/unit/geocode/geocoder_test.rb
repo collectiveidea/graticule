@@ -8,7 +8,7 @@ module Geocode
     end
     
     def test_service
-      assert_equal BogusGeocoder, Geocoder.service(:bogus)
+      assert_equal BogusGeocoder, Geocode.service(:bogus)
     end
   
   end

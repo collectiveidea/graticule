@@ -11,7 +11,7 @@ module Geocode
       
       @geocoders = {}
       GEOCODERS.each do |geocoder,params|
-        @geocoders[geocoder] = Geocoder.service(geocoder).new(params)
+        @geocoders[geocoder] = Geocode.service(geocoder).new(params)
       end
     end
     

@@ -13,5 +13,11 @@ module Geocode
     def coordinates
       [latitude, longitude]
     end
+    
+    def ==(object)
+      super(object) || [:latitude, :longitude, :street, :city, :state, :zip, :country, :precision].all? do |m|
+        object.respond_to?(m) && self.send(m) == object.send(m)
+      end
+    end
   end
 end

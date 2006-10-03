@@ -1,49 +1,41 @@
+require 'uri'
+require 'open-uri'
+
 module Geocode
-  # http://www.google.com/apis/maps/documentation/#Geocoding_HTTP_Request
+  
+  # First you need a Google Maps API key.  You can register for one here:
+  # http://www.google.com/apis/maps/signup.html
+  # 
+  # Then you create a GoogleGeocode object and start locating addresses:
+  # 
+  #   require 'rubygems'
+  #   require 'geocode'
+  # 
+  #   gg = Geocode.service(:google).new(:key => MAPS_API_KEY)
+  #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
+  #   p location.coordinates
+  # 
   class GoogleGeocoder < RestGeocoder
+    # http://www.google.com/apis/maps/documentation/#Geocoding_HTTP_Request
     
-    # 0 	 Unknown location. (Since 2.59)
-    # 1 	Country level accuracy. (Since 2.59)
-    # 2 	Region (state, province, prefecture, etc.) level accuracy. (Since 2.59)
-    # 3 	Sub-region (county, municipality, etc.) level accuracy. (Since 2.59)
-    # 4 	Town (city, village) level accuracy. (Since 2.59)
-    # 5 	Post code (zip code) level accuracy. (Since 2.59)
-    # 6 	Street level accuracy. (Since 2.59)
-    # 7 	Intersection level accuracy. (Since 2.59)
-    # 8 	Address level accuracy. (Since 2.59)
-    #
     # http://www.google.com/apis/maps/documentation/reference.html#GGeoAddressAccuracy
     PRECISION = {
-      0 => :unknown,
-      1 => :country,
-      2 => :state,
-      #3 => :county
-      4 => :city,
-      5 => :zip,
-      6 => :street,
-      7 => :intersection,
-      8 => :address 
+      0 => :unknown,      # Unknown location. (Since 2.59)
+      1 => :country,      # Country level accuracy. (Since 2.59)
+      2 => :state,        # Region (state, province, prefecture, etc.) level accuracy. (Since 2.59)
+      #3 => :county       # Sub-region (county, municipality, etc.) level accuracy. (Since 2.59)
+      4 => :city,         # Town (city, village) level accuracy. (Since 2.59)
+      5 => :zip,          # Post code (zip code) level accuracy. (Since 2.59)
+      6 => :street,       # Street level accuracy. (Since 2.59)
+      7 => :intersection, # Intersection level accuracy. (Since 2.59)
+      8 => :address       # Address level accuracy. (Since 2.59)
     }
-
-    # Base error class
-    class Error < RestGeocoder::Error; end
-
-    ##
-    # Raised when you try to locate an invalid address.
-
-    class AddressError < Error; end
-
-    ##
-    # Raised when you use an invalid key.
-
-    class KeyError < Error; end
 
     ##
     # Creates a new GoogleGeocode that will use Google Maps API key +key+.  You
     # can sign up for an API key here:
     #
     # http://www.google.com/apis/maps/signup.html
-
     def initialize(options = {})
       @key = options[:key]
       @url = URI.parse 'http://maps.google.com/maps/geo'
@@ -80,19 +72,19 @@ module Geocode
       case status
       when 200 then # ignore, ok
       when 500 then
-        raise Error, 'server error'
+        raise Geocode::Error, 'server error'
       when 601 then
-        raise AddressError, 'missing address'
+        raise Geocode::AddressError, 'missing address'
       when 602 then
-        raise AddressError, 'unknown address'
+        raise Geocode::AddressError, 'unknown address'
       when 603 then
-        raise AddressError, 'unavailable address'
+        raise Geocode::AddressError, 'unavailable address'
       when 610 then
-        raise KeyError, 'invalid key'
+        raise Geocode::CredentialsError, 'invalid key'
       when 620 then
-        raise KeyError, 'too many queries'
+        raise Geocode::CredentialsError, 'too many queries'
       else
-        raise Error, "unknown error #{status}"
+        raise Geocode::Error, "unknown error #{status}"
       end
     end
 
