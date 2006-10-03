@@ -14,7 +14,7 @@ module Test
       
       private
         def response(geocoder, response)
-          REXML::Document.new(File.read(File.dirname(__FILE__) + "/fixtures/responses/#{geocoder}/#{response}.xml"))
+          File.read(File.dirname(__FILE__) + "/fixtures/responses/#{geocoder}/#{response}.xml")
         end
       
         def clean_backtrace(&block)
