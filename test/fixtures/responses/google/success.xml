@@ -1,0 +1,37 @@
+<kml>
+  <Response>
+    <name>1600 amphitheatre mtn view ca</name>
+    <Status>
+      <code>200</code>
+      <request>geocode</request>
+    </Status>
+    <Placemark>
+      <address> 
+        1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA
+      </address>
+      <AddressDetails Accuracy="8">
+        <Country>
+          <CountryNameCode>US</CountryNameCode>
+ 	  <AdministrativeArea>
+            <AdministrativeAreaName>CA</AdministrativeAreaName>
+           <SubAdministrativeArea>
+             <SubAdministrativeAreaName>Santa Clara</SubAdministrativeAreaName>
+             <Locality>
+               <LocalityName>Mountain View</LocalityName>
+    	       <Thoroughfare>
+                 <ThoroughfareName>1600 Amphitheatre Pkwy</ThoroughfareName>
+               </Thoroughfare>
+               <PostalCode>
+                 <PostalCodeNumber>94043</PostalCodeNumber>
+               </PostalCode>
+             </Locality>
+           </SubAdministrativeArea>
+         </AdministrativeArea>
+       </Country>
+     </AddressDetails>
+     <Point>
+       <coordinates>-122.083739,37.423021,0</coordinates>
+     </Point>
+   </Placemark>
+  </Response>
+</kml>
