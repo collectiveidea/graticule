@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/../../../test_helper'
 require File.dirname(__FILE__) + '/geocoders'
 
-
 module Geocode
   class GoogleGeocoderTest < Test::Unit::TestCase
     # run tests from Geocode::GeocodersTest

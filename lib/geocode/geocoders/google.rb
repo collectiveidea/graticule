@@ -1,5 +1,3 @@
-require 'uri'
-require 'open-uri'
 
 module Geocode
   

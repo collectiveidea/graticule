@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Locations SYSTEM "Locations.dtd">
+<Locations xmlns:gml="http://www.opengis.net/gml" CreatedBy="MetaCarta GeoParser v3.5.0-labs-alpha" CreatedOn="Sat Jun 17 02:14:05 2006" ConvertedFromBinaryFormat="False" InputByteLength="1">
+  <ViewBox>
+    <gml:Box srsName="epsg:4326">
+      <gml:coordinates>43.800000,-126.133333 51.406390,-118.530830</gml:coordinates>
+    </gml:Box>
+  </ViewBox>
+  <Location Name="Seattle" Type="PPL" Population="563374" Hierarchy="United States/Washington/King/Seattle">
+    <ViewBox>
+      <gml:Box srsName="epsg:4326">
+        <gml:coordinates>43.806390,-126.130830 51.406390,-118.530830</gml:coordinates>
+      </gml:Box>
+    </ViewBox>
+    <Centroid>
+      <gml:Point>
+        <gml:coordinates>-122.330830000000006,47.606389999999998</gml:coordinates>
+      </gml:Point>
+    </Centroid>
+  </Location>
+  <Location Name="Seattle" Type="PRT" Population="-1" Hierarchy="United States/Seattle">
+    <ViewBox>
+      <gml:Box srsName="epsg:4326">
+        <gml:coordinates>43.800000,-126.133333 51.400000,-118.533333</gml:coordinates>
+      </gml:Box>
+    </ViewBox>
+    <Centroid>
+      <gml:Point>
+        <gml:coordinates>-122.333332999999996,47.6</gml:coordinates>
+      </gml:Point>
+    </Centroid>
+  </Location>
+</Locations>

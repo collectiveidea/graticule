@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Locations SYSTEM "Locations.dtd">
+<Locations xmlns:gml="http://www.opengis.net/gml" CreatedBy="MetaCarta GeoParser v3.5.0-labs-alpha" CreatedOn="Thu Jun 15 23:56:50 2006" ConvertedFromBinaryFormat="False" InputByteLength="0">
+  <ViewBox>
+    <gml:Box srsName="epsg:4326">
+      <gml:coordinates>26.238611,37.293889 40.438611,51.493889</gml:coordinates>
+    </gml:Box>
+  </ViewBox>
+  <Location Name="Baghdad" Type="PPLC" Population="5672516" Hierarchy="Iraq/Baghdad/Baghdad">
+    <ViewBox>
+      <gml:Box srsName="epsg:4326">
+        <gml:coordinates>26.238611,37.293889 40.438611,51.493889</gml:coordinates>
+      </gml:Box>
+    </ViewBox>
+    <RemainingQuery/>
+    <Confidence>0.195185</Confidence>
+    <Centroid>
+      <gml:Point>
+        <gml:coordinates>44.393889,33.338611</gml:coordinates>
+      </gml:Point>
+    </Centroid>
+  </Location>
+</Locations>

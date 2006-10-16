@@ -1,0 +1,3 @@
+= NAME = <INSERT FANCY NAME HERE>
+
+NAME is a geocoding API for looking up address coordinates.  It supports supports the Yahoo, Google, and Geocoder.us APIs.
