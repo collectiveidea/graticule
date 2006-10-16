@@ -1,6 +1,5 @@
-module Geocode
+module Geocode #:nodoc:
   
-  ##
   # Yahoo geocoding API.
   #
   # http://developer.yahoo.com/maps/rest/V1/geocode.html
@@ -82,7 +81,7 @@ module Geocode
     end
 
     # Extracts and raises an error from +xml+, if any.
-    def check_error(xml, status = nil)
+    def check_error(xml)
       err = xml.elements['Error']
       raise Error, err.elements['Message'].text if err
     end

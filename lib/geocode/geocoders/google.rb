@@ -31,7 +31,6 @@ module Geocode
       8 => :address       # Address level accuracy. (Since 2.59)
     }
 
-    ##
     # Creates a new GoogleGeocode that will use Google Maps API key +key+.  You
     # can sign up for an API key here:
     #
@@ -41,16 +40,12 @@ module Geocode
       @url = URI.parse 'http://maps.google.com/maps/geo'
     end
 
-    ##
-    # Locates +address+ returning a Location struct.
-
+    # Locates +address+ returning a Location
     def locate(address)
       get :q => address
     end
 
-    ##
     # Extracts a Location from +xml+.
-
     def parse_response(xml)
       longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
       Location.new \
@@ -64,10 +59,8 @@ module Geocode
         :precision => PRECISION[xml.elements['/kml/Response/Placemark/AddressDetails'].attribute('Accuracy').value.to_i]
     end
 
-    ##
     # Extracts and raises an error from +xml+, if any.
-
-    def check_error(xml, status)
+    def check_error(xml)
       status ||= xml.elements['/kml/Response/Status/code'].text.to_i
       case status
       when 200 then # ignore, ok
@@ -88,10 +81,8 @@ module Geocode
       end
     end
 
-    ##
     # Creates a URL from the Hash +params+.  Automatically adds the key and
     # sets the output type to 'xml'.
-
     def make_url(params)
       params[:key] = @key
       params[:output] = 'xml'
