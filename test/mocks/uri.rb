@@ -42,7 +42,9 @@ class URI::HTTP # :nodoc:
 
   def open
     self.class.uris << self.to_s
-    yield StringIO.new(self.class.responses.shift)
+    io = StringIO.new(self.class.responses.shift)
+    OpenURI::Meta.init(io)
+    yield io
   end
 
 end

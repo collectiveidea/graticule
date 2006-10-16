@@ -78,16 +78,16 @@ module Geocode #:nodoc:
     def get(params = {})
       url = make_url params
 
-      url.open do |xml|
-        res = REXML::Document.new xml.read
+      url.open do |response|
+        res = REXML::Document.new response.read
 
-        check_error res
+        check_error res, response.status ? response.status[0].to_i : nil
 
         return parse_response(res)
       end
     rescue OpenURI::HTTPError => e
-      xml = REXML::Document.new e.io.read
-      check_error xml
+      response = REXML::Document.new e.io.read
+      check_error response
       raise
     end
 

@@ -6,6 +6,7 @@ $:.unshift(File.dirname(__FILE__)+ '/extra')
 require 'rubygems'
 require 'yaml'
 require 'test/unit'
+require 'breakpoint'
 require 'geocode'
 
 module Test
@@ -14,7 +15,9 @@ module Test
       
       private
         def response(geocoder, response)
-          File.read(File.dirname(__FILE__) + "/fixtures/responses/#{geocoder}/#{response}.xml")
+          clean_backtrace do
+            File.read(File.dirname(__FILE__) + "/fixtures/responses/#{geocoder}/#{response}.xml")
+          end
         end
       
         def clean_backtrace(&block)

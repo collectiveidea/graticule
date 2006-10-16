@@ -54,11 +54,11 @@ module Geocode
     def parse_response(xml)
       longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
       Location.new \
-        :street => xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName'].text,
-        :city => xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName'].text,
-        :state => xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/AdministrativeAreaName'].text,
-        :zip => xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber'].text,
-        :country => xml.elements['/kml/Response/Placemark/AddressDetails/Country/CountryNameCode'].text,
+        :street => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName']),
+        :city => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName']),
+        :state => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/AdministrativeAreaName']),
+        :zip => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber']),
+        :country => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/CountryNameCode']),
         :latitude => latitude,
         :longitude => longitude,
         :precision => PRECISION[xml.elements['/kml/Response/Placemark/AddressDetails'].attribute('Accuracy').value.to_i]
@@ -67,8 +67,8 @@ module Geocode
     ##
     # Extracts and raises an error from +xml+, if any.
 
-    def check_error(xml)
-      status = xml.elements['/kml/Response/Status/code'].text.to_i
+    def check_error(xml, status)
+      status ||= xml.elements['/kml/Response/Status/code'].text.to_i
       case status
       when 200 then # ignore, ok
       when 500 then
@@ -98,5 +98,10 @@ module Geocode
 
       super params
     end
+    
+    private
+      def text(element)
+        element.text if element
+      end
   end
 end
