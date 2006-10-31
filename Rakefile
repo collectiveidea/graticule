@@ -7,7 +7,7 @@ require 'rake/contrib/rubyforgepublisher'
 
 
 PKG_VERSION = "0.1.0"
-PKG_NAME = "geocode"
+PKG_NAME = "graticule"
 PKG_FILE_NAME = "#{PKG_NAME}-#{PKG_VERSION}"
 
 PKG_FILES = FileList[
@@ -35,7 +35,7 @@ end
 # Genereate the RDoc documentation
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.title    = "Geocode library"
+  rdoc.title    = "Graticule Geocoding Library"
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README', 'CHANGELOG')
   rdoc.rdoc_files.include('lib/**/*.rb')
@@ -91,7 +91,7 @@ spec = Gem::Specification.new do |s|
   s.rdoc_options.concat ['--main',  'README']
   
   s.require_path = 'lib'
-  s.autorequire  = 'geocode'
+  s.autorequire  = 'graticule'
   s.author = "Brandon Keepers"
   s.email = "brandon@opensoul.org"
   s.homepage = ""  
