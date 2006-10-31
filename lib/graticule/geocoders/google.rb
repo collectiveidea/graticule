@@ -1,5 +1,5 @@
 
-module Geocode
+module Graticule
   
   # First you need a Google Maps API key.  You can register for one here:
   # http://www.google.com/apis/maps/signup.html
@@ -33,8 +33,8 @@ module Geocode
     # can sign up for an API key here:
     #
     # http://www.google.com/apis/maps/signup.html
-    def initialize(options = {})
-      @key = options[:key]
+    def initialize(key)
+      @key = key
       @url = URI.parse 'http://maps.google.com/maps/geo'
     end
 
@@ -63,19 +63,19 @@ module Geocode
       case status
       when 200 then # ignore, ok
       when 500 then
-        raise Geocode::Error, 'server error'
+        raise Error, 'server error'
       when 601 then
-        raise Geocode::AddressError, 'missing address'
+        raise AddressError, 'missing address'
       when 602 then
-        raise Geocode::AddressError, 'unknown address'
+        raise AddressError, 'unknown address'
       when 603 then
-        raise Geocode::AddressError, 'unavailable address'
+        raise AddressError, 'unavailable address'
       when 610 then
-        raise Geocode::CredentialsError, 'invalid key'
+        raise CredentialsError, 'invalid key'
       when 620 then
-        raise Geocode::CredentialsError, 'too many queries'
+        raise CredentialsError, 'too many queries'
       else
-        raise Geocode::Error, "unknown error #{status}"
+        raise Error, "unknown error #{status}"
       end
     end
 

@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../test_helper'
 
-module Geocode
+module Graticule
   class GeocoderTest < Test::Unit::TestCase
 
     def test_cannot_instantiate
@@ -8,7 +8,7 @@ module Geocode
     end
     
     def test_service
-      assert_equal BogusGeocoder, Geocode.service(:bogus)
+      assert_equal BogusGeocoder, Graticule.service(:bogus)
     end
   
   end

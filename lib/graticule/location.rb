@@ -1,7 +1,7 @@
 
-module Geocode
+module Graticule
   class Location
-    attr_accessor :latitude, :longitude, :street, :city, :state, :zip, :country, :precision
+    attr_accessor :latitude, :longitude, :street, :city, :state, :zip, :country, :precision, :warning
     
     def initialize(attrs = {})
       attrs.each do |key,value|

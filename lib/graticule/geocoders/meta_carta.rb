@@ -1,5 +1,5 @@
 
-module Geocode
+module Graticule
 
   # Library for looking up coordinates with MetaCarta's GeoParser API.
   #

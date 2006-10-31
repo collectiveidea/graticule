@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../../test_helper'
 
-module Geocode
+module Graticule
   module GeocodersTestCase # < Test::Unit::TestCase
     
     def test_success
@@ -21,32 +21,32 @@ module Geocode
     
     def test_bad_key
       return unless prepare_response(:badkey)
-      assert_raises(Geocode::CredentialsError) { @geocoder.locate('x') }
+      assert_raises(CredentialsError) { @geocoder.locate('x') }
     end
     
     def test_locate_missing_address
       return unless prepare_response(:missing_address)
-      assert_raises(Geocode::AddressError) { @geocoder.locate 'x' }
+      assert_raises(AddressError) { @geocoder.locate 'x' }
     end
     
     def test_locate_server_error
       return unless prepare_response(:server_error)
-      assert_raises(Geocode::Error) { @geocoder.locate 'x' }
+      assert_raises(Error) { @geocoder.locate 'x' }
     end
 
     def test_locate_too_many_queries
       return unless prepare_response(:limit)
-      assert_raises(Geocode::CredentialsError) { @geocoder.locate 'x' }
+      assert_raises(CredentialsError) { @geocoder.locate 'x' }
     end
 
     def test_locate_unavailable_address
       return unless prepare_response(:unavailable)
-      assert_raises(Geocode::AddressError) { @geocoder.locate 'x' }
+      assert_raises(AddressError) { @geocoder.locate 'x' }
     end
 
     def test_locate_unknown_address
       return unless prepare_response(:unknown_address)
-      assert_raises(Geocode::AddressError) { @geocoder.locate 'x' }
+      assert_raises(AddressError) { @geocoder.locate 'x' }
     end
 
   end

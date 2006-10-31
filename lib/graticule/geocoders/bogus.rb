@@ -1,5 +1,5 @@
 
-module Geocode #:nodoc:
+module Graticule #:nodoc:
 
   # Bogus geocoder that can be used for test purposes
   class BogusGeocoder < Geocoder

@@ -35,7 +35,7 @@ end
 # Genereate the RDoc documentation
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.title    = "ActiveMerchant library"
+  rdoc.title    = "Geocode library"
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README', 'CHANGELOG')
   rdoc.rdoc_files.include('lib/**/*.rb')
@@ -63,15 +63,13 @@ task :lines do
   puts "Lines #{lines}, LOC #{codelines}"
 end
 
-# Publish beta gem  
-desc "Publish the beta gem"
+desc "Publish the gem"
 task :publish => [:rdoc, :package] do
-  Rake::SshFilePublisher.new("leetsoft.com", "dist/pkg", "pkg", "#{PKG_FILE_NAME}.zip").upload
-  Rake::SshFilePublisher.new("leetsoft.com", "dist/pkg", "pkg", "#{PKG_FILE_NAME}.tgz").upload
-  Rake::SshFilePublisher.new("leetsoft.com", "dist/gems", "pkg", "#{PKG_FILE_NAME}.gem").upload
-  `ssh tobi@leetsoft.com "mkdir -p dist/api/#{PKG_NAME}"`
-  Rake::SshDirPublisher.new("leetsoft.com", "dist/api/#{PKG_NAME}", "doc").upload
-  `ssh tobi@leetsoft.com './gemupdate'`
+  Rake::SshFilePublisher.new("host.collectiveidea.com", "/var/www/vhosts/source.collectiveidea.com/public/dist/pkg", "pkg", "#{PKG_FILE_NAME}.zip").upload
+  Rake::SshFilePublisher.new("host.collectiveidea.com", "/var/www/vhosts/source.collectiveidea.com/public/dist/pkg", "pkg", "#{PKG_FILE_NAME}.tgz").upload
+  Rake::SshFilePublisher.new("host.collectiveidea.com", "/var/www/vhosts/source.collectiveidea.com/public/dist/gems", "pkg", "#{PKG_FILE_NAME}.gem").upload
+  `ssh host.collectiveidea.com "mkdir -p /var/www/vhosts/source.collectiveidea.com/public/dist/api/#{PKG_NAME}"`
+  Rake::SshDirPublisher.new("host.collectiveidea.com", "/var/www/vhosts/source.collectiveidea.com/public/dist/api/#{PKG_NAME}", "doc").upload
 end
 
 desc "Delete tar.gz / zip / rdoc"
@@ -85,10 +83,13 @@ spec = Gem::Specification.new do |s|
   s.name = PKG_NAME
   s.version = PKG_VERSION
   s.summary = "Library for using various geocoding APIs."
+
+  s.files = %w(README LICENSE CHANGELOG) + Dir['lib/**/*']  
+
   s.has_rdoc = true
-
-  s.files = %w(README MIT-LICENSE CHANGELOG) + Dir['lib/**/*']  
-
+  s.extra_rdoc_files = %w( README )
+  s.rdoc_options.concat ['--main',  'README']
+  
   s.require_path = 'lib'
   s.autorequire  = 'geocode'
   s.author = "Brandon Keepers"

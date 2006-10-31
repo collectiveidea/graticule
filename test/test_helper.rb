@@ -7,7 +7,7 @@ require 'rubygems'
 require 'yaml'
 require 'test/unit'
 require 'breakpoint'
-require 'geocode'
+require 'graticule'
 
 module Test
   module Unit

@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/../../../test_helper'
 require File.dirname(__FILE__) + '/geocoders'
 
-module Geocode
+module Graticule
   class GoogleGeocoderTest < Test::Unit::TestCase
-    # run tests from Geocode::GeocodersTest
-    include Geocode::GeocodersTestCase
+    # run tests from GeocodersTest
+    include GeocodersTestCase
     
     def setup
       URI::HTTP.responses = []

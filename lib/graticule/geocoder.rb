@@ -1,8 +1,8 @@
 
-module Geocode
+module Graticule
   
   def self.service(name)
-    Geocode.const_get "#{name}_geocoder".camelize
+    self.const_get "#{name}_geocoder".camelize
   end
 
   # The Geocode class is the base class for all geocoder implementations. The

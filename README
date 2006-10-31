@@ -1,3 +1,9 @@
-= NAME = <INSERT FANCY NAME HERE>
+= Graticule
 
-NAME is a geocoding API for looking up address coordinates.  It supports supports the Yahoo, Google, and Geocoder.us APIs.
+Graticule is a geocoding API for looking up address coordinates.  It supports supports the Yahoo, Google, Geocoder.us, and MetaCarta APIs.
+
+= Usage
+
+  require 'graticule'
+  geocoder = Graticle.service(:google).new "api_key"
+  location = geocoder.locate "1600 Amphitheatre Parkway, Mountain View, CA"

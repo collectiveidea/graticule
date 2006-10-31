@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'rexml/document'
 
-module Geocode #:nodoc:
+module Graticule #:nodoc:
 
   # Abstract class for implementing REST APIs.
   #

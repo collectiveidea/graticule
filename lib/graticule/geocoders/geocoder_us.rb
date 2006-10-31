@@ -1,6 +1,4 @@
-require 'rc_rest'
-
-module Geocode #:nodoc:
+module Graticule #:nodoc:
 
   # A library for lookup up coordinates with geocoder.us' API.
   #

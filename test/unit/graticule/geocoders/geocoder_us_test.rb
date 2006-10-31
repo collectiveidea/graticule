@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../../../test_helper'
 require File.dirname(__FILE__) + '/geocoders'
 
-module Geocode
+module Graticule
   class GeocoderUsTest < Test::Unit::TestCase
 
     def setup
@@ -30,7 +30,7 @@ module Geocode
 
     def test_locate_bad_address
       prepare_response(:unknown)
-      assert_raises(Geocode::AddressError) { @geocoder.locate('yuck') }
+      assert_raises(AddressError) { @geocoder.locate('yuck') }
     end
 
   protected

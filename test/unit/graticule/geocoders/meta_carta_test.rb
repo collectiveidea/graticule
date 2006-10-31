@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../../../test_helper'
 require File.dirname(__FILE__) + '/geocoders'
 
-module Geocode
+module Graticule
   class MetaCartaGeocoderTest < Test::Unit::TestCase
 
     def setup

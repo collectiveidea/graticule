@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../test_helper'
 
-module Geocode
+module Graticule
   class LocationTest < Test::Unit::TestCase
   
     def test_responds_to

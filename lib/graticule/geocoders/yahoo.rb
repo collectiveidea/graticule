@@ -1,4 +1,4 @@
-module Geocode #:nodoc:
+module Graticule #:nodoc:
   
   # Yahoo geocoding API.
   #
