@@ -6,4 +6,4 @@ Graticule is a geocoding API for looking up address coordinates.  It supports su
 
   require 'graticule'
   geocoder = Graticle.service(:google).new "api_key"
-  location = geocoder.locate "1600 Amphitheatre Parkway, Mountain View, CA"
+  location = geocoder.locate "61 East 9th Street, Holland, MI"
