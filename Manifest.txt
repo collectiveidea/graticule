@@ -1,7 +1,7 @@
-CHANGELOG
-LICENSE
+CHANGELOG.txt
+LICENSE.txt
 Manifest.txt
-README
+README.txt
 Rakefile
 init.rb
 lib/graticule.rb

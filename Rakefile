@@ -12,4 +12,5 @@ Hoe.new("graticule", Graticule::Version) do |p|
   p.need_tar = true
   p.need_zip = true
   p.test_globs = ['test/**/*_test.rb']
+  p.changes = p.paragraphs_of('CHANGELOG.txt', 0..1).join("\n\n")
 end
