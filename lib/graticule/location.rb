@@ -19,5 +19,10 @@ module Graticule
         object.respond_to?(m) && self.send(m) == object.send(m)
       end
     end
+    
+    def distance_to(destination, units = :miles, formula = :haversine)
+      "Distance::#{formula.to_s.titleize}".constantize.distance(self, destination)
+    end
+    
   end
 end

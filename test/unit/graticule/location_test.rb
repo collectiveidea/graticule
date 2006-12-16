@@ -2,7 +2,13 @@ require File.dirname(__FILE__) + '/../../test_helper'
 
 module Graticule
   class LocationTest < Test::Unit::TestCase
-  
+    
+    def test_distance_to
+      washington_dc = Location.new(:latitude => 38.898748, :longitude => -77.037684)
+      chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
+      assert_in_delta 594.820, washington_dc.distance_to(chicago), 1.0
+    end
+    
     def test_responds_to
       [:latitude, :longitude, :street, :city, :state, :zip, :country, :coordinates, :precision].each do |m|
         assert Location.new.respond_to?(m), "should respond to #{m}"
@@ -27,6 +33,6 @@ module Graticule
         assert_not_equal Location.new(attrs), Location.new(attrs.update(k => nil))
       end
     end
-
+    
   end
 end
