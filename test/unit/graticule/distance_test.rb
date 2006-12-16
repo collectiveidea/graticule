@@ -6,11 +6,11 @@ module Graticule
       EARTH_RADIUS_IN_MILES = 3963.1676
       EARTH_RADIUS_IN_KILOMETERS = 6378.135
 
-      FORMULAS = [Haversine]
+      FORMULAS = [Haversine, Spherical, Vincenty]
 
       def test_earth_radius
-        assert_equal EARTH_RADIUS_IN_MILES, DistanceFormula::EARTH_RADIUS[:miles]
-        assert_equal EARTH_RADIUS_IN_KILOMETERS, DistanceFormula::EARTH_RADIUS[:kilometers]
+        assert_equal EARTH_RADIUS_IN_MILES, EARTH_RADIUS[:miles]
+        assert_equal EARTH_RADIUS_IN_KILOMETERS, EARTH_RADIUS[:kilometers]
       end
 
       def test_distance

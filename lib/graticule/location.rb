@@ -21,7 +21,7 @@ module Graticule
     end
     
     def distance_to(destination, units = :miles, formula = :haversine)
-      "Distance::#{formula.to_s.titleize}".constantize.distance(self, destination)
+      "Graticule::Distance::#{formula.to_s.titleize}".constantize.distance(self, destination)
     end
     
   end

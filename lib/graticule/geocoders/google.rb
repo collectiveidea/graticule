@@ -7,9 +7,9 @@ module Graticule
   # Then you create a GoogleGeocode object and start locating addresses:
   # 
   #   require 'rubygems'
-  #   require 'geocode'
+  #   require 'graticule'
   # 
-  #   gg = Geocode.service(:google).new(:key => MAPS_API_KEY)
+  #   gg = Graticule.service(:google).new(:key => MAPS_API_KEY)
   #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
   #   p location.coordinates
   # 
@@ -21,11 +21,11 @@ module Graticule
       0 => :unknown,      # Unknown location. (Since 2.59)
       1 => :country,      # Country level accuracy. (Since 2.59)
       2 => :state,        # Region (state, province, prefecture, etc.) level accuracy. (Since 2.59)
-      #3 => :county       # Sub-region (county, municipality, etc.) level accuracy. (Since 2.59)
+      3 => :state,        # Sub-region (county, municipality, etc.) level accuracy. (Since 2.59)
       4 => :city,         # Town (city, village) level accuracy. (Since 2.59)
       5 => :zip,          # Post code (zip code) level accuracy. (Since 2.59)
       6 => :street,       # Street level accuracy. (Since 2.59)
-      7 => :intersection, # Intersection level accuracy. (Since 2.59)
+      7 => :street,       # Intersection level accuracy. (Since 2.59)
       8 => :address       # Address level accuracy. (Since 2.59)
     }
 
@@ -54,7 +54,7 @@ module Graticule
         :country => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/CountryNameCode']),
         :latitude => latitude,
         :longitude => longitude,
-        :precision => PRECISION[xml.elements['/kml/Response/Placemark/AddressDetails'].attribute('Accuracy').value.to_i]
+        :precision => PRECISION[xml.elements['/kml/Response/Placemark/AddressDetails'].attribute('Accuracy').value.to_i] || :unknown
     end
 
     # Extracts and raises an error from +xml+, if any.

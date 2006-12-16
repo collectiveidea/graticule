@@ -1,7 +1,10 @@
 require File.dirname(__FILE__) + '/../../../test_helper'
 
+
 module Graticule
-  module GeocodersTestCase # < Test::Unit::TestCase
+  
+  # Generic tests for all geocoders (theoretically)
+  module GeocodersTestCase
     
     def test_success
       return unless prepare_response(:success)

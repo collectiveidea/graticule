@@ -1,0 +1,8 @@
+
+0.1.1
+* fixed bug in Yahoo that raised error when street address not returned
+* migrated to Hoe (http://seattlerb.rubyforge.org/hoe/)
+* added Haversine, Spherical and Vincenty distance calculations
+
+0.1 (2006-10-31)
+* Initial release

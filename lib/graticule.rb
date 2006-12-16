@@ -1,4 +1,3 @@
-
 $:.unshift(File.dirname(__FILE__))      
 
 require 'graticule/location'
@@ -11,3 +10,5 @@ require 'graticule/geocoders/geocoder_us'
 require 'graticule/geocoders/meta_carta'
 require 'graticule/distance'
 require 'graticule/distance/haversine'
+require 'graticule/distance/spherical'
+require 'graticule/distance/vincenty'

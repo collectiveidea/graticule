@@ -4,6 +4,7 @@ Graticule is a geocoding API for looking up address coordinates.  It supports su
 
 = Usage
 
+  require 'rubygems'
   require 'graticule'
-  geocoder = Graticle.service(:google).new "api_key"
+  geocoder = Graticule.service(:google).new "api_key"
   location = geocoder.locate "61 East 9th Street, Holland, MI"
