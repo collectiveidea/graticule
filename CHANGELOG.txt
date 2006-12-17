@@ -1,5 +1,10 @@
 
-0.1.1
+
+0.1.2
+* added "geocode" executable. See "geocode --help" for more information
+* declared dependency on ActiveSupport
+
+0.1.1 (2006-12-16)
 * fixed bug in Yahoo that raised error when street address not returned
 * migrated to Hoe (http://seattlerb.rubyforge.org/hoe/)
 * added Haversine, Spherical and Vincenty distance calculations

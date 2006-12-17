@@ -1,4 +1,6 @@
-$:.unshift(File.dirname(__FILE__))      
+$:.unshift(File.dirname(__FILE__))
+
+require 'active_support'
 
 require 'graticule/location'
 require 'graticule/geocoder'
@@ -12,3 +14,5 @@ require 'graticule/distance'
 require 'graticule/distance/haversine'
 require 'graticule/distance/spherical'
 require 'graticule/distance/vincenty'
+
+require 'graticule/cli'

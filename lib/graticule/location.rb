@@ -1,4 +1,3 @@
-
 module Graticule
   class Location
     attr_accessor :latitude, :longitude, :street, :city, :state, :zip, :country, :precision, :warning
@@ -22,6 +21,14 @@ module Graticule
     
     def distance_to(destination, units = :miles, formula = :haversine)
       "Graticule::Distance::#{formula.to_s.titleize}".constantize.distance(self, destination)
+    end
+    
+    def to_s(coordinates = false)
+      result = ""
+      result << "#{street}\n" if street
+      result << [city, [state, zip, country].compact.join(" ")].compact.join(", ")
+      result << "\nlatitude: #{latitude}, longitude: #{longitude}" if coordinates && [latitude, longitude].any?
+      result
     end
     
   end

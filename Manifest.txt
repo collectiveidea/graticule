@@ -3,8 +3,10 @@ LICENSE.txt
 Manifest.txt
 README.txt
 Rakefile
+bin/geocode
 init.rb
 lib/graticule.rb
+lib/graticule/cli.rb
 lib/graticule/distance.rb
 lib/graticule/distance/haversine.rb
 lib/graticule/distance/spherical.rb
