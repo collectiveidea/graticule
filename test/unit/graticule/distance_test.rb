@@ -33,16 +33,25 @@ module Graticule
         
         # First, test the deltas.
         FORMULAS.each do |formula|
-          assert_in_delta 12450.6582171051, formula.distance(washington_dc, washington_dc.antipodal_location), 1.0
-          assert_in_delta 12450.6582171051, formula.distance(chicago, chicago.antipodal_location, :miles), 1.0
-          assert_in_delta 12450.6582171051, formula.distance(washington_dc, washington_dc.antipodal_location, :miles), 1.0
-          assert_in_delta 20037.50205960391, formula.distance(chicago, chicago.antipodal_location, :kilometers), 1.0
-          assert_in_delta 20037.5020596039, formula.distance(washington_dc, washington_dc.antipodal_location, :kilometers), 1.0
+          assert_in_delta 12450.6582171051, 
+            formula.distance(chicago, chicago.antipodal_location), 1.0
+          assert_in_delta 12450.6582171051, 
+            formula.distance(washington_dc, washington_dc.antipodal_location), 1.0
+          assert_in_delta 12450.6582171051, 
+            formula.distance(chicago, chicago.antipodal_location, :miles), 1.0
+          assert_in_delta 12450.6582171051, 
+            formula.distance(washington_dc, washington_dc.antipodal_location, :miles), 1.0
+          assert_in_delta 20037.50205960391, 
+            formula.distance(chicago, chicago.antipodal_location, :kilometers), 1.0
+          assert_in_delta 20037.5020596039, 
+            formula.distance(washington_dc, washington_dc.antipodal_location, :kilometers), 1.0
         end
         
         # Next, test Vincenty.  Vincenty will use haversine instead of returning NaN on antipodal points
-        assert_equal Haversine.distance(washington_dc, washington_dc.antipodal_location), Vincenty.distance(washington_dc, washington_dc.antipodal_location)
-        assert_equal Haversine.distance(chicago, chicago.antipodal_location), Vincenty.distance(chicago, chicago.antipodal_location)
+        assert_equal Haversine.distance(washington_dc, washington_dc.antipodal_location), 
+          Vincenty.distance(washington_dc, washington_dc.antipodal_location)
+        assert_equal Haversine.distance(chicago, chicago.antipodal_location),
+          Vincenty.distance(chicago, chicago.antipodal_location)
       end
     end
   end
