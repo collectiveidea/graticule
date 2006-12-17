@@ -34,5 +34,15 @@ module Graticule
       end
     end
     
+    def test_antipodal_location
+      washington_dc = Location.new(:latitude => 38.898748, :longitude => -77.037684)
+      chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
+      
+      assert_equal [-38.898748, 102.962316], washington_dc.antipodal_location.coordinates
+      assert_equal [-41.85, 92.35], chicago.antipodal_location.coordinates
+      
+      assert_equal washington_dc.coordinates, washington_dc.antipodal_location.antipodal_location.coordinates
+      assert_equal chicago.coordinates, chicago.antipodal_location.antipodal_location.coordinates
+    end
   end
 end

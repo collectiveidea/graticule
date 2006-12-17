@@ -5,7 +5,7 @@ module Graticule
     # Thanks to Chris Veness for distance formulas.
     #   * http://www.movable-type.co.uk/scripts/LatLongVincenty.html
     #
-    # Distance Measured usign the Vincenty Formula
+    # Distance Measured using the Vincenty Formula
     # Very accurate, using an accurate ellipsoidal model of the earth
     # a, b = major & minor semiaxes of the ellipsoid	 
     # f = flattening (a−b)/a	 
@@ -51,47 +51,45 @@ module Graticule
 
         f = (earth_major_axis_radius - earth_minor_axis_radius) / earth_major_axis_radius
 
-       l = to_longitude - from_longitude
-       u1 = Math.atan((1-f) * Math.tan(from_latitude))
-       u2 = Math.atan((1-f) * Math.tan(to_latitude))
-       sinU1 = Math.sin(u1)
-       cosU1 = Math.cos(u1)
-       sinU2 = Math.sin(u2)
-       cosU2 = Math.cos(u2)
+        l = to_longitude - from_longitude
+        u1 = atan((1-f) * tan(from_latitude))
+        u2 = atan((1-f) * tan(to_latitude))
+        sinU1 = sin(u1)
+        cosU1 = cos(u1)
+        sinU2 = sin(u2)
+        cosU2 = cos(u2)
 
-       lambda = l
-       lambdaP = 2*Math::PI
-         iterLimit = 20;
-         while (lambda-lambdaP).abs > 1e-12 && --iterLimit>0
-           sinLambda = Math.sin(lambda)
-           cosLambda = Math.cos(lambda)
-           sinSigma = Math.sqrt((cosU2*sinLambda) * (cosU2*sinLambda) + 
-             (cosU1*sinU2-sinU1*cosU2*cosLambda) * (cosU1*sinU2-sinU1*cosU2*cosLambda))
-           return 0 if sinSigma==0  # co-incident points
-           cosSigma = sinU1*sinU2 + cosU1*cosU2*cosLambda
-           sigma = Math.atan2(sinSigma, cosSigma)
-           sinAlpha = cosU1 * cosU2 * sinLambda / sinSigma
-           cosSqAlpha = 1 - sinAlpha*sinAlpha
-           cos2SigmaM = cosSigma - 2*sinU1*sinU2/cosSqAlpha
+        lambda = l
+        lambdaP = 2 * PI
+        iterLimit = 20
+        while (lambda-lambdaP).abs > 1e-12 && (iterLimit -= 1) > 0
+          sinLambda = sin(lambda)
+          cosLambda = cos(lambda)
+          sinSigma = sqrt((cosU2*sinLambda) * (cosU2*sinLambda) + 
+            (cosU1*sinU2-sinU1*cosU2*cosLambda) * (cosU1*sinU2-sinU1*cosU2*cosLambda))
+          return 0 if sinSigma == 0  # co-incident points
+          cosSigma = sinU1*sinU2 + cosU1*cosU2*cosLambda
+          sigma = atan2(sinSigma, cosSigma)
+          sinAlpha = cosU1 * cosU2 * sinLambda / sinSigma
+          cosSqAlpha = 1 - sinAlpha*sinAlpha
+          cos2SigmaM = cosSigma - 2*sinU1*sinU2/cosSqAlpha
 
-           cos2SigmaM = 0 if cos2SigmaM.nan?  # equatorial line: cosSqAlpha=0 (§6)
+          cos2SigmaM = 0 if cos2SigmaM.nan?  # equatorial line: cosSqAlpha=0 (§6)
 
-           c = f/16*cosSqAlpha*(4+f*(4-3*cosSqAlpha))
-           lambdaP = lambda
-           lambda = l + (1-c) * f * sinAlpha *
-             (sigma + c*sinSigma*(cos2SigmaM+c*cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)))
-         end
-         return NaN if (iterLimit==0)  # formula failed to converge
+          c = f/16*cosSqAlpha*(4+f*(4-3*cosSqAlpha))
+          lambdaP = lambda
+          lambda = l + (1-c) * f * sinAlpha *
+            (sigma + c*sinSigma*(cos2SigmaM+c*cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)))
+       end
+       return Haversine.distance(from, to, units) if iterLimit == 0  # formula failed to converge
 
-         uSq = cosSqAlpha * (earth_major_axis_radius**2 - earth_minor_axis_radius**2) / (earth_minor_axis_radius**2);
-         bigA = 1 + uSq/16384*(4096+uSq*(-768+uSq*(320-175*uSq)));
-         bigB = uSq/1024 * (256+uSq*(-128+uSq*(74-47*uSq)));
-         deltaSigma = bigB*sinSigma*(cos2SigmaM+bigB/4*(cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)-
-           bigB/6*cos2SigmaM*(-3+4*sinSigma*sinSigma)*(-3+4*cos2SigmaM*cos2SigmaM)));
-         s = earth_minor_axis_radius*bigA*(sigma-deltaSigma);
-
-         #s = s.toFixed(3) # round to 1mm precision
-         return s
+       uSq = cosSqAlpha * (earth_major_axis_radius**2 - earth_minor_axis_radius**2) / (earth_minor_axis_radius**2)
+       bigA = 1 + uSq/16384*(4096+uSq*(-768+uSq*(320-175*uSq)))
+       bigB = uSq/1024 * (256+uSq*(-128+uSq*(74-47*uSq)))
+       deltaSigma = bigB*sinSigma*(cos2SigmaM+bigB/4*(cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)-
+         bigB/6*cos2SigmaM*(-3+4*sinSigma*sinSigma)*(-3+4*cos2SigmaM*cos2SigmaM)))
+         
+        earth_minor_axis_radius*bigA*(sigma-deltaSigma)
       end
   
     end

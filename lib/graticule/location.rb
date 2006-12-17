@@ -23,6 +23,16 @@ module Graticule
       "Graticule::Distance::#{formula.to_s.titleize}".constantize.distance(self, destination)
     end
     
+    # "Where would I be if I dug through the center of the earth?"
+    def antipodal_location
+      if longitude >= 0
+        new_longitude = longitude - 180
+      else
+        new_longitude = longitude + 180
+      end
+      Location.new(:latitude => -latitude, :longitude => new_longitude)
+    end
+    
     def to_s(coordinates = false)
       result = ""
       result << "#{street}\n" if street

@@ -1,4 +1,3 @@
-
 module Graticule
   module Distance
 
@@ -16,7 +15,6 @@ module Graticule
     # d = R.c
     #
     class Haversine < DistanceFormula
-  
       def self.distance(from, to, units = :miles)
         from_longitude  = deg2rad(from.longitude)
         from_latitude   = deg2rad(from.latitude)
@@ -26,17 +24,18 @@ module Graticule
         latitude_delta  = to_latitude - from_latitude
         longitude_delta = to_longitude - from_longitude
 
-        a = Math.sin(latitude_delta/2)**2 + 
-            Math.cos(from_latitude) * 
-            Math.cos(to_latitude) * 
-            Math.sin(longitude_delta/2)**2
+        a = sin(latitude_delta/2)**2 + 
+            cos(from_latitude) * 
+            cos(to_latitude) * 
+            sin(longitude_delta/2)**2
 
-        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+        c = 2 * atan2(sqrt(a), sqrt(1-a))
 
         d = EARTH_RADIUS[units.to_sym] * c
       end
 
-      # # What formula is this?
+      # # What formula is this? --Brandon
+      # # I dunno.  I found it on the internet.  --Daniel
       # def self.distance(from, to, units = :miles)
       #   from_longitude = deg2rad(from.longitude)
       #   from_latitude = deg2rad(from.latitude)
