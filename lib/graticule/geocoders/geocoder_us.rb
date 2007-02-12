@@ -27,7 +27,7 @@ module Graticule #:nodoc:
       get :address => address
     end
 
-    def parse_response(xml)
+    def parse_response(xml) #:nodoc:
       location = Location.new
       location.street = xml.elements['rdf:RDF/geo:Point/dc:description'].text
 
@@ -37,7 +37,7 @@ module Graticule #:nodoc:
       return location
     end
 
-    def check_error(xml)
+    def check_error(xml) #:nodoc:
       raise AddressError, xml.text if xml.text == 'couldn\'t find this address! sorry'
     end
 

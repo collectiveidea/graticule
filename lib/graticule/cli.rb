@@ -1,12 +1,28 @@
 require 'optparse'
 
 module Graticule
+  
+  # A command line interface for geocoding.  From the command line, run:
+  #
+  #   geocode 49423 
+  #
+  # Outputs:
+  #
+  #   # Holland, MI 49423 US
+  #   # latitude: 42.7654, longitude: -86.1085
+  #
+  # == Usage: geocode [options] location
+  # 
+  # Options: 
+  #     -s, --service service            Geocoding service
+  #     -a, --apikey apikey              API key for the selected service
+  #     -h, --help                       Help
   class Cli
     
     def self.start
       options = { :service => :yahoo, :api_key => 'YahooDemo' }
       
-      OptionParser.new do |opts|
+      option_parser = OptionParser.new do |opts|
         opts.banner = "Usage: geocode [options] location"
         opts.separator ""
         opts.separator "Options: "
@@ -22,9 +38,7 @@ module Graticule
           exit
         end
       end.parse!
-      
-      options[:location] = ARGV.join(" ")
-      
+
       result = Graticule.service(options[:service]).new(options[:api_key]).locate(options[:location])
       location = (result.is_a?(Array) ? result.first : result)
       if location

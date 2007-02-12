@@ -44,7 +44,7 @@ module Graticule
     end
 
     # Extracts a Location from +xml+.
-    def parse_response(xml)
+    def parse_response(xml) #:nodoc:
       longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
       Location.new \
         :street => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName']),
@@ -58,7 +58,7 @@ module Graticule
     end
 
     # Extracts and raises an error from +xml+, if any.
-    def check_error(xml)
+    def check_error(xml) #:nodoc:
       status ||= xml.elements['/kml/Response/Status/code'].text.to_i
       case status
       when 200 then # ignore, ok
@@ -81,7 +81,7 @@ module Graticule
 
     # Creates a URL from the Hash +params+.  Automatically adds the key and
     # sets the output type to 'xml'.
-    def make_url(params)
+    def make_url(params) #:nodoc:
       params[:key] = @key
       params[:output] = 'xml'
 

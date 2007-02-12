@@ -1,5 +1,5 @@
-module Graticule
-  module Version
+module Graticule #:nodoc:
+  module Version #:nodoc:
     MAJOR = 0
     MINOR = 1
     TINY = 1

@@ -1,4 +1,6 @@
 module Graticule
+  
+  # A geographic location
   class Location
     attr_accessor :latitude, :longitude, :street, :city, :state, :zip, :country, :precision, :warning
     
@@ -19,19 +21,18 @@ module Graticule
       end
     end
     
+    # Calculate the distance to another location.  See the various Distance formulas
+    # for more information
     def distance_to(destination, units = :miles, formula = :haversine)
       "Graticule::Distance::#{formula.to_s.titleize}".constantize.distance(self, destination)
     end
     
-    # "Where would I be if I dug through the center of the earth?"
-    def antipodal_location
-      if longitude >= 0
-        new_longitude = longitude - 180
-      else
-        new_longitude = longitude + 180
-      end
+    # Where would I be if I dug through the center of the earth?
+    def antipode
+      new_longitude = longitude + (longitude >= 0 ? -180 : 180)
       Location.new(:latitude => -latitude, :longitude => new_longitude)
     end
+    alias_method :antipodal_location, :antipode
     
     def to_s(coordinates = false)
       result = ""

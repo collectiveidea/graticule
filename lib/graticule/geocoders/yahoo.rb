@@ -81,14 +81,14 @@ module Graticule #:nodoc:
     end
 
     # Extracts and raises an error from +xml+, if any.
-    def check_error(xml)
+    def check_error(xml) #:nodoc:
       err = xml.elements['Error']
       raise Error, err.elements['Message'].text if err
     end
 
     # Creates a URL from the Hash +params+.  Automatically adds the appid and
     # sets the output type to 'xml'.
-    def make_url(params)
+    def make_url(params) #:nodoc:
       params[:appid] = @appid
       params[:output] = 'xml'
 

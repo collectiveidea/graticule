@@ -1,20 +1,21 @@
 module Graticule
   module Distance
-
     #
-    # Thanks to Chris Veness for distance formulas.
-    #   * http://www.movable-type.co.uk/scripts/LatLong.html
+    # The Haversine Formula works better at small distances than the Spherical Law of Cosines
     #
-    # Distance Measured usign the Haversine Formula
-    # Works better at small distances than the Spherical Law of Cosines
-    # R = earth’s radius (mean radius = 6,371km)
-    # Δlat = lat2− lat1
-    # Δlong = long2− long1
-    # a = sin²(Δlat/2) + cos(lat1).cos(lat2).sin²(Δlong/2)
-    # c = 2.atan2(√a, √(1−a))
-    # d = R.c
+    # Thanks to Chris Veness (http://www.movable-type.co.uk/scripts/LatLong.html)
+    # for distance formulas.
     #
     class Haversine < DistanceFormula
+      
+      # Calculate the distance between two Locations using the Haversine formula
+      #
+      #   Graticule::Distance::Haversine.distance(
+      #     Graticule::Location.new(:latitude => 42.7654, :longitude => -86.1085),
+      #     Graticule::Location.new(:latitude => 41.849838, :longitude => -87.648193)
+      #   )
+      #   #=> 101.061720831836
+      #
       def self.distance(from, to, units = :miles)
         from_longitude  = deg2rad(from.longitude)
         from_latitude   = deg2rad(from.latitude)
@@ -34,31 +35,6 @@ module Graticule
         d = EARTH_RADIUS[units.to_sym] * c
       end
 
-      # # What formula is this? --Brandon
-      # # I dunno.  I found it on the internet.  --Daniel
-      # def self.distance(from, to, units = :miles)
-      #   from_longitude = deg2rad(from.longitude)
-      #   from_latitude = deg2rad(from.latitude)
-      #   to_longitude = deg2rad(to.longitude)
-      #   to_latitude = deg2rad(to.latitude)
-      # 
-      #   Math.acos(
-      #       Math.cos(from_longitude) *
-      #       Math.cos(to_longitude) * 
-      #       Math.cos(from_latitude) * 
-      #       Math.cos(to_latitude) +
-      # 
-      #       Math.cos(from_latitude) *
-      #       Math.sin(from_longitude) *
-      #       Math.cos(to_latitude) *
-      #       Math.sin(to_longitude) +
-      # 
-      #       Math.sin(from_latitude) *
-      #       Math.sin(to_latitude)
-      #   ) * EARTH_RADIUS[units.to_sym]
-      # end
-   
-      
     end
   end
 end
