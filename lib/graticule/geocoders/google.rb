@@ -45,16 +45,19 @@ module Graticule
 
     # Extracts a Location from +xml+.
     def parse_response(xml) #:nodoc:
+      address = REXML::XPath.first(xml, '//xal:AddressDetails', 'xal' => "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0")
+
       longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
+      
       Location.new \
-        :street => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName']),
-        :city => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName']),
-        :state => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/AdministrativeAreaName']),
-        :zip => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber']),
-        :country => text(xml.elements['/kml/Response/Placemark/AddressDetails/Country/CountryNameCode']),
+        :street => address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName/text()'].value,
+        :city => address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName/text()'].value,
+        :state => address.elements['Country/AdministrativeArea/AdministrativeAreaName/text()'].value,
+        :zip => address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber/text()'].value,
+        :country => address.elements['Country/CountryNameCode/text()'].value,
         :latitude => latitude,
         :longitude => longitude,
-        :precision => PRECISION[xml.elements['/kml/Response/Placemark/AddressDetails'].attribute('Accuracy').value.to_i] || :unknown
+        :precision => PRECISION[address.attribute('Accuracy').value.to_i] || :unknown
     end
 
     # Extracts and raises an error from +xml+, if any.

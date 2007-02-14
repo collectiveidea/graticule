@@ -1,4 +1,4 @@
-<kml>
+<kml xmlns="http://earth.google.com/kml/2.0">
   <Response>
     <name>1600 amphitheatre mtn view ca</name>
     <Status>
@@ -9,7 +9,7 @@
       <address> 
         1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA
       </address>
-      <AddressDetails Accuracy="8">
+      <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" Accuracy="8">
         <Country>
           <CountryNameCode>US</CountryNameCode>
  	  <AdministrativeArea>

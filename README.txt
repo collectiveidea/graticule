@@ -23,3 +23,7 @@ Graticule includes a command line interface (CLI).
   $ geocode -s yahoo -a yahookey Washington, DC
   Washington, DC US
   latitude: 38.895222, longitude: -77.036758
+
+= Source
+
+The source code for Graticule is available at http://source.collectiveidea.com/public/geocode/trunk
