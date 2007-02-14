@@ -19,10 +19,10 @@ module Graticule
   #     -h, --help                       Help
   class Cli
     
-    def self.start
+    def self.start(args)
       options = { :service => :yahoo, :api_key => 'YahooDemo' }
       
-      option_parser = OptionParser.new do |opts|
+      OptionParser.new do |opts|
         opts.banner = "Usage: geocode [options] location"
         opts.separator ""
         opts.separator "Options: "
@@ -37,8 +37,10 @@ module Graticule
           puts opts
           exit
         end
-      end.parse!
+      end.parse! args
 
+      options[:location] = args.join(" ")
+      
       result = Graticule.service(options[:service]).new(options[:api_key]).locate(options[:location])
       location = (result.is_a?(Array) ? result.first : result)
       if location
@@ -46,12 +48,11 @@ module Graticule
       else
         puts "Location not found"
       end
-    rescue OptionParser::InvalidArgument => error
-      $stderr.puts error.message
-    rescue OptionParser::InvalidOption => error
-      $stderr.puts error.message
     rescue Graticule::CredentialsError
       $stderr.puts "Invalid API key. Pass your #{options[:service]} API key using the -a option. "
+    rescue OptionParser::InvalidArgument, OptionParser::InvalidOption,
+        Graticule::Error => error
+      $stderr.puts error.message
     end
     
     
