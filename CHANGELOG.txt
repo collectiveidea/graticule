@@ -1,6 +1,8 @@
+0.1.3 (2007-02-14)
+* fixed Google geocoder
+* fixed CLI
 
-
-0.1.2
+0.1.2 (2007-02-12)
 * added "geocode" executable. See "geocode --help" for more information
 * declared dependency on ActiveSupport
 
