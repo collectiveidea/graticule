@@ -49,7 +49,8 @@ module Graticule #:nodoc:
     # * street, city, state, zip
     # * street, zip
     def locate(address)
-      get :location => address
+      # yahoo pukes on line breaks
+      get :location => address.gsub("\n", ', ')
     end
 
     def parse_response(xml) # :nodoc:
