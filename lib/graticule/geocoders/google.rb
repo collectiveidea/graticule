@@ -46,15 +46,16 @@ module Graticule
     # Extracts a Location from +xml+.
     def parse_response(xml) #:nodoc:
       address = REXML::XPath.first(xml, '//xal:AddressDetails', 'xal' => "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0")
+      breakpoint
 
       longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
       
       Location.new \
-        :street => address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName/text()'].value,
-        :city => address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName/text()'].value,
-        :state => address.elements['Country/AdministrativeArea/AdministrativeAreaName/text()'].value,
-        :zip => address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber/text()'].value,
-        :country => address.elements['Country/CountryNameCode/text()'].value,
+        :street => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName/text()']),
+        :city => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName/text()']),
+        :state => value(address.elements['Country/AdministrativeArea/AdministrativeAreaName/text()']),
+        :zip => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber/text()']),
+        :country => value(address.elements['Country/CountryNameCode/text()']),
         :latitude => latitude,
         :longitude => longitude,
         :precision => PRECISION[address.attribute('Accuracy').value.to_i] || :unknown
@@ -92,6 +93,11 @@ module Graticule
     end
     
     private
+    
+      def value(element)
+        element.value if element
+      end
+    
       def text(element)
         element.text if element
       end
