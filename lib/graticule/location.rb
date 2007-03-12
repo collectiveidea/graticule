@@ -2,12 +2,16 @@ module Graticule
   
   # A geographic location
   class Location
-    attr_accessor :latitude, :longitude, :street, :city, :state, :zip, :country, :precision, :warning
+    attr_accessor :latitude, :longitude, :street, :locality, :region, :postal_code, :country, :precision, :warning
+    alias_method :city, :locality
+    alias_method :state, :region
+    alias_method :zip, :postal_code
     
     def initialize(attrs = {})
       attrs.each do |key,value|
         instance_variable_set "@#{key}", value
       end
+      self.precision ||= :unknown
     end
     
     # Returns an Array with latitude and longitude.
@@ -16,7 +20,7 @@ module Graticule
     end
     
     def ==(object)
-      super(object) || [:latitude, :longitude, :street, :city, :state, :zip, :country, :precision].all? do |m|
+      super(object) || [:latitude, :longitude, :street, :locality, :region, :postal_code, :country, :precision].all? do |m|
         object.respond_to?(m) && self.send(m) == object.send(m)
       end
     end
@@ -37,7 +41,7 @@ module Graticule
     def to_s(coordinates = false)
       result = ""
       result << "#{street}\n" if street
-      result << [city, [state, zip, country].compact.join(" ")].compact.join(", ")
+      result << [locality, [region, postal_code, country].compact.join(" ")].compact.join(", ")
       result << "\nlatitude: #{latitude}, longitude: #{longitude}" if coordinates && [latitude, longitude].any?
       result
     end

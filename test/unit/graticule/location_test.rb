@@ -10,7 +10,7 @@ module Graticule
     end
     
     def test_responds_to
-      [:latitude, :longitude, :street, :city, :state, :zip, :country, :coordinates, :precision].each do |m|
+      [:latitude, :longitude, :street, :locality, :region, :postal_code, :country, :coordinates, :precision].each do |m|
         assert Location.new.respond_to?(m), "should respond to #{m}"
       end
     end
@@ -24,7 +24,7 @@ module Graticule
       assert_equal Location.new, Location.new
 
       attrs = {:latitude => 100.5389, :longitude => -147.5893, :street => '123 A Street',
-          :city => 'Somewhere', :state => 'NO', :zip => '12345', :country => 'USA', :precision => :address}
+          :locality => 'Somewhere', :region => 'NO', :postal_code => '12345', :country => 'USA', :precision => :address}
       
       assert_equal Location.new(attrs), Location.new(attrs)
       attrs.each do |k,v|

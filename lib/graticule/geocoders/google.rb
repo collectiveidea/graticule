@@ -46,15 +46,14 @@ module Graticule
     # Extracts a Location from +xml+.
     def parse_response(xml) #:nodoc:
       address = REXML::XPath.first(xml, '//xal:AddressDetails', 'xal' => "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0")
-      breakpoint
 
       longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
       
       Location.new \
         :street => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName/text()']),
-        :city => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName/text()']),
-        :state => value(address.elements['Country/AdministrativeArea/AdministrativeAreaName/text()']),
-        :zip => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber/text()']),
+        :locality => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName/text()']),
+        :region => value(address.elements['Country/AdministrativeArea/AdministrativeAreaName/text()']),
+        :postal_code => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber/text()']),
         :country => value(address.elements['Country/CountryNameCode/text()']),
         :latitude => latitude,
         :longitude => longitude,
@@ -63,7 +62,7 @@ module Graticule
 
     # Extracts and raises an error from +xml+, if any.
     def check_error(xml) #:nodoc:
-      status ||= xml.elements['/kml/Response/Status/code'].text.to_i
+      status = xml.elements['/kml/Response/Status/code'].text.to_i
       case status
       when 200 then # ignore, ok
       when 500 then

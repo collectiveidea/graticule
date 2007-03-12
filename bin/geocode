@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'graticule'
+require 'graticule/cli'
 
 Graticule::Cli.start ARGV

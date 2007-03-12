@@ -69,9 +69,9 @@ module Graticule #:nodoc:
         location.longitude = r.elements['Longitude'].text.to_f
 
         location.street = r.elements['Address'].text.titleize unless r.elements['Address'].text.blank?
-        location.city = r.elements['City'].text.titleize unless r.elements['City'].text.blank?
-        location.state = r.elements['State'].text
-        location.zip = r.elements['Zip'].text
+        location.locality = r.elements['City'].text.titleize unless r.elements['City'].text.blank?
+        location.region = r.elements['State'].text
+        location.postal_code = r.elements['Zip'].text
         location.country = r.elements['Country'].text
 
         locations << location

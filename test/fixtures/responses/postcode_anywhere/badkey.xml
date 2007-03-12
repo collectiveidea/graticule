@@ -1,0 +1,9 @@
+<PostcodeAnywhere Server="WS12" Version="3.0" Date="12/03/2007 15:43:33" Duration="0.016s">
+  <Schema Items="2">
+    <Field Name="error_number"/>
+    <Field Name="message"/>
+  </Schema>
+  <Data Items="1">
+    <Item error_number="6" message="License key was not recognised"/>
+  </Data>
+</PostcodeAnywhere>

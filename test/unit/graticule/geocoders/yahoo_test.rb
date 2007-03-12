@@ -11,9 +11,9 @@ module Graticule
       @geocoder = YahooGeocoder.new 'APP_ID'
       @location = Location.new(
         :street => "701 First Ave",
-        :city => "Sunnyvale",
-        :state => "CA",
-        :zip => "94089-1019",
+        :locality => "Sunnyvale",
+        :region => "CA",
+        :postal_code => "94089-1019",
         :country => "US",
         :longitude => -122.024853,
         :latitude => 37.416384,

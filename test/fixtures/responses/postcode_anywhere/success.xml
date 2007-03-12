@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostcodeAnywhere Server="WS12" Version="3.0" Date="12/03/2007 16:59:09" Duration="0.000s">
+  <Schema Items="13">
+    <Field Name="origin_postcode"/>
+    <Field Name="destination_postcode"/>
+    <Field Name="distance"/>
+    <Field Name="id"/>
+    <Field Name="description"/>
+    <Field Name="grid_east_m"/>
+    <Field Name="grid_north_m"/>
+    <Field Name="longitude"/>
+    <Field Name="latitude"/>
+    <Field Name="os_reference"/>
+    <Field Name="wgs84_longitude"/>
+    <Field Name="wgs84_latitude"/>
+    <Field Name="name"/>
+  </Schema>
+  <Data Items="1">
+    <Item origin_postcode="N1 6DX" destination_postcode="N1 6DX" distance="0.0" grid_east_m="532800" grid_north_m="182600" longitude="-0.0854449407946831" latitude="51.5261963140527" os_reference="TQ 32800 82600" wgs84_longitude="-0.0870364432651462" wgs84_latitude="51.5266517278892"/>
+  </Data>
+</PostcodeAnywhere>

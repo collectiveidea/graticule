@@ -1,3 +1,4 @@
+require 'graticule'
 require 'optparse'
 
 module Graticule
