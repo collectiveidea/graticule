@@ -8,18 +8,7 @@ module Graticule
   # See the documentation for your specific geocoder for more information
   #
   def self.service(name)
-    self.const_get "#{name}_geocoder".camelize
-  end
-
-  # The Geocode class is the base class for all geocoder implementations. The
-  # geocoders must implement:
-  # 
-  # * locate(address)  
-  #
-  class Geocoder
-    def initialize
-      raise NotImplementedError
-    end
+    Geocoder.const_get name.to_s.camelize
   end
   
   # Base error class

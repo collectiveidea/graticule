@@ -11,9 +11,9 @@ module Graticule
       
       location = Location.new(
         :street => "1600 Amphitheatre Pkwy",
-        :locality => "Mountain View",
-        :region => "CA",
-        :postal_code => "94043",
+        :city => "Mountain View",
+        :state => "CA",
+        :zip => "94043",
         :country => "US",
         :longitude => -122.083739,
         :latitude => 37.423021,
