@@ -36,7 +36,7 @@ module Graticule #:nodoc:
     #     end
     #   
     #     def parse_response(xml)
-    #       return xml
+    #       # return Location
     #     end
     #   
     #     def test(query)
@@ -52,6 +52,17 @@ module Graticule #:nodoc:
       # variable which must be a URI.
       def initialize
         raise NotImplementedError
+      end
+      
+    private
+    
+      def location_from_params(params)
+        case params
+        when Location then params
+        when Hash then Location.new params
+        else
+          raise ArgumentError, "Expected a Graticule::Location or a hash with :street, :locality, :region, :postal_code, and :country attributes"
+        end
       end
 
       # Must extract and raise an error from +xml+, an REXML::Document, if any.
@@ -89,8 +100,7 @@ module Graticule #:nodoc:
         return url
       end
 
-      # Must parse results from +xml+, an REXML::Document, into something sensible
-      # for the API.
+      # Must parse results from +xml+, an REXML::Document, into a Location.
       def parse_response(xml)
         raise NotImplementedError
       end

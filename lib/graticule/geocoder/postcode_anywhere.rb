@@ -10,14 +10,17 @@ module Graticule #:nodoc:
         @license_code = license_code
       end
 
-      def locate(address)
-        get :origin => address, :destination => address
+      def locate(params)
+        location = location_from_params(params)
+        get :address => location.to_s(:country => false), :country => location.country 
       end
-
+      
+    private
+    
       def make_url(params) #:nodoc:
         params[:account_code] = @account_code
         params[:license_code] = @license_code
-        params[:action] = 'nearest'
+        params[:action] = 'geocode'
         super params
       end
 
@@ -26,15 +29,22 @@ module Graticule #:nodoc:
         returning Location.new do |location|
           location.latitude = result.attribute('latitude').value.to_f
           location.longitude = result.attribute('longitude').value.to_f
-          location.postal_code = result.attribute('origin_postcode').value
+          location.street = value(result.attribute('line1'))
+          location.locality = value(result.attribute('city'))
+          location.region = value(result.attribute('state'))
+          location.postal_code = value(result.attribute('postal_code'))
+          location.country = value(result.attribute('country'))
         end
+      end
+      
+      def value(attribute)
+        attribute.value if attribute
       end
 
       # http://www.postcodeanywhere.co.uk/developers/documentation/errors.aspx
       def check_error(xml) #:nodoc:
         #raise AddressError, xml.text if xml.text == 'couldn\'t find this address! sorry'
-        error = xml.elements['/PostcodeAnywhere/Data/Item[@error_number][1]']
-        if error
+        if error = xml.elements['/PostcodeAnywhere/Data/Item[@error_number][1]']
           error_number = error.attribute('error_number').value.to_i
           message = error.attribute('message').value
           if (1..11).include?(error_number) || (34..38).include?(error_number)
@@ -42,7 +52,10 @@ module Graticule #:nodoc:
           else
             raise Error, message
           end
+        elsif xml.elements['/PostcodeAnywhere/Data'].elements.empty?
+          raise AddressError, 'No results returned'
         end
+        
       end
     
     end

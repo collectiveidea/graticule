@@ -2,8 +2,12 @@
 * changed city to locality, state to region, and zip to postal_code
 * added support for PostcodeAnywhere
 * added support for Local Search Maps (James Stewart)
+* added IP-based geocoder
 * moved geocoders to Graticule::Geocoder namespace
 * fixed Google geocoder (again)
+* made Yahoo geocoder consistent with others by returning 1 result
+* geocoders can how take a Hash (:street, :locality, :region, :postal_code, :country)
+  or a Graticule::Location for the #locate call
 
 0.1.3 (2007-02-14)
 * fixed Google geocoder

@@ -14,6 +14,13 @@ module Graticule
       self.precision ||= :unknown
     end
     
+    def attributes
+      [:latitude, :longitude, :street, :locality, :region, :postal_code, :country].inject({}) do |result,attr|
+        result[attr] = self.send(attr) if self.send(attr)
+        result
+      end
+    end
+    
     # Returns an Array with latitude and longitude.
     def coordinates
       [latitude, longitude]
@@ -33,16 +40,17 @@ module Graticule
     
     # Where would I be if I dug through the center of the earth?
     def antipode
-      new_longitude = longitude + (longitude >= 0 ? -180 : 180)
-      Location.new(:latitude => -latitude, :longitude => new_longitude)
+      Location.new :latitude => -latitude, :longitude => longitude + (longitude >= 0 ? -180 : 180)
     end
     alias_method :antipodal_location, :antipode
     
-    def to_s(coordinates = false)
+    def to_s(options = {})
+      options = {:coordinates => false, :country => true}.merge(options)
       result = ""
       result << "#{street}\n" if street
-      result << [locality, [region, postal_code, country].compact.join(" ")].compact.join(", ")
-      result << "\nlatitude: #{latitude}, longitude: #{longitude}" if coordinates && [latitude, longitude].any?
+      result << [locality, [region, postal_code].compact.join(" ")].compact.join(", ")
+      result << " #{country}" if options[:country] && country
+      result << "\nlatitude: #{latitude}, longitude: #{longitude}" if options[:coordinates] && [latitude, longitude].any?
       result
     end
     

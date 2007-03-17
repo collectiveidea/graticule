@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostcodeAnywhere Server="WS12" Version="3.0" Date="17/03/2007 19:01:39" Duration="2.422s">
+  <Schema Items="10">
+    <Field Name="id"/>
+    <Field Name="seq"/>
+    <Field Name="location"/>
+    <Field Name="grid_east_m"/>
+    <Field Name="grid_north_m"/>
+    <Field Name="longitude"/>
+    <Field Name="latitude"/>
+    <Field Name="os_reference"/>
+    <Field Name="wgs84_longitude"/>
+    <Field Name="wgs84_latitude"/>
+  </Schema>
+  <Data Items="1">
+    <Item id="17783983.00" seq="0" location="80 Wood Lane London NW9" grid_east_m="521000" grid_north_m="187500" longitude="-0.253788666693255" latitude="51.5728910186362" os_reference="TQ 21000 87500" wgs84_longitude="-0.255365891581496" wgs84_latitude="51.5733397173092"/>
+  </Data>
+</PostcodeAnywhere>

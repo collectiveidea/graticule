@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PostcodeAnywhere Version="3.0" Server="WS03" Date="17/03/2007 19:26:33" Duration="0.016s">
+  <Schema Items="10">
+    <Field Name="id"/>
+    <Field Name="seq"/>
+    <Field Name="location"/>
+    <Field Name="grid_east_m"/>
+    <Field Name="grid_north_m"/>
+    <Field Name="longitude"/>
+    <Field Name="latitude"/>
+    <Field Name="os_reference"/>
+    <Field Name="wgs84_longitude"/>
+    <Field Name="wgs84_latitude"/>
+  </Schema>
+  <Data Items="0"/>
+</PostcodeAnywhere>

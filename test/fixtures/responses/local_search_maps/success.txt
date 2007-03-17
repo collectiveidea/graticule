@@ -1,0 +1,1 @@
+map.centerAndZoom(new GPoint(-0.130427, 51.510036), 4);

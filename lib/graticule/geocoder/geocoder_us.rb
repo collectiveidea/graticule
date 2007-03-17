@@ -25,7 +25,7 @@ module Graticule #:nodoc:
       # Locates +address+ and returns the address' latitude and longitude or
       # raises an AddressError.
       def locate(address)
-        get :address => address
+        get :address => address.is_a?(String) ? address : location_from_params(address).to_s(:country => false)
       end
 
       def parse_response(xml) #:nodoc:

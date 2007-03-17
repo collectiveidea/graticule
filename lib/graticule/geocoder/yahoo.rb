@@ -50,16 +50,14 @@ module Graticule #:nodoc:
       # * street, city, state, zip
       # * street, zip
       def locate(address)
+        location = (address.is_a?(String) ? address : location_from_params(address).to_s(:country => false))
         # yahoo pukes on line breaks
-        get :location => address.gsub("\n", ', ')
+        get :location => location.gsub("\n", ', ')
       end
 
       def parse_response(xml) # :nodoc:
-        locations = []
-
-        xml.elements['ResultSet'].each do |r|
-          location = Location.new
-
+        r = xml.elements['ResultSet/Result[1]']
+        returning Location.new do |location|
           location.precision = PRECISION[r.attributes['precision']] || :unknown
 
           if r.attributes.include? 'warning' then
@@ -74,12 +72,7 @@ module Graticule #:nodoc:
           location.region = r.elements['State'].text
           location.postal_code = r.elements['Zip'].text
           location.country = r.elements['Country'].text
-
-          locations << location
         end
-
-        # FIXME: make API consistent and only return 1 location
-        return locations
       end
 
       # Extracts and raises an error from +xml+, if any.

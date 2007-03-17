@@ -22,7 +22,7 @@ module Graticule
 
     def test_locate
       prepare_response(:success)
-      assert_equal [@location], @geocoder.locate('701 First Street, Sunnyvale, CA')
+      assert_equal @location, @geocoder.locate('701 First Street, Sunnyvale, CA')
     end
   
     def test_url

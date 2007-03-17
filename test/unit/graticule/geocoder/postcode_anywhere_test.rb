@@ -10,16 +10,34 @@ module Graticule
         URI::HTTP.responses = []
         URI::HTTP.uris = []
         @geocoder = PostcodeAnywhere.new 'account_code', 'license_key'
-        @location = Location.new(
-          :longitude => -0.0854449407946831,
-          :latitude => 51.5261963140527,
-          :postal_code => 'N1 6DX'
-        )
       end
 
     def test_locate
       prepare_response(:success)
-      assert_equal @location, @geocoder.locate('701 First Street, Sunnyvale, CA')
+      location = Location.new(
+        :street => "204 Campbell Ave",
+        :locality => "Revelstoke",
+        :region => "BC",
+        :postal_code => "V0E",
+        :country => "Canada",
+        :longitude => -118.196970002204,
+        :latitude => 50.9997350418267
+      )
+      assert_equal location, @geocoder.locate(:street => "204 Campbell Ave",
+        :locality => "Revelstoke", :country => "Canada")
+    end
+    
+    def test_locate_uk_address
+      prepare_response(:uk)
+      
+      location = Location.new :latitude => 51.5728910186362, :longitude => -0.253788666693255
+      assert_equal location, @geocoder.locate(:street => '80 Wood Lane', :locality => 'London', :country => 'UK')
+    end
+    
+    def test_empty
+      prepare_response(:empty)
+      
+      assert_raises(Graticule::AddressError) { @geocoder.locate :street => 'foobar'}
     end
   
     protected
