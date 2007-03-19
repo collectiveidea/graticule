@@ -1,4 +1,7 @@
-0.2.0
+0.2.1 (2007-03-19)
+* fixed error in command line interface
+
+0.2.0 (2007-03-17)
 * changed city to locality, state to region, and zip to postal_code
 * added support for PostcodeAnywhere
 * added support for Local Search Maps (James Stewart)
