@@ -16,7 +16,7 @@ module Graticule
     
     def attributes
       [:latitude, :longitude, :street, :locality, :region, :postal_code, :country].inject({}) do |result,attr|
-        result[attr] = self.send(attr) if self.send(attr)
+        result[attr] = self.send(attr) unless self.send(attr).blank?
         result
       end
     end
@@ -26,16 +26,15 @@ module Graticule
       [latitude, longitude]
     end
     
-    def ==(object)
-      super(object) || [:latitude, :longitude, :street, :locality, :region, :postal_code, :country, :precision].all? do |m|
-        object.respond_to?(m) && self.send(m) == object.send(m)
-      end
+    def ==(other)
+      other.respond_to?(:attributes) ? attributes == other.attributes : false
     end
     
     # Calculate the distance to another location.  See the various Distance formulas
     # for more information
-    def distance_to(destination, units = :miles, formula = :haversine)
-      "Graticule::Distance::#{formula.to_s.titleize}".constantize.distance(self, destination)
+    def distance_to(destination, options = {})
+      options = {:formula => :haversine, :units => :miles}.merge(options)
+      "Graticule::Distance::#{options[:formula].to_s.titleize}".constantize.distance(self, destination, options[:units])
     end
     
     # Where would I be if I dug through the center of the earth?

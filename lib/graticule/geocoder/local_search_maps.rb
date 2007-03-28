@@ -20,10 +20,10 @@ module Graticule #:nodoc:
     private
     
       def map_attributes(location)
-        #mapping = {:street => :address, :locality => :city, :region => :state, :postal_code => :zip}
-        mapping = {}
+        mapping = {:street => :address, :locality => :city, :region => :state, :postal_code => :zip}
         mapping.keys.inject({}) do |result,attribute|
           result[mapping[attribute]] = location.attributes[attribute]
+          result
         end
       end
     

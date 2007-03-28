@@ -1,3 +1,6 @@
+0.2.2 (2007-03-27)
+* fixed LocalSearchMaps
+
 0.2.1 (2007-03-19)
 * fixed error in command line interface
 
