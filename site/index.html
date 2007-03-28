@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Graticule</title>
+	<link rel="stylesheet" type="text/css" href="http://opensoul.org/stylesheets/code.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <link href="http://opensoul.org/stylesheets/ci.css" rel="stylesheet" type="text/css" />
+    <script src="http://opensoul.org/javascripts/code_highlighter.js" type="text/javascript"></script>
+    <script src="http://opensoul.org/javascripts/ruby.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="collectiveidea">
+    <a href="http://collectiveidea.com"><img src="http://opensoul.org/images/header_logo.gif" alt="Collective Idea" class="logo" width="17" height="22" /></a>
+    <ul class="links">
+        <li><a href="http://daniel.collectiveidea.com/blog">Daniel</a></li>
+        <li><a href="http://opensoul.org">Brandon</a></li>
+        <li class="name"><a href="http://collectiveidea.com"><img src="http://opensoul.org/images/header_collectiveidea.gif" alt="Collective Idea" width="123" height="21" /></a></li>
+    </ul>
+</div>
+<div id="main">
+    <div id="header">
+        <h1><a href="/">Graticule</a></h1>
+        <ul id="nav">
+            <li><a href="graticule">API Docs</a></li>
+            <li><a href="plugin.html">Rails Plugin</a></li>
+            <li><a href="http://rubyforge.org/projects/graticule">RubyForge</a></li>
+            <li><a href="http://opensoul.org/tags/geocoding">Blog</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <p>Graticule is a geocoding API for looking up address coordinates and performing distance calculations. It supports many popular APIs, including Yahoo, Google, Geocoder.ca, Geocoder.us, PostcodeAnywhere and MetaCarta.</p>
+        
+        <p>There is a <a href="plugin.html">companion Rails plugin</a> that makes geocoding seem like magic.</p>
+        
+        <h2>Example</h2>
+        
+        <pre><code class="ruby">require 'rubygems'
+require 'graticule'
+geocoder = Graticule.service(:google).new "api_key"
+location = geocoder.locate "1600 Amphitheatre Parkway, Mountain View, CA"
+location.coordinates    #=> [37.423021, -122.083739]
+location.country        #=> "US"</code></pre>
+
+        <p>See the <a href="rdoc">API documentation</a> for more details.</p>
+
+        <h2>International Support</h2>
+        
+        <p>Graticule supports several services with international support. The international geocoders require slightly more structured data than the US ones:</p>
+        
+        <pre><code class="ruby">g = Graticule.service(:local_search_maps).new
+location = g.locate :street => '48 Leicester Square', :locality => 'London', :country => 'UK'
+location.coordinates  #=> [51.510036, -0.130427]</code></pre>
+
+        <h2>Distance Calculation</h2>
+        
+        <p>Graticule includes 3 different distance formulas, Spherical (simplest but least accurate), Vincenty (most accurate and most complicated), and Haversine (somewhere inbetween).</p>
+
+        <pre><code class="ruby">location = geocoder.locate("Holland, MI")
+location.distance_to(geocoder.locate("Chicago, IL"))
+#=> 101.997458788177</code></pre>
+
+        <h2>Command Line</h2>
+        <p>Graticule also includes a command line interface to the various geocoders:</p>
+        
+        <pre>
+$ geocode -s yahoo -a yahookey Washington, DC
+Washington, DC US
+latitude: 38.895222, longitude: -77.036758</pre>
+
+        <h2>Installation</h2>
+        
+        <p>Install the gem by executing:</p>
+        
+        <pre>gem install graticule</pre>
+        
+        <p>Or, download it from <a href="http://rubyforge.org/frs/?group_id=2643">RubyForge</a>.</p>
+        
+        <h2>Contributing</h2>
+        
+        <p>Contributions are welcome and appreciated!  Join the <a href="http://rubyforge.org/mailman/listinfo/graticule-users">mailing list</a> and grab the source from:</p>
+        
+        <pre>https://source.collectiveidea.com/public/geocode/trunk/</pre>
+    </div>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-194397-7";
+urchinTracker();
+</script>
+</body>
+</html>

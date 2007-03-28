@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>acts_as_geocodable - Graticule</title>
+	<link rel="stylesheet" type="text/css" href="http://opensoul.org/stylesheets/code.css" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <link href="http://opensoul.org/stylesheets/ci.css" rel="stylesheet" type="text/css" />
+    <script src="http://opensoul.org/javascripts/code_highlighter.js" type="text/javascript"></script>
+    <script src="http://opensoul.org/javascripts/ruby.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="collectiveidea">
+    <a href="http://collectiveidea.com"><img src="http://opensoul.org/images/header_logo.gif" alt="Collective Idea" class="logo" width="17" height="22" /></a>
+    <ul class="links">
+        <li><a href="http://daniel.collectiveidea.com/blog">Daniel</a></li>
+        <li><a href="http://opensoul.org">Brandon</a></li>
+        <li class="name"><a href="http://collectiveidea.com"><img src="http://opensoul.org/images/header_collectiveidea.gif" alt="Collective Idea" width="123" height="21" /></a></li>
+    </ul>
+</div>
+<div id="main">
+    <div id="header">
+        <h1><a href="/">Graticule</a> » acts_as_geocodable</h1>
+        <ul id="nav">
+            <li><a href="acts_as_geocodable">API Docs</a></li>
+            <li><a href="plugin.html">Rails Plugin</a></li>
+            <li><a href="http://rubyforge.org/projects/graticule">RubyForge</a></li>
+            <li><a href="http://opensoul.org/tags/geocoding">Blog</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <p>acts_as_geocodable is a Rails plugin that makes your applications geo-aware. A picture (err, example) is worth a thousand words:</p>
+        
+        <h2>Examples</h2>
+        
+        <pre><code class="ruby">event = Event.create :street =&gt; &quot;777 NE Martin Luther King, Jr. Blvd.&quot;,
+  :locality =&gt; &quot;Portland&quot;, :region =&gt; &quot;Oregon&quot;, :postal_code =&gt; 97232
+
+# how far am I from RailsConf 2007?
+event.distance_to &quot;49423&quot; #=&gt; 1807.66560483205
+
+# Find our new event, and any other ones in the area
+Event.find(:all, :within =&gt; 50, :origin =&gt; &quot;97232&quot;)
+
+# Find the nearest restaurant with beer
+Restaurant.find(:nearest, :origin =&gt; event, :conditions =&gt; 'beer = true')</code></pre>
+
+
+        <p>See the <a href="acts_as_geocodable">API documentation</a> for more details.</p>
+
+        <h2>IP-based geocoding</h2>
+        
+        <p>acts_as_geocodable adds a <code>remote_location</code> method to your Rails controllers for retrieving a user's location based on their remote IP address.</p>
+
+        <pre><code class="ruby">@nearest_store = Store.find(:nearest, :origin =&gt; remote_location) if remote_location</code></pre>
+        
+        <p>Don't rely too heavily on remote_location because the location of many IP addresses cannot be determined through <a href="http://hostip.info">HostIP</a>.
+
+        <h2>Installation</h2>
+        
+        <p>Install the plugin by executing:</p>
+        
+        <pre>script/plugin install -x http://source.collectiveidea.com/public/rails/plugins/acts_as_geocodable</pre>
+        
+        <h2>Contributing</h2>
+        
+        <p>Contributions are welcome and appreciated!  Grab the source from:</p>
+        
+        <pre>http://source.collectiveidea.com/public/rails/plugins/acts_as_geocodable</pre>
+    </div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-194397-7";
+urchinTracker();
+</script>
+</body>
+</html>
