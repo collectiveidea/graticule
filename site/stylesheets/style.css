@@ -57,3 +57,17 @@ a {
 pre {
   background-color: #2A2A2A;
 }
+
+dl {
+  background-color: #DDD;
+  padding: 1em;
+  border: 1px solid #CCC;
+}
+dl .pronunciation {
+  color: #C00;
+}
+dl .description {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-family: fixed;
+}
