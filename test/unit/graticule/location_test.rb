@@ -29,7 +29,7 @@ module Graticule
       assert_equal Location.new, Location.new
 
       attrs = {:latitude => 100.5389, :longitude => -147.5893, :street => '123 A Street',
-          :locality => 'Somewhere', :region => 'NO', :postal_code => '12345', :country => 'USA', :precision => :address}
+          :locality => 'Somewhere', :region => 'NO', :postal_code => '12345', :country => 'USA'}
       
       assert_equal Location.new(attrs), Location.new(attrs)
       attrs.each do |k,v|

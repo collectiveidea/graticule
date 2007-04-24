@@ -24,6 +24,20 @@ module Graticule
         )
         assert_equal location, @geocoder.locate('1600 Amphitheatre Parkway, Mountain View, CA')
       end
+      
+      def test_partial
+        return unless prepare_response(:partial)
+        
+        location = Location.new(
+          :locality => "San Francisco",
+          :region => "CA",
+          :country => "US",
+          :longitude => -122.418333,
+          :latitude => 37.775000
+        )
+        
+        assert_equal location, @geocoder.locate('sf ca')
+      end
     
       def test_bad_key
         return unless prepare_response(:badkey)

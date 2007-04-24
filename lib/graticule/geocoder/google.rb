@@ -51,11 +51,11 @@ module Graticule #:nodoc:
         longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
       
         Location.new \
-          :street => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/Thoroughfare/ThoroughfareName/text()']),
-          :locality => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/LocalityName/text()']),
-          :region => value(address.elements['Country/AdministrativeArea/AdministrativeAreaName/text()']),
-          :postal_code => value(address.elements['Country/AdministrativeArea/SubAdministrativeArea/Locality/PostalCode/PostalCodeNumber/text()']),
-          :country => value(address.elements['Country/CountryNameCode/text()']),
+          :street => value(address.elements['//ThoroughfareName/text()']),
+          :locality => value(address.elements['//LocalityName/text()']),
+          :region => value(address.elements['//AdministrativeAreaName/text()']),
+          :postal_code => value(address.elements['//PostalCodeNumber/text()']),
+          :country => value(address.elements['//CountryNameCode/text()']),
           :latitude => latitude,
           :longitude => longitude,
           :precision => PRECISION[address.attribute('Accuracy').value.to_i] || :unknown
