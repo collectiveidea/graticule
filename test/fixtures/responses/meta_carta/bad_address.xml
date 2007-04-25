@@ -1,9 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+
 <!DOCTYPE Locations SYSTEM "Locations.dtd">
-<Locations xmlns:gml="http://www.opengis.net/gml" CreatedBy="MetaCarta GeoParser v3.5.0-labs-alpha" CreatedOn="Sat Jun 17 02:05:42 2006" ConvertedFromBinaryFormat="False" InputByteLength="0">
-  <ViewBox>
-    <gml:Box srsName="epsg:4326">
-      <gml:coordinates>-90.000000,-180.000000 90.000000,180.000000</gml:coordinates>
-    </gml:Box>
-  </ViewBox>
+
+<Locations
+	xmlns:gml="http://www.opengis.net/gml"
+	CreatedBy="MetaCarta GeoParser v3.7.0-labs"
+	CreatedOn="Wed Apr 25 22:12:33 2007"
+	ConvertedFromBinaryFormat="0"
+	InputByteLength="0">
+	<ViewBox>
+
+		<gml:Box srsName="epsg:4326">
+			<gml:coordinates>-180.000000,-90.000000 180.000000,90.000000</gml:coordinates>
+		</gml:Box>
+	</ViewBox>
 </Locations>

@@ -39,7 +39,7 @@ module Graticule #:nodoc:
       end
 
       def check_error(xml) #:nodoc:
-        raise AddressError, xml.text if xml.text == 'couldn\'t find this address! sorry'
+        raise AddressError, xml.text if xml.text =~ /couldn't find this address! sorry/
       end
 
     end

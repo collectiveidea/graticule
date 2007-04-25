@@ -1,3 +1,3 @@
 <?xml version="1.0"?>
-<ResultSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:yahoo:maps" xsi:schemaLocation="urn:yahoo:maps http://api.local.yahoo.com/MapsService/V1/GeocodeResponse.xsd"><Result precision="address"><Latitude>37.416384</Latitude><Longitude>-122.024853</Longitude><Address>701 FIRST AVE</Address><City>SUNNYVALE</City><State>CA</State><Zip>94089-1019</Zip><Country>US</Country></Result></ResultSet>
-<!-- ws01.search.re2.yahoo.com compressed/chunked Sun Oct 15 18:23:09 PDT 2006 -->
+<ResultSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:yahoo:maps" xsi:schemaLocation="urn:yahoo:maps http://api.local.yahoo.com/MapsService/V1/GeocodeResponse.xsd"><Result precision="address" warning="The exact location could not be found, here is the closest match: 701 First Ave, Sunnyvale, CA 94089"><Latitude>37.416384</Latitude><Longitude>-122.024853</Longitude><Address>701 FIRST AVE</Address><City>SUNNYVALE</City><State>CA</State><Zip>94089-1019</Zip><Country>US</Country></Result></ResultSet>
+<!-- ws06.search.re2.yahoo.com uncompressed/chunked Wed Apr 25 15:13:01 PDT 2007 -->

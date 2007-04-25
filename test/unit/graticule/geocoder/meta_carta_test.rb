@@ -14,7 +14,7 @@ module Graticule
       def test_locate
         prepare_response(:success)
 
-        expected = Location.new :latitude => 44.393889, :longitude => 33.338611
+        expected = Location.new :latitude => 44.3939, :longitude => 33.3386
         
         assert_equal expected, @geocoder.locate('baghdad')
         assert_equal true, URI::HTTP.responses.empty?

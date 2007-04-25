@@ -1,0 +1,36 @@
+google:
+  key: PUT YOUR KEY HERE
+  responses:
+    success.xml: http://maps.google.com/maps/geo?q=1600+amphitheatre+mtn+view+ca&output=xml&key=:key
+    badkey.xml: http://maps.google.com/maps/geo?q=1600+amphitheatre+mtn+view+ca&output=xml&key=this_is_a_bad_key
+    missing_address.xml: http://maps.google.com/maps/geo?output=xml&key=:key
+    unavailable.xml: http://maps.google.com/maps/geo?q=42-44+Hanway+Street,+London&output=xml&key=:key
+    unknown_address.xml: http://maps.google.com/maps/geo?q=1600&output=xml&key=:key
+    partial.xml: http://maps.google.com/maps/geo?q=sf+ca&output=xml&key=:key
+    #limit.xml: no way to reproduce this  
+    #server_error.xml: no way to reproduce this
+geocoder_us:
+  responses:
+    success.xml: http://rpc.geocoder.us/service/rest/geocode?address=1600%20Pennsylvania%20Ave%20NW,%20Washington%20DC
+    unknown.xml: http://rpc.geocoder.us/service/rest/geocode?address=1600
+host_ip:
+  responses:
+    private.txt: http://api.hostip.info/get_html.php?ip=192.168.0.1&position=true
+    success.txt: http://api.hostip.info/get_html.php?ip=64.233.167.99&position=true
+    unknown.txt: http://api.hostip.info/get_html.php?ip=254.254.254.254&position=true
+local_search_maps:
+  responses:
+    success.txt: http://geo.localsearchmaps.com/?street=48+Leicester+Square&city=London&country=UK
+    empty.txt: http://geo.localsearchmaps.com/
+    not_found.txt: http://geo.localsearchmaps.com/?street=48
+meta_carta:
+  responses:
+    bad_address.xml: http://labs.metacarta.com/GeoParser/?q=aoeueou&output=locations
+    # doesn't work
+    #multiple.xml: http://labs.metacarta.com/GeoParser/?q=seattle&output=locations
+    success.xml: http://labs.metacarta.com/GeoParser/?q=baghdad&output=locations
+yahoo:
+  key: PUT YOUR KEY HERE
+  responses:
+    success.xml: http://api.local.yahoo.com/MapsService/V1/geocode?location=701%20First%20Street,%20Sunnyvale,%20CA&output=xml&appid=:key
+    unknown_address.xml: http://api.local.yahoo.com/MapsService/V1/geocode?location=thisprobablycantbefound&output=xml&appid=:key

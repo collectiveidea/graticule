@@ -22,22 +22,10 @@ module Graticule #:nodoc:
       # The +appid+ is the Application ID that uniquely identifies your
       # application.  See: http://developer.yahoo.com/faq/index.html#appid
       #
-      # Concrete web services implementations need to set the following instance
-      # variables then call super:
-      #
-      # +host+:: API endpoint hostname
-      # +service_name+:: service name
-      # +version+:: service name version number
-      # +method+:: service method call
-      #
       # See http://developer.yahoo.com/search/rest.html
       def initialize(appid)
-        @host = 'api.local.yahoo.com'
-        @service_name = 'MapsService'
-        @version = 'V1'
-        @method = 'geocode'
         @appid = appid
-        @url = URI.parse "http://#{@host}/#{@service_name}/#{@version}/#{@method}"
+        @url = URI.parse "http://api.local.yahoo.com/MapsService/V1/geocode"
       end
 
       # Returns a Location for +address+.
