@@ -1,4 +1,4 @@
-0.2.4
+0.2.4 (2007-05-15)
 * fixed address mapping for local search maps (Tom Taylor)
 
 0.2.3 (2007-04-27)
