@@ -1,5 +1,9 @@
-0.2.3
+0.2.4
+* fixed address mapping for local search maps (Tom Taylor)
+
+0.2.3 (2007-04-27)
 * fixed Google for less precise queries
+* added User-Agent to coerce Google into returning UTF-8 (Jonathan Tron)
 
 0.2.2 (2007-03-27)
 * fixed LocalSearchMaps

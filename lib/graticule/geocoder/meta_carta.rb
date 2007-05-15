@@ -13,18 +13,13 @@ module Graticule
 
       # Finds +location+ and returns a Location object.
       def locate(location)
-        get :q => location.is_a?(String) ? location : location_from_params(location).to_s
+        get :q => location.is_a?(String) ? location : location_from_params(location).to_s, :output => 'locations'
       end
       
     private
 
       def check_error(xml) # :nodoc:
         raise AddressError, 'bad location' unless xml.elements['Locations/Location']
-      end
-
-      def make_url(params) # :nodoc:
-        params[:output] = 'locations'
-        super params
       end
 
       def parse_response(xml) # :nodoc:

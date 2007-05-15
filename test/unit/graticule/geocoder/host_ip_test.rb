@@ -28,6 +28,7 @@ module Graticule
         prepare_response :private
         assert_raises(AddressError) { @geocoder.locate('127.0.0.1') }
       end
+      
     private
     
       def prepare_response(id = :success)

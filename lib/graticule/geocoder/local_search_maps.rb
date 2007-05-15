@@ -4,7 +4,7 @@ module Graticule #:nodoc:
     # A library for lookup of coordinates with http://geo.localsearchmaps.com/
     #
     # See http://emad.fano.us/blog/?p=277
-    class LocalSearchMaps < Rest
+    class LocalSearchMaps < Base
     
       def initialize
         @url = URI.parse 'http://geo.localsearchmaps.com/'
@@ -20,21 +20,21 @@ module Graticule #:nodoc:
     private
     
       def map_attributes(location)
-        mapping = {:street => :address, :locality => :city, :region => :state, :postal_code => :zip}
+        mapping = {:street => :address, :locality => :city, :region => :state, :postal_code => :zip, :country => :country}
         mapping.keys.inject({}) do |result,attribute|
-          result[mapping[attribute]] = location.attributes[attribute]
+          result[mapping[attribute]] = location.attributes[attribute] unless location.attributes[attribute].blank?
           result
         end
       end
     
       def check_error(js)
-        raise AddressError, "Empty Response" if js.nil? or js.text.nil?
-        raise AddressError, 'Location not found' if js.text =~ /location not found/
+        raise AddressError, "Empty Response" if js.nil?
+        raise AddressError, 'Location not found' if js =~ /location not found/
       end
     
       def parse_response(js)
         returning Location.new do |location|
-          coordinates = js.text.match(/map.centerAndZoom\(new GPoint\((.+?), (.+?)\)/)
+          coordinates = js.match(/map.centerAndZoom\(new GPoint\((.+?), (.+?)\)/)
           location.longitude = coordinates[1].to_f
           location.latitude = coordinates[2].to_f
         end

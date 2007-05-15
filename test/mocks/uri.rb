@@ -40,11 +40,12 @@ class URI::HTTP # :nodoc:
 
   alias original_open open
 
-  def open
+  def open(*args)
     self.class.uris << self.to_s
     io = StringIO.new(self.class.responses.shift)
     OpenURI::Meta.init(io)
-    yield io
+    yield io if block_given?
+    io
   end
 
 end

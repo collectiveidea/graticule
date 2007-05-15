@@ -3,7 +3,7 @@ require 'yaml'
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
 
-    class HostIp
+    class HostIp < Base
 
       def initialize
         @url = URI.parse 'http://api.hostip.info/get_html.php'
@@ -11,15 +11,15 @@ module Graticule #:nodoc:
 
       # Geocode an IP address using http://hostip.info
       def locate(address)
-        make_url(:ip => address, :position => true).open do |response|
-          # add new line so YAML.load doesn't puke
-          result = response.read + "\n"
-          check_error(result)
-          parse_response(YAML.load(result))
-        end
+        get :ip => address, :position => true
       end
     
     private
+    
+      def read_response(response)
+        # add new line so YAML.load doesn't puke
+        YAML.load(response + "\n")
+      end
       
       def parse_response(response) #:nodoc:
         returning Location.new do |location|
@@ -32,18 +32,9 @@ module Graticule #:nodoc:
       end
 
       def check_error(response) #:nodoc:
-        raise AddressError, 'Unknown' if response =~ /Unknown City/
-        raise AddressError, 'Private Address' if response =~ /Private Address/
+        raise AddressError, 'Unknown' if response['City'] =~ /Unknown City/
+        raise AddressError, 'Private Address' if response['City'] =~ /Private Address/
       end
-
-      def make_url(params) #:nodoc:
-        returning @url.dup do |url|
-          url.query = params.map do |k,v| 
-            "#{URI.escape k.to_s}=#{URI.escape v.to_s}"
-          end.join('&')
-        end
-      end
-
 
     end
   end
