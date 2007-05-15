@@ -16,7 +16,7 @@ module Graticule #:nodoc:
     
     private
     
-      def read_response(response)
+      def prepare_response(response)
         # add new line so YAML.load doesn't puke
         YAML.load(response + "\n")
       end
