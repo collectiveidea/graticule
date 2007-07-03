@@ -20,7 +20,7 @@ module Graticule #:nodoc:
     private
     
       def map_attributes(location)
-        mapping = {:street => :address, :locality => :city, :region => :state, :postal_code => :zip, :country => :country}
+        mapping = {:street => :street, :locality => :city, :region => :state, :postal_code => :zip, :country => :country}
         mapping.keys.inject({}) do |result,attribute|
           result[mapping[attribute]] = location.attributes[attribute] unless location.attributes[attribute].blank?
           result
