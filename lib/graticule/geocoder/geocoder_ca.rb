@@ -13,6 +13,8 @@ module Graticule #:nodoc:
         get :locate => address.is_a?(String) ? address : location_from_params(address).to_s(:country => false)
       end
       
+    private
+      
       def parse_response(xml) #:nodoc:
         returning Location.new do |location|
           location.latitude = xml.elements['geodata/latt'].text.to_f

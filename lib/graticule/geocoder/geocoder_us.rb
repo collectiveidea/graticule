@@ -27,6 +27,8 @@ module Graticule #:nodoc:
       def locate(address)
         get :address => address.is_a?(String) ? address : location_from_params(address).to_s(:country => false)
       end
+      
+    private
 
       def parse_response(xml) #:nodoc:
         location = Location.new
