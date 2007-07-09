@@ -5,15 +5,11 @@ module Graticule #:nodoc:
     # First you need a Google Maps API key.  You can register for one here:
     # http://www.google.com/apis/maps/signup.html
     # 
-    # Then you create a GoogleGeocode object and start locating addresses:
-    # 
-    #   require 'rubygems'
-    #   require 'graticule'
-    # 
-    #   gg = Graticule.service(:google).new(:key => MAPS_API_KEY)
+    #   gg = Graticule.service(:google).new(MAPS_API_KEY)
     #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
     #   p location.coordinates
-    # 
+    #   #=> [37.423111, -122.081783
+    #
     class Google < Rest
       # http://www.google.com/apis/maps/documentation/#Geocoding_HTTP_Request
     
@@ -30,10 +26,7 @@ module Graticule #:nodoc:
         8 => :address       # Address level accuracy. (Since 2.59)
       }
 
-      # Creates a new GoogleGeocode that will use Google Maps API key +key+.  You
-      # can sign up for an API key here:
-      #
-      # http://www.google.com/apis/maps/signup.html
+      # Creates a new GoogleGeocode that will use Google Maps API +key+.
       def initialize(key)
         @key = key
         @url = URI.parse 'http://maps.google.com/maps/geo'
@@ -43,6 +36,8 @@ module Graticule #:nodoc:
       def locate(address)
         get :q => address.is_a?(String) ? address : location_from_params(address).to_s
       end
+
+    private
 
       # Extracts a Location from +xml+.
       def parse_response(xml) #:nodoc:
@@ -92,15 +87,13 @@ module Graticule #:nodoc:
         super params
       end
     
-      private
-    
-        def value(element)
-          element.value if element
-        end
-    
-        def text(element)
-          element.text if element
-        end
+      def value(element)
+        element.value if element
+      end
+  
+      def text(element)
+        element.text if element
+      end
     end
   end
 end
