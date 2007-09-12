@@ -35,7 +35,7 @@ module Graticule
         @mock_geocoders.first.expects(:locate).returns(1)
         @mock_geocoders.last.expects(:locate).returns(2)
         @geocoder = Multi.new(*@mock_geocoders) {|r| r == 3 }
-        @geocoder.locate('test')
+        assert_raises(Graticule::AddressError) { @geocoder.locate('test') }
       end
 
     end
