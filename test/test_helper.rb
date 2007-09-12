@@ -8,6 +8,7 @@ require 'yaml'
 require 'test/unit'
 require 'breakpoint'
 require 'graticule'
+require 'mocha'
 
 TEST_RESPONSE_PATH = File.dirname(__FILE__) + '/fixtures/responses'
 
