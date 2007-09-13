@@ -32,7 +32,7 @@ module Graticule #:nodoc:
           begin
             result = geocoder.locate address
             return result if @acceptable.call(result)
-          rescue AddressError => e
+          rescue Error => e
             last_error = e
           rescue Errno::ECONNREFUSED
             logger.error("Connection refused to #{service}")
