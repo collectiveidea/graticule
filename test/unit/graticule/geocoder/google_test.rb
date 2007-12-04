@@ -25,6 +25,16 @@ module Graticule
         assert_equal location, @geocoder.locate('1600 Amphitheatre Parkway, Mountain View, CA')
       end
       
+        # <?xml version='1.0' encoding='UTF-8'?><kml xmlns='http://earth.google.com/kml/2.0'><Response><name>15-17 </name><Status><code>200</code><request>geocode</request></Status><Placemark id='p1'><Point><coordinates>-17.000000,15.000000,0</coordinates></Point></Placemark></Response></kml>
+        def test_only_coordinates
+          return unless prepare_response(:only_coordinates)
+
+          location = Location.new(:longitude => -17.000000, :latitude => 15.000000)
+          assert_equal location, @geocoder.locate('15-17 & 16 Railroad Square, Nashua, NH, 03064')
+        end
+        
+
+
       def test_partial
         return unless prepare_response(:partial)
         

@@ -1,3 +1,6 @@
+0.2.7
+* Fix google geocoder for responses that only return coordinates [Andrew Selder]
+
 0.2.5
 * fixed address mapping for local search maps (again)
 

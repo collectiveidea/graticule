@@ -1,7 +1,5 @@
-#!/usr/bin/env ruby
 $:.unshift(File.dirname(__FILE__) + '/../lib')
 $:.unshift(File.dirname(__FILE__) + '/mocks')
-$:.unshift(File.dirname(__FILE__)+ '/extra')
 
 require 'rubygems'
 require 'yaml'
