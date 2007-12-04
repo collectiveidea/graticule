@@ -42,7 +42,7 @@ module Graticule #:nodoc:
       # Extracts a Location from +xml+.
       def parse_response(xml) #:nodoc:
         longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
-        returning Location.new :latitude => latitude, :longitude => longitude do |l|
+        returning Location.new(:latitude => latitude, :longitude => longitude) do |l|
           address = REXML::XPath.first(xml, '//xal:AddressDetails',
             'xal' => "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0")
 
