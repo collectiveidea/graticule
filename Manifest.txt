@@ -19,6 +19,7 @@ lib/graticule/geocoder/geocoder_us.rb
 lib/graticule/geocoder/google.rb
 lib/graticule/geocoder/host_ip.rb
 lib/graticule/geocoder/local_search_maps.rb
+lib/graticule/geocoder/map_quest.rb
 lib/graticule/geocoder/meta_carta.rb
 lib/graticule/geocoder/multi.rb
 lib/graticule/geocoder/postcode_anywhere.rb
@@ -35,6 +36,7 @@ test/fixtures/responses/geocoder_us/unknown.xml
 test/fixtures/responses/google/badkey.xml
 test/fixtures/responses/google/limit.xml
 test/fixtures/responses/google/missing_address.xml
+test/fixtures/responses/google/only_coordinates.xml
 test/fixtures/responses/google/partial.xml
 test/fixtures/responses/google/server_error.xml
 test/fixtures/responses/google/success.xml
@@ -69,4 +71,3 @@ test/unit/graticule/geocoder/postcode_anywhere_test.rb
 test/unit/graticule/geocoder/yahoo_test.rb
 test/unit/graticule/geocoder_test.rb
 test/unit/graticule/location_test.rb
-
