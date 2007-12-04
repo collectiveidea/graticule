@@ -1,4 +1,5 @@
 0.2.7
+* Added MapQuest geocoder [Andrew Selder]
 * Fix google geocoder for responses that only return coordinates [Andrew Selder]
 
 0.2.5
