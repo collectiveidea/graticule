@@ -1,3 +1,4 @@
+require 'httparty'
 
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
@@ -10,7 +11,12 @@ module Graticule #:nodoc:
     #   p location.coordinates
     #   #=> [37.423111, -122.081783
     #
-    class Google < Rest
+    class Google < Rest 
+      include HTTParty
+      base_uri 'maps.google.com'
+      default_params :output => :xml
+      format :xml
+      
       # http://www.google.com/apis/maps/documentation/#Geocoding_HTTP_Request
     
       # http://www.google.com/apis/maps/documentation/reference.html#GGeoAddressAccuracy
@@ -29,38 +35,33 @@ module Graticule #:nodoc:
       # Creates a new GoogleGeocode that will use Google Maps API +key+.
       def initialize(key)
         @key = key
-        @url = URI.parse 'http://maps.google.com/maps/geo'
       end
 
-      # Locates +address+ returning a Location
       def locate(address)
-        get :q => address.is_a?(String) ? address : location_from_params(address).to_s
+        q = address.is_a?(String) ? address : location_from_params(address).to_s
+        parse_response self.class.get('/maps/geo', :query => {:q => q, :key => @key})
       end
 
     private
 
       # Extracts a Location from +xml+.
-      def parse_response(xml) #:nodoc:
-        longitude, latitude, = xml.elements['/kml/Response/Placemark/Point/coordinates'].text.split(',').map { |v| v.to_f }
+      def parse_response(result) #:nodoc:
+        address = result.flatten
+        check_error(address)
+        longitude, latitude, = address['coordinates'].split(',').map { |v| v.to_f }
         returning Location.new(:latitude => latitude, :longitude => longitude) do |l|
-          address = REXML::XPath.first(xml, '//xal:AddressDetails',
-            'xal' => "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0")
-
-          if address
-            l.street = value(address.elements['//ThoroughfareName/text()'])
-            l.locality = value(address.elements['//LocalityName/text()'])
-            l.region = value(address.elements['//AdministrativeAreaName/text()'])
-            l.postal_code = value(address.elements['//PostalCodeNumber/text()'])
-            l.country = value(address.elements['//CountryNameCode/text()'])
-            l.precision = PRECISION[address.attribute('Accuracy').value.to_i] || :unknown
-          end
+          l.street = address['ThoroughfareName']
+          l.locality = address['ThoroughfareName']
+          l.region = address['AdministrativeAreaName']
+          l.postal_code = address['PostalCodeNumber']
+          l.country = address['CountryNameCode']
+          l.precision = PRECISION[address['Accuracy'].to_i] || :unknown
         end
       end
 
       # Extracts and raises an error from +xml+, if any.
-      def check_error(xml) #:nodoc:
-        status = xml.elements['/kml/Response/Status/code'].text.to_i
-        case status
+      def check_error(result) #:nodoc:
+        case result['code'].to_i
         when 200 then # ignore, ok
         when 500 then
           raise Error, 'server error'
@@ -77,23 +78,6 @@ module Graticule #:nodoc:
         else
           raise Error, "unknown error #{status}"
         end
-      end
-
-      # Creates a URL from the Hash +params+.  Automatically adds the key and
-      # sets the output type to 'xml'.
-      def make_url(params) #:nodoc:
-        params[:key] = @key
-        params[:output] = 'xml'
-
-        super params
-      end
-    
-      def value(element)
-        element.value if element
-      end
-  
-      def text(element)
-        element.text if element
       end
     end
   end

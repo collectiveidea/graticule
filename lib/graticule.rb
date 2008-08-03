@@ -2,6 +2,8 @@ $:.unshift(File.dirname(__FILE__))
 
 require 'active_support'
 
+require 'graticule/core_ext/hash'
+
 require 'graticule/version'
 require 'graticule/location'
 require 'graticule/geocoder'
