@@ -4,7 +4,6 @@ $:.unshift(File.dirname(__FILE__) + '/mocks')
 require 'rubygems'
 require 'yaml'
 require 'test/unit'
-require 'breakpoint'
 require 'graticule'
 require 'mocha'
 
