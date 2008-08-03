@@ -1,6 +1,6 @@
 # account code: INDIV30777
 # license key: KG39-HM17-PZ95-NR98
-require File.dirname(__FILE__) + '/../../../test_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../../../test_helper')
 
 module Graticule
   module Geocoder

@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../../test_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../../../test_helper')
 
 module Graticule
   module Geocoder
@@ -7,7 +7,7 @@ module Graticule
       def setup
         @mock_geocoders = [mock("geocoder 1"), mock("geocoder 2")]
         @mock_geocoders.each {|g| g.stubs(:locate) }
-        @geocoder = Multi.new *@mock_geocoders
+        @geocoder = Multi.new(*@mock_geocoders)
       end
 
       def test_locate_calls_each_geocoder_and_raises_error
