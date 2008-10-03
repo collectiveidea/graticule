@@ -5,18 +5,32 @@ module Graticule #:nodoc:
     
     class Multimap < Rest
       
+      # This precision information is not complete.
+      # More details should be implemented from:
+      # http://www.multimap.com/share/documentation/clientzone/gqcodes.htm
+      
       PRECISION = {
-        "4"=> :country,
-        "3" => :state,
-        "2" => :city,
-        "2" => :zip,
+        "6"=> :country,
+        "5" => :state,
+        "4" => :postal_code,
+        "3" => :city,
+        "2" => :street,
         "1" => :address
       }
+      
+      # Web services initializer.
+      #
+      # The +api_key+ is the Open API key that uniquely identifies your
+      # application.
+      #
+      # See http://www.multimap.com/openapi/
       
       def initialize(api_key)
         @api_key = api_key
         @url = URI.parse "http://clients.multimap.com/API/geocode/1.2/#{@api_key}"
       end
+      
+      # Returns a location for an address in the form of a String, Hash or Location.
       
       def locate(address)
         location = address.is_a?(String) ? address : location_from_params(address)
