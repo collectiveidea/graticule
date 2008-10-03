@@ -1,3 +1,6 @@
+0.2.8 (2008-10-03)
+* fixed missing files from gem
+
 0.2.7 (2008-10-03)
 * Adding Multimap geocoder [Tom Taylor]
 * Added MapQuest geocoder [Andrew Selder]
