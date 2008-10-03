@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Results xmlns="http://clients.multimap.com/API" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://clients.multimap.com/API http://clients.multimap.com/Schema/geocode_1.2.xsd" locationCount="1">
+ <Location geocodeQuality="1">
+  <Address>
+    <Street>Oxford Street</Street>
+   <Areas>
+    <Area>LONDON</Area> 
+   </Areas>
+    <PostalCode>W1</PostalCode>
+    <DisplayName>Oxford Street, LONDON, W1</DisplayName> 
+    <CountryCode>GB</CountryCode> 
+  </Address>
+  <Point>
+    <Lat>51.51452</Lat>
+    <Lon>-0.14839</Lon>
+  </Point>
+ </Location>
+</Results>

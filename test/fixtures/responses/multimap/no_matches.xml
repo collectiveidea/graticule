@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Results xmlns="http://clients.multimap.com/API" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://clients.multimap.com/API http://clients.multimap.com/Schema/geocode_1.2.xsd" 
+errorCode="MM_GEOCODE_NO_MATCHES" locationCount="0" />
