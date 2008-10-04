@@ -43,7 +43,8 @@ module Graticule
           :region => "CA",
           :country => "US",
           :longitude => -122.418333,
-          :latitude => 37.775000
+          :latitude => 37.775000,
+          :precision => :city
         )
         
         assert_equal location, @geocoder.locate('sf ca')
