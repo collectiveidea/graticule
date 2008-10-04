@@ -11,7 +11,6 @@ module Graticule
         @location = Location.new(
           :street => "Oxford Street",
           :locality => "London",
-          :region => "London",
           :postal_code => "W1",
           :country => "GB",
           :longitude => -0.14839,
