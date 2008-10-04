@@ -15,7 +15,7 @@ module Graticule
     end
     
     def attributes
-      [:latitude, :longitude, :street, :locality, :region, :postal_code, :country].inject({}) do |result,attr|
+      [:latitude, :longitude, :street, :locality, :region, :postal_code, :country, :precision].inject({}) do |result,attr|
         result[attr] = self.send(attr) unless self.send(attr).blank?
         result
       end
