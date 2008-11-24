@@ -26,4 +26,4 @@ Graticule includes a command line interface (CLI).
 
 = Source
 
-The source code for Graticule is available at http://source.collectiveidea.com/public/geocode/trunk
+The source code for Graticule is available at http://github.com/collectiveidea/graticule. Patches and bug reports are welcome at http://collectiveidea.lighthouseapp.com/projects/20262-graticule
