@@ -19,7 +19,6 @@ lib/graticule/geocoder/geocoder_us.rb
 lib/graticule/geocoder/google.rb
 lib/graticule/geocoder/host_ip.rb
 lib/graticule/geocoder/local_search_maps.rb
-lib/graticule/geocoder/map_quest.rb
 lib/graticule/geocoder/meta_carta.rb
 lib/graticule/geocoder/multi.rb
 lib/graticule/geocoder/multimap.rb
