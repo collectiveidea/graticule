@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://earth.google.com/kml/2.0'><Response>
+  <name>Queen St West</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id='p1'>
+    <address>Queen St W, Toronto, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Toronto</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-79.3792510' south='43.6387420' west='-79.4460830' north='43.6524210'/>
+    </ExtendedData>
+    <Point><coordinates>-79.4125590,43.6455030,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p2'>
+    <address>Queen St W, Brampton, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Brampton</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-79.7599410' south='43.6477210' west='-79.8030440' north='43.6859000'/>
+    </ExtendedData>
+    <Point><coordinates>-79.7814960,43.6665410,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p3'>
+    <address>Queen St W, Levin, 5510, New Zealand</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>NZ</CountryNameCode><CountryName>New Zealand</CountryName><Locality><LocalityName>Levin</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>5510</PostalCodeNumber></PostalCode></Locality></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='175.2872230' south='-40.6221080' west='175.2645080' north='-40.6111560'/>
+    </ExtendedData>
+    <Point><coordinates>175.2753040,-40.6170160,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p4'>
+    <address>Queen St W, Mt Forest, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Mt Forest</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>N0G</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-80.7320620' south='43.9748569' west='-80.7542680' north='43.9811521'/>
+    </ExtendedData>
+    <Point><coordinates>-80.7434380,43.9779890,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p5'>
+    <address>Queen St W, St Marys, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>St Marys</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>N4X</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-81.1442510' south='43.2548039' west='-81.1674090' north='43.2610991'/>
+    </ExtendedData>
+    <Point><coordinates>-81.1556430,43.2579490,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p6'>
+    <address>Queen St W, Barrie, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Barrie</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>L0L</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-79.8661300' south='44.5748470' west='-79.8859520' north='44.5835790'/>
+    </ExtendedData>
+    <Point><coordinates>-79.8762460,44.5791840,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p7'>
+    <address>Queen St W, Owen Sound, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Owen Sound</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>N0H</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-81.1333070' south='44.6303544' west='-81.1489540' north='44.6366496'/>
+    </ExtendedData>
+    <Point><coordinates>-81.1428830,44.6334130,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p8'>
+    <address>Queen St W, Mississauga, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Mississauga</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>L5H</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-79.5927510' south='43.5315270' west='-79.6117140' north='43.5498140'/>
+    </ExtendedData>
+    <Point><coordinates>-79.6023990,43.5407460,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p9'>
+    <address>Queen St W, Cambridge, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Cambridge</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>N3C</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-80.3108330' south='43.4202100' west='-80.3287680' north='43.4312910'/>
+    </ExtendedData>
+    <Point><coordinates>-80.3202040,43.4267810,0</coordinates></Point>
+  </Placemark>
+  <Placemark id='p10'>
+    <address>Queen St W, Sault Ste. Marie, ON, Canada</address>
+    <AddressDetails Accuracy='6' xmlns='urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'><Country><CountryNameCode>CA</CountryNameCode><CountryName>Canada</CountryName><AdministrativeArea><AdministrativeAreaName>ON</AdministrativeAreaName><Locality><LocalityName>Sault Ste. Marie</LocalityName><Thoroughfare><ThoroughfareName>Queen St W</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>P6A</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox east='-84.3411900' south='46.5155194' west='-84.3592850' north='46.5218146'/>
+    </ExtendedData>
+    <Point><coordinates>-84.3506780,46.5187300,0</coordinates></Point>
+  </Placemark>
+</Response></kml>

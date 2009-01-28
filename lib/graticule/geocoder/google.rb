@@ -47,11 +47,11 @@ module Graticule #:nodoc:
             'xal' => "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0")
 
           if address
-            l.street = value(address.elements['//ThoroughfareName/text()'])
-            l.locality = value(address.elements['//LocalityName/text()'])
-            l.region = value(address.elements['//AdministrativeAreaName/text()'])
-            l.postal_code = value(address.elements['//PostalCodeNumber/text()'])
-            l.country = value(address.elements['//CountryNameCode/text()'])
+            l.street = value(address.elements['.//ThoroughfareName/text()'])
+            l.locality = value(address.elements['.//LocalityName/text()'])
+            l.region = value(address.elements['.//AdministrativeAreaName/text()'])
+            l.postal_code = value(address.elements['.//PostalCodeNumber/text()'])
+            l.country = value(address.elements['.//CountryNameCode/text()'])
             l.precision = PRECISION[address.attribute('Accuracy').value.to_i] || :unknown
           end
         end

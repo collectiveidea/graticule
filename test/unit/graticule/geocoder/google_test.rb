@@ -25,6 +25,27 @@ module Graticule
         assert_equal location, @geocoder.locate('1600 Amphitheatre Parkway, Mountain View, CA')
       end
       
+
+      # The #locate parameters are broad, so the XML response contains 
+      # multiple results at street-level precision. We expect to get the 
+      # first result back, and it should not contain a postal code.
+      def test_success_multiple_results
+        return unless prepare_response(:success_multiple_results)
+
+        location = Location.new(
+          :street => "Queen St W",
+          :locality => "Toronto",
+          :region => "ON",
+          :postal_code => nil,
+          :country => "CA",
+          :longitude => -79.4125590,
+          :latitude => 43.6455030,
+          :precision => :street
+        )
+        assert_equal location, @geocoder.locate('Queen St West, Toronto, ON CA')
+      end
+
+
         # <?xml version='1.0' encoding='UTF-8'?><kml xmlns='http://earth.google.com/kml/2.0'><Response><name>15-17 </name><Status><code>200</code><request>geocode</request></Status><Placemark id='p1'><Point><coordinates>-17.000000,15.000000,0</coordinates></Point></Placemark></Response></kml>
         def test_only_coordinates
           return unless prepare_response(:only_coordinates)
