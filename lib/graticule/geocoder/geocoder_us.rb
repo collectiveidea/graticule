@@ -42,6 +42,8 @@ module Graticule #:nodoc:
 
       def check_error(xml) #:nodoc:
         raise AddressError, xml.text if xml.text =~ /couldn't find this address! sorry/
+        raise Error, xml.text if xml.text =~ /Your browser sent a request that this server could not understand./
+        raise Error, xml.text if !(xml.text =~ /geo:Point/)
       end
 
     end
