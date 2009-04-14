@@ -16,10 +16,10 @@ module Graticule
       #   #=> 101.061720831853
       #
       def self.distance(from, to, units = :miles)
-        from_longitude   = deg2rad(from.longitude)
-        from_latitude    = deg2rad(from.latitude)
-        to_longitude  = deg2rad(to.longitude)
-        to_latitude   = deg2rad(to.latitude)
+        from_longitude  = from.longitude.to_radians
+        from_latitude   = from.latitude.to_radians
+        to_longitude    = to.longitude.to_radians
+        to_latitude     = to.latitude.to_radians
 
         Math.acos(
             Math.sin(from_latitude) *

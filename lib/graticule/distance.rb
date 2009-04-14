@@ -13,17 +13,6 @@ module Graticule
       def initialize
         raise NotImplementedError
       end
-      
-      # Convert from degrees to radians
-      def self.deg2rad(deg)
-      	(deg * PI / 180)
-      end
-
-      # Convert from radians to degrees
-      def self.rad2deg(rad)
-      	(rad * 180 / PI)
-      end
-
     end
   end
 end

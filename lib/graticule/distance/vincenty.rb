@@ -18,10 +18,10 @@ module Graticule
       #   #=> 101.070118000159
       #
       def self.distance(from, to, units = :miles)
-        from_longitude   = deg2rad(from.longitude)
-        from_latitude    = deg2rad(from.latitude)
-        to_longitude  = deg2rad(to.longitude)
-        to_latitude   = deg2rad(to.latitude)
+        from_longitude  = from.longitude.to_radians
+        from_latitude   = from.latitude.to_radians
+        to_longitude    = to.longitude.to_radians
+        to_latitude     = to.latitude.to_radians
         
         earth_major_axis_radius = EARTH_MAJOR_AXIS_RADIUS[units.to_sym]
         earth_minor_axis_radius = EARTH_MINOR_AXIS_RADIUS[units.to_sym]
