@@ -7,6 +7,7 @@ bin/geocode
 init.rb
 lib/graticule.rb
 lib/graticule/cli.rb
+lib/graticule/core_ext.rb
 lib/graticule/distance.rb
 lib/graticule/distance/haversine.rb
 lib/graticule/distance/spherical.rb
@@ -40,6 +41,7 @@ test/fixtures/responses/google/only_coordinates.xml
 test/fixtures/responses/google/partial.xml
 test/fixtures/responses/google/server_error.xml
 test/fixtures/responses/google/success.xml
+test/fixtures/responses/google/success_multiple_results.xml
 test/fixtures/responses/google/unavailable.xml
 test/fixtures/responses/google/unknown_address.xml
 test/fixtures/responses/host_ip/private.txt
