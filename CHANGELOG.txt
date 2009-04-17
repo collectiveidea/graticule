@@ -1,3 +1,6 @@
+0.2.10 (2009-04-17)
+* Added #blank? to Location
+
 0.2.9 (2009-04-14)
 * Remove retired MapQuest geocoder
 * Slightly more aggressive error handling for Geocoder.us
