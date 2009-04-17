@@ -62,5 +62,12 @@ module Graticule
       assert_equal "1600 Pennsylvania Avenue, NW\nWashington, DC 20500\nlatitude: 38.898748, longitude: -77.037684",
         @washington_dc.to_s(:country => false, :coordinates => true)
     end
+    
+    def test_blank?
+      assert Location.new.blank?
+      [:latitude, :longitude, :street, :locality, :region, :postal_code, :country].each do |attr|
+        assert !Location.new(attr => 'Foo').blank?
+      end
+    end
   end
 end

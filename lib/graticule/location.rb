@@ -21,6 +21,10 @@ module Graticule
       end
     end
     
+    def blank?
+      attributes.slice('precision').empty?
+    end
+    
     # Returns an Array with latitude and longitude.
     def coordinates
       [latitude, longitude]
