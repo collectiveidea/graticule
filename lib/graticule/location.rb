@@ -22,7 +22,7 @@ module Graticule
     end
     
     def blank?
-      attributes.slice('precision').empty?
+      attributes.except(:precision).empty?
     end
     
     # Returns an Array with latitude and longitude.
