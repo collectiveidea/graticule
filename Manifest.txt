@@ -20,6 +20,7 @@ lib/graticule/geocoder/geocoder_us.rb
 lib/graticule/geocoder/google.rb
 lib/graticule/geocoder/host_ip.rb
 lib/graticule/geocoder/local_search_maps.rb
+lib/graticule/geocoder/mapquest.rb
 lib/graticule/geocoder/meta_carta.rb
 lib/graticule/geocoder/multi.rb
 lib/graticule/geocoder/multimap.rb
@@ -50,6 +51,8 @@ test/fixtures/responses/host_ip/unknown.txt
 test/fixtures/responses/local_search_maps/empty.txt
 test/fixtures/responses/local_search_maps/not_found.txt
 test/fixtures/responses/local_search_maps/success.txt
+test/fixtures/responses/mapquest/multi_result.xml
+test/fixtures/responses/mapquest/success.xml
 test/fixtures/responses/meta_carta/bad_address.xml
 test/fixtures/responses/meta_carta/multiple.xml
 test/fixtures/responses/meta_carta/success.xml
@@ -71,6 +74,7 @@ test/unit/graticule/geocoder/geocoders.rb
 test/unit/graticule/geocoder/google_test.rb
 test/unit/graticule/geocoder/host_ip_test.rb
 test/unit/graticule/geocoder/local_search_maps_test.rb
+test/unit/graticule/geocoder/mapquest_test.rb
 test/unit/graticule/geocoder/meta_carta_test.rb
 test/unit/graticule/geocoder/multi_test.rb
 test/unit/graticule/geocoder/multimap_test.rb

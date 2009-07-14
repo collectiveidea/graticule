@@ -1,7 +1,16 @@
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
 
+    # Mapquest requires both a client id and a password, which you can
+    # get by registering at:
+    # http://developer.mapquest.com/Home/Register?_devAPISignup_WAR_devAPISignup_action=signup&_devAPISignup_WAR_devAPISignup_clientType=Developer
+    #
+    # mq = Graticule.service(:mapquest).new(CLIENT_ID, PASSWORD)
+    # location = gg.locate('44 Allen Rd., Lovell, ME 04051') 
+    # [42.78942, -86.104424]
+    #
     class Mapquest < Rest 
+      # I would link to the documentation here, but there is none that will do anything but confuse you.
 
       PRECISION = {
         'L1' => :address,
@@ -19,9 +28,10 @@ module Graticule #:nodoc:
         'A1' => :country
       }
 
-      def initialize(key)
-        @key = key
-        @url = URI.parse('http://geocode.web.mapquest.com/mq/mqserver.dll')
+      def initialize(client_id, password)
+        @password = password
+        @client_id = client_id
+        @url = URI.parse('http://geocode.dev.mapquest.com/mq/mqserver.dll')
       end
 
       # Locates +address+ returning a Location
@@ -32,13 +42,8 @@ module Graticule #:nodoc:
       protected
 
       def make_url(params) #:nodoc
-        query = 'e=5'
-        query += '&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>'
-        query += '<Geocode Version="1"><Address>'
-        query += '<Street>217 Union St., 11231</Street>'
-        query += '</Address><GeocodeOptionsCollection Count="0"/>'
-        query += '<Authentication Version="2"><Password>9ASwEx7V</Password><ClientId>6713</ClientId></Authentication>'
-        query += '</Geocode>'
+        query = "e=5&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Geocode Version=\"1\"> \
+          #{address_string(params[:q])}#{authentication_string}</Geocode>"
         url = @url.dup
         url.query = URI.escape(query)
         url
@@ -68,6 +73,14 @@ module Graticule #:nodoc:
 
       def value(element)
         element.value if element
+      end
+
+      def authentication_string
+        "<Authentication Version=\"2\"><Password>#{@password}</Password><ClientId>#{@client_id}</ClientId></Authentication>"
+      end
+
+      def address_string(query)
+        "<Address><Street>#{query}</Street></Address><GeocodeOptionsCollection Count=\"0\"/>"
       end
     end
   end
