@@ -1,1 +1,3 @@
 test/config.yml
+*.gem
+pkg
