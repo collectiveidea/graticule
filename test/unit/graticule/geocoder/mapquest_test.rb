@@ -4,7 +4,7 @@ module Graticule
   module Geocoder
     class MapquestTest < Test::Unit::TestCase
       def setup
-        @geocoder = Mapquest.new(:key => 'APP_ID')
+        @geocoder = Mapquest.new('client_id', 'password')
       end
 
       def test_success
