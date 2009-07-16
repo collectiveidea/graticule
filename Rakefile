@@ -1,23 +1,79 @@
-require 'rubygems'
-require 'active_support'
-require 'hoe'
-require File.join(File.dirname(__FILE__), 'lib', 'graticule', 'version.rb')
+begin
+  require 'jeweler'
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  exit 1
+end
+require 'rake/testtask'
+require 'rake/rdoctask'
+require 'rcov/rcovtask'
 
-Hoe.new("graticule", Graticule::Version::STRING) do |p|
-  p.rubyforge_name = "graticule"
-  p.author = 'Brandon Keepers'
-  p.email = 'brandon@opensoul.org'
-  p.summary = "API for using all the popular geocoding services."
-  p.description = 'Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta.'
-  p.url = 'http://graticule.rubyforge.org'
-  p.need_tar = true
-  p.need_zip = true
-  p.test_globs = ['test/**/*_test.rb']
-  p.changes = p.paragraphs_of('CHANGELOG.txt', 0..1).join("\n\n")
-  p.extra_deps << ['activesupport']
+Jeweler::Tasks.new do |s|
+  s.name = "graticule"
+  s.rubyforge_project = "graticule"
+  s.author = 'Brandon Keepers'
+  s.email = 'brandon@opensoul.org'
+  s.summary = "API for using all the popular geocoding services."
+  s.description = 'Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta.'
+  s.homepage = "http://github.com/collectiveidea/graticule"
+  s.add_dependency "activesupport"
+  s.has_rdoc = true
+  s.extra_rdoc_files = ["README.txt"]
+  s.rdoc_options = ["--main", "README.rdoc", "--inline-source", "--line-numbers"]
+  s.test_files = Dir['test/**/*.{yml,rb}']
 end
 
+desc 'Default: run unit tests.'
+task :default => :test
 
+desc 'Run the unit tests'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
+end
+
+desc 'Generate documentatio'
+Rake::RDocTask.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'Graticule'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README.txt')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+namespace :test do
+  desc "just rcov minus html output"
+  Rcov::RcovTask.new(:coverage) do |t|
+    # t.libs << 'test'
+    t.test_files = FileList['test/**/*_test.rb']
+    t.output_dir = 'coverage'
+    t.verbose = true
+    t.rcov_opts = %w(--exclude test,/usr/lib/ruby,/Library/Ruby,lib/awesome_nested_set/named_scope.rb --sort coverage)
+  end
+end
+
+require 'rake/contrib/sshpublisher'
+namespace :rubyforge do
+
+  desc "Release gem and RDoc documentation to RubyForge"
+  task :release => ["rubyforge:release:gem", "rubyforge:release:docs"]
+
+  namespace :release do
+    desc "Publish RDoc to RubyForge."
+    task :docs => [:rdoc] do
+      config = YAML.load(
+          File.read(File.expand_path('~/.rubyforge/user-config.yml'))
+      )
+
+      host = "#{config['username']}@rubyforge.org"
+      remote_dir = "/var/www/gforge-projects/the-perfect-gem/"
+      local_dir = 'rdoc'
+
+      Rake::SshDirPublisher.new(host, remote_dir, local_dir).upload
+    end
+  end
+end
 
 namespace :test do
   namespace :cache do
@@ -57,6 +113,7 @@ namespace :test do
   end
 end
 
+require 'active_support'
 require 'net/http'
 require 'uri'
 RESPONSES_PATH = File.dirname(__FILE__) + '/test/fixtures/responses'
