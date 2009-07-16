@@ -49,7 +49,7 @@ namespace :test do
     t.test_files = FileList['test/**/*_test.rb']
     t.output_dir = 'coverage'
     t.verbose = true
-    t.rcov_opts = %w(--exclude test,/usr/lib/ruby,/Library/Ruby,lib/awesome_nested_set/named_scope.rb --sort coverage)
+    t.rcov_opts = %w(--exclude test,/usr/lib/ruby,/Library/Ruby,$HOME/.gem --sort coverage)
   end
 end
 

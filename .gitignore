@@ -1,3 +1,4 @@
 test/config.yml
 *.gem
 pkg
+coverage
