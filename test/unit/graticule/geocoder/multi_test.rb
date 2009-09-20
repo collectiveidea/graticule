@@ -37,7 +37,16 @@ module Graticule
         @geocoder = Multi.new(*@mock_geocoders) {|r| r == 3 }
         assert_raises(Graticule::AddressError) { @geocoder.locate('test') }
       end
-
+      
+      def test_timeout
+        @mock = @mock_geocoders.first
+        def @mock.locate(*x)
+          sleep 1
+        end
+        @geocoder = Multi.new(@mock, :timeout => 0.1)
+        assert_raise(Timeout::Error) { @geocoder.locate('foo') }
+      end
+      
     end
   end
 end

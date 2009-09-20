@@ -1,3 +1,5 @@
+require 'timeout'
+
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
     class Multi
@@ -21,7 +23,13 @@ module Graticule #:nodoc:
       #
       # Geocoders will be tried in order until the block returned true for one of the results
       #
+      # Use the :timeout option to specify the number of seconds to allow for each
+      # geocoder before raising a Timout::Error (defaults to 10 seconds).
+      #
+      #   Graticule.service(:multi).new(geocoders, :timeout => 3)
+      #
       def initialize(*geocoders, &acceptable)
+        @options = {:timeout => 10}.merge(geocoders.extract_options!)
         @acceptable = acceptable || lambda { true }
         @geocoders = geocoders.flatten
       end
@@ -30,7 +38,10 @@ module Graticule #:nodoc:
         last_error = nil
         @geocoders.each do |geocoder|
           begin
-            result = geocoder.locate address
+            result = nil
+            Timeout.timeout(@options[:timeout]) do
+              result = geocoder.locate address
+            end
             return result if @acceptable.call(result)
           rescue Error => e
             last_error = e
