@@ -46,7 +46,6 @@ module Graticule
         @geocoder = Multi.new(@mock, :timeout => 0.1)
         assert_raise(Timeout::Error) { @geocoder.locate('foo') }
       end
-      
     end
   end
 end

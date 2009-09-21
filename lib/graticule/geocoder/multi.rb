@@ -29,29 +29,83 @@ module Graticule #:nodoc:
       #   Graticule.service(:multi).new(geocoders, :timeout => 3)
       #
       def initialize(*geocoders, &acceptable)
-        @options = {:timeout => 10}.merge(geocoders.extract_options!)
+        @options = {:timeout => 10, :async => false}.merge(geocoders.extract_options!)
         @acceptable = acceptable || lambda { true }
         @geocoders = geocoders.flatten
       end
       
       def locate(address)
+        @controller = @options[:async] ? ParallelController.new : SerialController.new
         last_error = nil
         @geocoders.each do |geocoder|
-          begin
-            result = nil
-            Timeout.timeout(@options[:timeout]) do
-              result = geocoder.locate address
+          @controller.perform do
+            begin
+              result = nil
+              Timeout.timeout(@options[:timeout]) do
+                result = geocoder.locate address
+              end
+              result if @acceptable.call(result)
+            rescue Error => e
+              last_error = e
+              nil
+            rescue Errno::ECONNREFUSED
+              logger.error("Connection refused to #{service}")
+              nil
             end
-            return result if @acceptable.call(result)
-          rescue Error => e
-            last_error = e
-          rescue Errno::ECONNREFUSED
-            logger.error("Connection refused to #{service}")
           end
         end
-        raise last_error || AddressError.new("Couldn't find '#{address}' with any of the services")
+        r = @controller.result
+        if r
+          return r
+        else
+          raise(last_error || AddressError.new("Couldn't find '#{address}' with any of the services"))
+        end
       end
       
+      class SerialController #:nodoc:
+        def initialize
+          @blocks = []
+        end
+        
+        def perform(&block)
+          @blocks << block
+        end
+        
+        def result
+          result = nil
+          @blocks.detect do |block|
+            result = block.call
+          end
+          result
+        end
+      end
+      
+      class ParallelController #:nodoc:
+        def initialize
+          @threads = []
+          @monitor = Monitor.new
+        end
+        
+        def perform(&block)
+          @threads << Thread.new do
+            self.result = block.call
+          end
+        end
+        
+        def result=(result)
+          if result
+            @monitor.synchronize do
+              @result = result
+              @threads.each(&:kill)
+            end
+          end
+        end
+        
+        def result
+          @threads.each(&:join)
+          @result
+        end
+      end
     end
   end
 end
