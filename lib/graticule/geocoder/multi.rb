@@ -54,12 +54,7 @@ module Graticule #:nodoc:
             end
           end
         end
-        r = @controller.result
-        if r
-          return r
-        else
-          raise(last_error || AddressError.new("Couldn't find '#{address}' with any of the services"))
-        end
+        @controller.result || raise(last_error || AddressError.new("Couldn't find '#{address}' with any of the services"))
       end
       
       class SerialController #:nodoc:
