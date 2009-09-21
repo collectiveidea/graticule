@@ -1,3 +1,5 @@
+* Added freethepostcode.org geocoder [Chris Lowis]
+
 0.2.12 (2009-09-06)
 * Fixed geocoder_us [Aubrey Holland]
 

@@ -78,7 +78,7 @@ end
 namespace :test do
   namespace :cache do
     desc 'Cache test responses from all the free geocoders'
-    task :free => [:google, :geocoder_us, :host_ip, :local_search_maps, :meta_carta, :yahoo]
+    task :free => [:google, :geocoder_us, :host_ip, :local_search_maps, :meta_carta, :yahoo, :freethepostcode]
     
     desc 'Cache test responses from Google'
     task :google do
@@ -109,7 +109,11 @@ namespace :test do
     task :yahoo do
       cache_responses('yahoo')
     end
-
+    
+    desc 'Cache test responses from Free The Postcode'
+    task :freethepostcode do
+      cache_responses('freethepostcode')
+    end
   end
 end
 
