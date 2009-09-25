@@ -35,10 +35,10 @@ module Graticule #:nodoc:
       end
       
       def locate(address)
-        @controller = @options[:async] ? ParallelController.new : SerialController.new
+        @lookup = @options[:async] ? ParallelLookup.new : SerialLookup.new
         last_error = nil
         @geocoders.each do |geocoder|
-          @controller.perform do
+          @lookup.perform do
             begin
               result = nil
               Timeout.timeout(@options[:timeout]) do
@@ -54,10 +54,10 @@ module Graticule #:nodoc:
             end
           end
         end
-        @controller.result || raise(last_error || AddressError.new("Couldn't find '#{address}' with any of the services"))
+        @lookup.result || raise(last_error || AddressError.new("Couldn't find '#{address}' with any of the services"))
       end
       
-      class SerialController #:nodoc:
+      class SerialLookup #:nodoc:
         def initialize
           @blocks = []
         end
@@ -75,7 +75,7 @@ module Graticule #:nodoc:
         end
       end
       
-      class ParallelController #:nodoc:
+      class ParallelLookup #:nodoc:
         def initialize
           @threads = []
           @monitor = Monitor.new
