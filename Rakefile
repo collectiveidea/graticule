@@ -4,6 +4,8 @@ rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
   exit 1
 end
+require 'rubygems'
+require 'activesupport'
 require 'rake/testtask'
 require 'rake/rdoctask'
 require 'rcov/rcovtask'

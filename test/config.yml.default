@@ -1,12 +1,10 @@
 google:
-  key: PUT YOUR KEY HERE
   responses:
-    success.xml: http://maps.google.com/maps/geo?q=1600+amphitheatre+mtn+view+ca&output=xml&key=:key
-    badkey.xml: http://maps.google.com/maps/geo?q=1600+amphitheatre+mtn+view+ca&output=xml&key=this_is_a_bad_key
-    missing_address.xml: http://maps.google.com/maps/geo?output=xml&key=:key
-    unavailable.xml: http://maps.google.com/maps/geo?q=42-44+Hanway+Street,+London&output=xml&key=:key
-    unknown_address.xml: http://maps.google.com/maps/geo?q=1600&output=xml&key=:key
-    partial.xml: http://maps.google.com/maps/geo?q=sf+ca&output=xml&key=:key
+    success.xml: "http://maps.google.com/maps/geo?q=1600+amphitheatre+mtn+view+ca&output=xml"
+    missing_address.xml: "http://maps.google.com/maps/geo?output=xml"
+    unknown_address.xml: "http://maps.google.com/maps/geo?q=xxxxx&output=xml"
+    partial.xml: "http://maps.google.com/maps/geo?q=sf+ca&output=xml"
+    #unavailable.xml: no way to reproduce this
     #limit.xml: no way to reproduce this  
     #server_error.xml: no way to reproduce this
 geocoder_us:
