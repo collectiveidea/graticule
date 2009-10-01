@@ -1,10 +1,12 @@
+require 'happymapper'
+
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
 
     # A library for lookup up coordinates with geocoder.us' API.
     #
     # http://geocoder.us/help/
-    class GeocoderUs < Rest
+    class GeocoderUs < Base
 
       # Creates a new GeocoderUs object optionally using +username+ and
       # +password+.
@@ -13,7 +15,7 @@ module Graticule #:nodoc:
       #
       # http://geocoder.us/user/signup
       def initialize(user = nil, password = nil)
-        if user and password then
+        if user && password
           @url = URI.parse 'http://geocoder.us/member/service/rest/geocode'
           @url.user = user
           @url.password = password
@@ -29,22 +31,34 @@ module Graticule #:nodoc:
       end
       
     private
-
-      def parse_response(xml) #:nodoc:
-        location = Location.new
-        location.street = xml.elements['rdf:RDF/geo:Point/dc:description'].text
-
-        location.latitude = xml.elements['rdf:RDF/geo:Point/geo:lat'].text.to_f
-        location.longitude = xml.elements['rdf:RDF/geo:Point/geo:long'].text.to_f
-
-        return location
+      class Point
+        include HappyMapper
+        tag 'Point'
+        namespace 'http://www.w3.org/2003/01/geo/wgs84_pos#'
+        
+        element :description, String, :namespace => 'http://purl.org/dc/elements/1.1/'
+        element :longitude,   Float,  :tag => 'long'
+        element :latitude,    Float,  :tag => 'lat'
       end
 
-      def check_error(xml) #:nodoc:
-        text = xml.to_s
-        raise AddressError, text if text =~ /couldn't find this address! sorry/
-        raise Error, text if text =~ /Your browser sent a request that this server could not understand./
-        raise Error, text if !(text =~ /geo:Point/)
+      def parse_response(xml) #:nodoc:
+        point = Point.parse(xml, :single => true)
+        Location.new(
+          :street    => point.description,
+          :latitude  => point.latitude,
+          :longitude => point.longitude
+        )
+      end
+
+      def check_error(response) #:nodoc:
+        case response
+        when /geo:Point/
+          # success
+        when /couldn't find this address! sorry/
+          raise AddressError, response
+        else
+          raise Error, response
+        end
       end
 
     end
