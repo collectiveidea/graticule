@@ -24,6 +24,10 @@ Graticule includes a command line interface (CLI).
   Washington, DC US
   latitude: 38.895222, longitude: -77.036758
 
+= Mailing List
+
+Join us on the mailing list at http://groups.google.com/group/graticule
+
 = How to contribute
 
 If you find what you might think is a bug:
