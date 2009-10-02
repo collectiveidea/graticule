@@ -77,48 +77,6 @@ namespace :rubyforge do
   end
 end
 
-namespace :test do
-  namespace :cache do
-    desc 'Cache test responses from all the free geocoders'
-    task :free => [:google, :geocoder_us, :host_ip, :local_search_maps, :meta_carta, :yahoo, :freethepostcode]
-    
-    desc 'Cache test responses from Google'
-    task :google do
-      cache_responses('google')
-    end
-    
-    desc 'Cache test responses from Geocoder.us'
-    task :geocoder_us do
-      cache_responses('geocoder_us')
-    end
-    
-    desc 'Cache test responses from HostIP'
-    task :host_ip do
-      cache_responses('host_ip')
-    end
-
-    desc 'Cache test responses from Local Search Maps'
-    task :local_search_maps do
-      cache_responses('local_search_maps')
-    end
-
-    desc 'Cache test responses from Meta Carta'
-    task :meta_carta do
-      cache_responses('meta_carta')
-    end
-
-    desc 'Cache test responses from Yahoo'
-    task :yahoo do
-      cache_responses('yahoo')
-    end
-    
-    desc 'Cache test responses from Free The Postcode'
-    task :freethepostcode do
-      cache_responses('freethepostcode')
-    end
-  end
-end
-
 require 'active_support'
 require 'net/http'
 require 'uri'
@@ -147,3 +105,18 @@ def update_placeholders!(config, thing)
     thing.gsub!(":#{option}", value) if value.is_a?(String)
   end
 end
+
+namespace :test do
+  namespace :cache do
+    desc 'Cache test responses from all the geocoders'
+    task :all => test_config.keys
+
+    test_config.keys.each do |service|
+      desc "Cache test responses for #{service}"
+      task service do
+        cache_responses(service)
+      end
+    end
+  end
+end
+
