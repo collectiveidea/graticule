@@ -10,12 +10,12 @@ module Graticule #:nodoc:
       # http://www.multimap.com/share/documentation/clientzone/gqcodes.htm
       
       PRECISION = {
-        "6"=> :country,
-        "5" => :state,
-        "4" => :postal_code,
-        "3" => :city,
-        "2" => :street,
-        "1" => :address
+        6 => :country,
+        5 => :state,
+        4 => :postal_code,
+        3 => :city,
+        2 => :street,
+        1 => :address
       }
       
       # Web services initializer.
@@ -46,26 +46,51 @@ module Graticule #:nodoc:
         end
       end
       
-      def parse_response(xml)
-        r = xml.elements['Results/Location[1]']
-        returning Location.new do |location|
-          
-          location.precision = PRECISION[r.attributes['geocodeQuality']] || :unknown
-          
-          location.street = r.elements['Address/Street'].text.titleize unless r.elements['Address/Street'].nil?
-          location.locality = r.elements['Address/Areas/Area'].text.titleize unless r.elements['Address/Areas/Area'].nil?
-          location.region = r.elements['Address/State'].text.titleize unless r.elements['Address/State'].nil?
-          location.postal_code = r.elements['Address/PostalCode'].text unless r.elements['Address/PostalCode'].nil?
-          location.country = r.elements['Address/CountryCode'].text
-          
-          location.latitude = r.elements['Point/Lat'].text.to_f
-          location.longitude = r.elements['Point/Lon'].text.to_f
+      class Address
+        include HappyMapper
+        tag 'Location'
+        
+        attribute :quality, Integer, :tag => 'geocodeQuality'
+        element :street, String, :tag => 'Street', :deep => true
+        element :locality, String, :tag => 'Area', :deep => true
+        element :region, String, :tag => 'State', :deep => true
+        element :postal_code, String, :tag => 'PostalCode', :deep => true
+        element :country, String, :tag => 'CountryCode', :deep => true
+        element :latitude, Float, :tag => 'Lat', :deep => true
+        element :longitude, Float, :tag => 'Lon', :deep => true
+        
+        def precision
+          PRECISION[quality] || :unknown
         end
       end
       
-      def check_error(xml)
-        error = xml.elements['Results'].attributes['errorCode']
-        raise Error, error unless error.nil?
+      class Result
+        include HappyMapper
+        tag 'Results'
+        attribute :error, String, :tag => 'errorCode'
+        has_many :addresses, Address
+      end
+      
+      def prepare_response(xml)
+        Result.parse(xml, :single => true)
+      end
+      
+      def parse_response(result)
+        addr = result.addresses.first
+        Location.new(
+          :latitude    => addr.latitude,
+          :longitude   => addr.longitude,
+          :street      => addr.street,
+          :locality    => addr.locality,
+          :region      => addr.region,
+          :postal_code => addr.postal_code,
+          :country     => addr.country,
+          :precision   => addr.precision
+        )
+      end
+      
+      def check_error(result)
+        raise Error, result.error unless result.error.blank?
       end
       
     end

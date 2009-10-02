@@ -10,7 +10,7 @@ module Graticule
         @geocoder = Multimap.new 'API_KEY'
         @location = Location.new(
           :street => "Oxford Street",
-          :locality => "London",
+          :locality => "LONDON",
           :postal_code => "W1",
           :country => "GB",
           :longitude => -0.14839,
