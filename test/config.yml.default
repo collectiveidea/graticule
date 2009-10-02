@@ -21,12 +21,6 @@ local_search_maps:
     success.txt: http://geo.localsearchmaps.com/?street=48+Leicester+Square&city=London&country=UK
     empty.txt: http://geo.localsearchmaps.com/
     not_found.txt: http://geo.localsearchmaps.com/?street=48
-meta_carta:
-  responses:
-    bad_address.xml: http://labs.metacarta.com/GeoParser/?q=aoeueou&output=locations
-    # doesn't work
-    #multiple.xml: http://labs.metacarta.com/GeoParser/?q=seattle&output=locations
-    success.xml: http://labs.metacarta.com/GeoParser/?q=baghdad&output=locations
 yahoo:
   key: PUT YOUR KEY HERE
   responses:

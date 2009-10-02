@@ -19,9 +19,5 @@ module Graticule
       assert_equal Geocoder::GeocoderUs, Graticule.service(:geocoder_us)
     end
 
-    def test_meta_carta_service
-      assert_equal Geocoder::MetaCarta, Graticule.service(:meta_carta)
-    end
-  
   end
 end
