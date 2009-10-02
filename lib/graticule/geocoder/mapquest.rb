@@ -48,31 +48,51 @@ module Graticule #:nodoc:
         url.query = URI.escape(query)
         url
       end
+      
+      class Address
+        include HappyMapper
+        tag 'GeoAddress'
+        element :latitude, Float, :tag => 'Lat', :deep => true
+        element :longitude, Float, :tag => 'Lng', :deep => true
+        element :street, String, :tag => 'Street'
+        element :locality, String, :tag => 'AdminArea5'
+        element :region, String, :tag => 'AdminArea3'
+        element :postal_code, String, :tag => 'PostalCode'
+        element :country, String, :tag => 'AdminArea1'
+        element :result_code, String, :tag => 'ResultCode'
+        
+        def precision
+          PRECISION[result_code.to_s[0,2]] || :unknown
+        end
+      end
+      
+      class Result
+        include HappyMapper
+        tag 'GeocodeResponse'
+        has_many :addresses, Address, :deep => true
+      end
+      
+      def prepare_response(xml)
+        Result.parse(xml, :single => true)
+      end
 
       # Extracts a location from +xml+.
-      def parse_response(xml) #:nodoc:
-        longitude = xml.elements['/GeocodeResponse/LocationCollection/GeoAddress/LatLng/Lng'].text.to_f
-        latitude = xml.elements['/GeocodeResponse/LocationCollection/GeoAddress/LatLng/Lat'].text.to_f
-        returning Location.new(:latitude => latitude, :longitude => longitude) do |l|
-          address = REXML::XPath.first(xml, '/GeocodeResponse/LocationCollection/GeoAddress')
-
-          if address
-            l.street = value(address.elements['./Street/text()'])
-            l.locality = value(address.elements['./AdminArea5/text()'])
-            l.region = value(address.elements['./AdminArea3/text()'])
-            l.postal_code = value(address.elements['./PostalCode/text()'])
-            l.country = value(address.elements['./AdminArea1/text()'])
-            l.precision = PRECISION[value(address.elements['./ResultCode/text()'])[0,2]]
-          end
-        end
+      def parse_response(result) #:nodoc:
+        addr = result.addresses.first
+        Location.new(
+          :latitude    => addr.latitude,
+          :longitude   => addr.longitude,
+          :street      => addr.street,
+          :locality    => addr.locality,
+          :region      => addr.region,
+          :postal_code => addr.postal_code,
+          :country     => addr.country,
+          :precision   => addr.precision
+        )
       end
 
       # Extracts and raises any errors in +xml+
       def check_error(xml) #:nodoc
-      end
-
-      def value(element)
-        element.value if element
       end
 
       def authentication_string

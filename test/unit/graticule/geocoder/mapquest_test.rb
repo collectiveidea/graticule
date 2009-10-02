@@ -4,6 +4,8 @@ module Graticule
   module Geocoder
     class MapquestTest < Test::Unit::TestCase
       def setup
+        URI::HTTP.responses = []
+        URI::HTTP.uris = []
         @geocoder = Mapquest.new('client_id', 'password')
       end
 
