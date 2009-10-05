@@ -118,9 +118,7 @@ module Graticule #:nodoc:
       # Creates a URL from the Hash +params+.
       # sets the output type to 'xml'.
       def make_url(params) #:nodoc:
-        params[:output] = 'xml'
-
-        super params
+        super params.merge(:oe => 'utf8', :output => 'xml', :sensor => false)
       end
     end
   end
