@@ -50,7 +50,7 @@ module Graticule #:nodoc:
     #   end
     #
     class Base
-      USER_AGENT = "Mozilla/5.0 (compatible; Graticule/#{Graticule::Version::STRING}; http://graticule.rubyforge.org)"
+      USER_AGENT = "Mozilla/5.0 (compatible; Graticule; http://graticule.rubyforge.org)"
 
       def initialize
         raise NotImplementedError
