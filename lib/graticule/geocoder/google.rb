@@ -41,13 +41,6 @@ module Graticule #:nodoc:
         namespace 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'
 
         attribute :accuracy, Integer, :tag => 'Accuracy'
-        with_options :deep => true do |map|
-          map.element :street,      String, :tag => 'ThoroughfareName'
-          map.element :locality,    String, :tag => 'LocalityName'
-          map.element :region,      String, :tag => 'AdministrativeAreaName'
-          map.element :postal_code, String, :tag => 'PostalCodeNumber'
-          map.element :country,     String, :tag => 'CountryNameCode'
-        end
       end
     
       class Placemark
@@ -57,8 +50,15 @@ module Graticule #:nodoc:
         has_one :address, Address
       
         attr_reader :longitude, :latitude
-        delegate :street, :locality, :region, :postal_code, :country, :accuracy,
-          :to => :address, :allow_nil => true
+        delegate :accuracy, :to => :address, :allow_nil => true
+        
+        with_options :deep => true, :namespace => 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0' do |map|
+          map.element :street,      String, :tag => 'ThoroughfareName'
+          map.element :locality,    String, :tag => 'LocalityName'
+          map.element :region,      String, :tag => 'AdministrativeAreaName'
+          map.element :postal_code, String, :tag => 'PostalCodeNumber'
+          map.element :country,     String, :tag => 'CountryNameCode'
+        end
       
         def coordinates=(coordinates)
           @longitude, @latitude, _ = coordinates.split(',').map { |v| v.to_f }
