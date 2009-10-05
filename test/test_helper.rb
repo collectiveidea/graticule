@@ -1,11 +1,10 @@
 $:.unshift(File.dirname(__FILE__) + '/../lib')
-$:.unshift(File.dirname(__FILE__) + '/mocks')
 
 require 'rubygems'
-require 'yaml'
 require 'test/unit'
 require 'graticule'
 require 'mocha'
+require 'mocks/uri'
 
 TEST_RESPONSE_PATH = File.dirname(__FILE__) + '/fixtures/responses'
 
