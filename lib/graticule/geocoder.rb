@@ -1,3 +1,4 @@
+require 'happymapper'
 
 module Graticule
   

@@ -1,5 +1,3 @@
-require 'happymapper'
-
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
   

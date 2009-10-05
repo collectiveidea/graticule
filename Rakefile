@@ -11,18 +11,19 @@ require 'rake/rdoctask'
 require 'rcov/rcovtask'
 
 Jeweler::Tasks.new do |s|
-  s.name = "graticule"
+  s.name              = "graticule"
   s.rubyforge_project = "graticule"
-  s.author = 'Brandon Keepers'
-  s.email = 'brandon@opensoul.org'
-  s.summary = "API for using all the popular geocoding services."
-  s.description = 'Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta.'
-  s.homepage = "http://github.com/collectiveidea/graticule"
-  s.add_dependency "activesupport"
-  s.has_rdoc = true
-  s.extra_rdoc_files = ["README.txt"]
-  s.rdoc_options = ["--main", "README.rdoc", "--inline-source", "--line-numbers"]
-  s.test_files = Dir['test/**/*.{yml,rb}']
+  s.author            = 'Brandon Keepers'
+  s.email             = 'brandon@opensoul.org'
+  s.summary           = "API for using all the popular geocoding services."
+  s.description       = 'Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta.'
+  s.homepage          = "http://github.com/collectiveidea/graticule"
+  s.add_dependency    "activesupport"
+  s.add_dependency    'happymapper', '>=0.3.0'
+  s.has_rdoc          = true
+  s.extra_rdoc_files  = ["README.txt"]
+  s.rdoc_options      = ["--main", "README.rdoc", "--inline-source", "--line-numbers"]
+  s.test_files        = Dir['test/**/*.{yml,rb}']
 end
 
 desc 'Default: run unit tests.'
