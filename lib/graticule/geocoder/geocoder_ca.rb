@@ -2,7 +2,7 @@ module Graticule #:nodoc:
   module Geocoder #:nodoc:
 
     # TODO: Reverse Geocoding
-    class GeocoderCa < Rest
+    class GeocoderCa < Base
 
       def initialize(auth = nil)
         @url = URI.parse 'http://geocoder.ca/'

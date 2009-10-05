@@ -9,7 +9,7 @@ module Graticule #:nodoc:
     # location = gg.locate('44 Allen Rd., Lovell, ME 04051') 
     # [42.78942, -86.104424]
     #
-    class Mapquest < Rest 
+    class Mapquest < Base 
       # I would link to the documentation here, but there is none that will do anything but confuse you.
 
       PRECISION = {

@@ -3,7 +3,7 @@ module Graticule #:nodoc:
 
     # Multimap geocoding API
     
-    class Multimap < Rest
+    class Multimap < Base
       
       # This precision information is not complete.
       # More details should be implemented from:
