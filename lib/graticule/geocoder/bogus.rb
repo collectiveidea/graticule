@@ -1,15 +1,17 @@
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
-
     # Bogus geocoder that can be used for test purposes
     class Bogus
-    
-      # returns a new location with the address set to the original query string
+      # A queue of canned responses
+      class_inheritable_accessor :responses
+      self.responses = []
+      
+      # A default location to use if the responses queue is empty
+      class_inheritable_accessor :default
+      
       def locate(address)
-        Location.new :street => address
+        responses.shift || default || Location.new :street => address
       end
-    
     end
-
   end
 end
