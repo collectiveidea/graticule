@@ -9,14 +9,15 @@ module Graticule
         URI::HTTP.uris = []
         @geocoder = Yahoo.new 'APP_ID'
         @location = Location.new(
-          :street => "701 First Ave",
+          :street => "701 1st Ave",
           :locality => "Sunnyvale",
           :region => "CA",
           :postal_code => "94089-1019",
           :country => "US",
-          :longitude => -122.024853,
-          :latitude => 37.416384,
-          :precision => :address
+          :longitude => -122.025055,
+          :latitude => 37.416397,
+          :precision => :address,
+          :warning => "The exact location could not be found, here is the closest match: 701 First Ave, Sunnyvale, CA 94089"
         )
       end
 

@@ -4,7 +4,7 @@ module Graticule #:nodoc:
     # Yahoo geocoding API.
     #
     # http://developer.yahoo.com/maps/rest/V1/geocode.html
-    class Yahoo < Rest
+    class Yahoo < Base
 
       PRECISION = {
         "country"=> :country,
@@ -42,31 +42,60 @@ module Graticule #:nodoc:
         # yahoo pukes on line breaks
         get :location => location.gsub("\n", ', ')
       end
-
-      def parse_response(xml) # :nodoc:
-        r = xml.elements['ResultSet/Result[1]']
-        returning Location.new do |location|
-          location.precision = PRECISION[r.attributes['precision']] || :unknown
-
-          if r.attributes.include? 'warning' then
-            location.warning = r.attributes['warning']
-          end
-
-          location.latitude = r.elements['Latitude'].text.to_f
-          location.longitude = r.elements['Longitude'].text.to_f
-
-          location.street = r.elements['Address'].text.titleize unless r.elements['Address'].text.blank?
-          location.locality = r.elements['City'].text.titleize unless r.elements['City'].text.blank?
-          location.region = r.elements['State'].text
-          location.postal_code = r.elements['Zip'].text
-          location.country = r.elements['Country'].text
+    
+    private
+    
+      class Address
+        include HappyMapper
+        tag 'Result'
+        
+        attribute :precision, String
+        attribute :warning, String
+        element :latitude, Float, :tag => 'Latitude'
+        element :longitude, Float, :tag => 'Longitude'
+        element :street, String, :tag => 'Address'
+        element :locality, String, :tag => 'City'
+        element :region, String, :tag => 'State'
+        element :postal_code, String, :tag => 'Zip'
+        element :country, String, :tag => 'Country'
+        
+        def precision
+          PRECISION[@precision] || :unknown
         end
+      end
+      
+      class Result
+        include HappyMapper
+        tag 'ResultSet'
+        has_many :addresses, Address
+      end
+      
+      class Error
+        include HappyMapper
+        tag 'Error'
+        element :message, String, :tag => 'Message'
+      end
+      
+      def parse_response(response) # :nodoc:
+        addr = Result.parse(response, :single => true).addresses.first
+        Location.new(
+          :latitude    => addr.latitude,
+          :longitude   => addr.longitude,
+          :street      => addr.street,
+          :locality    => addr.locality,
+          :region      => addr.region,
+          :postal_code => addr.postal_code,
+          :country     => addr.country,
+          :precision   => addr.precision,
+          :warning     => addr.warning
+        )
       end
 
       # Extracts and raises an error from +xml+, if any.
       def check_error(xml) #:nodoc:
-        err = xml.elements['Error']
-        raise Error, err.elements['Message'].text if err
+        if error = Error.parse(xml, :single => true)
+          raise Graticule::Error, error.message
+        end
       end
 
       # Creates a URL from the Hash +params+.  Automatically adds the appid and
