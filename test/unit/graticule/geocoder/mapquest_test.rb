@@ -32,7 +32,7 @@ module Graticule
           :locality => "Stony Brook",
           :longitude => -73.141403,
           :postal_code => nil,
-          :precision => :city,
+          :precision => :locality,
           :region => "NY",
           :street => nil
         )

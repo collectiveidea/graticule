@@ -13,7 +13,7 @@ module Graticule #:nodoc:
         6 => :country,
         5 => :state,
         4 => :postal_code,
-        3 => :city,
+        3 => :locality,
         2 => :street,
         1 => :address
       }

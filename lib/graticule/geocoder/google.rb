@@ -13,15 +13,16 @@ module Graticule #:nodoc:
     
       # http://www.google.com/apis/maps/documentation/reference.html#GGeoAddressAccuracy
       PRECISION = {
-        0 => :unknown,      # Unknown location. (Since 2.59)
-        1 => :country,      # Country level accuracy. (Since 2.59)
-        2 => :state,        # Region (state, province, prefecture, etc.) level accuracy. (Since 2.59)
-        3 => :state,        # Sub-region (county, municipality, etc.) level accuracy. (Since 2.59)
-        4 => :city,         # Town (city, village) level accuracy. (Since 2.59)
-        5 => :zip,          # Post code (zip code) level accuracy. (Since 2.59)
-        6 => :street,       # Street level accuracy. (Since 2.59)
-        7 => :street,       # Intersection level accuracy. (Since 2.59)
-        8 => :address       # Address level accuracy. (Since 2.59)
+        0 => :unknown,      # Unknown location.
+        1 => :country,      # Country level accuracy.
+        2 => :region,       # Region (state, province, prefecture, etc.) level accuracy.
+        3 => :region,       # Sub-region (county, municipality, etc.) level accuracy.
+        4 => :locality,     # Town (city, village) level accuracy.
+        5 => :postal_code,  # Post code (zip code) level accuracy.
+        6 => :street,       # Street level accuracy.
+        7 => :street,       # Intersection level accuracy.
+        8 => :address,      # Address level accuracy.
+        9 => :premise       # Premise (building name, property name, shopping center, etc.) level accuracy.
       }
 
       def initialize

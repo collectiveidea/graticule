@@ -7,13 +7,13 @@ module Graticule #:nodoc:
     class Yahoo < Base
 
       PRECISION = {
-        "country"=> :country,
-        "state" => :state,
-        "city" => :city,
-        "zip+4" => :zip,
-        "zip+2" => :zip,
-        "zip" => :zip,
-        "street" => :street,
+        "country" => :country,
+        "state"   => :region,
+        "city"    => :locality,
+        "zip+4"   => :postal_code,
+        "zip+2"   => :postal_code,
+        "zip"     => :postal_code,
+        "street"  => :street,
         "address" => :address
       }
 

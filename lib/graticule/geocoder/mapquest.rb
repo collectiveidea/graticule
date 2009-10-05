@@ -18,13 +18,13 @@ module Graticule #:nodoc:
         'B1' => :street,
         'B2' => :street,
         'B3' => :street,
-        'Z3' => :zip,
-        'Z4' => :zip,
-        'Z2' => :zip,
-        'Z1' => :zip,
-        'A5' => :city,
-        'A4' => :county,
-        'A3' => :state,
+        'Z3' => :postal_code,
+        'Z4' => :postal_code,
+        'Z2' => :postal_code,
+        'Z1' => :postal_code,
+        'A5' => :locality,
+        'A4' => :region,
+        'A3' => :region,
         'A1' => :country
       }
 
