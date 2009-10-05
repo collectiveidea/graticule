@@ -10,7 +10,7 @@ module Graticule #:nodoc:
       class_inheritable_accessor :default
       
       def locate(address)
-        responses.shift || default || Location.new :street => address
+        responses.shift || default || Location.new(:street => address)
       end
     end
   end
