@@ -26,3 +26,6 @@ yahoo:
   responses:
     success.xml: http://api.local.yahoo.com/MapsService/V1/geocode?location=701%20First%20Street,%20Sunnyvale,%20CA&output=xml&appid=:key
     unknown_address.xml: http://api.local.yahoo.com/MapsService/V1/geocode?location=thisprobablycantbefound&output=xml&appid=:key
+geonames:
+  responses:
+      success.xml: http://ws.geonames.org/timezone?formatted=true&lat=41.85&lng=-87.65&style=full
