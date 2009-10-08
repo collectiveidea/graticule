@@ -8,32 +8,15 @@ module Graticule
         URI::HTTP.uris = []
         @geocoder = Geonames.new
       end
-      
-      def test_success
+
+      def test_time_zone
         return unless prepare_response(:success)
         
-        location = Location.new(
-          :street => "1600 Amphitheatre Pkwy",
-          :locality => "Mountain View",
-          :region => "CA",
-          :postal_code => "94043",
-          :country => "US",
-          :longitude => -122.0850350,
-          :latitude => 37.4231390,
-          :precision => :address
-        )
-        assert_equal location, @geocoder.locate('1600 Amphitheatre Parkway, Mountain View, CA')
-      end
-      
-      
-      def test_only_coordinates
-        return unless prepare_response(:only_coordinates)
+        chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
+        assert_equal 'America/Chicago', @geocoder.time_zone(chicago)
         
-        location = Location.new(:longitude => -17.000000, :latitude => 15.000000)
-        assert_equal location, @geocoder.locate('15-17 & 16 Railroad Square, Nashua, NH, 03064')
       end
-      
-    
+          
       # def test_locate_server_error
       #   return unless prepare_response(:server_error)
       #   assert_raises(Error) { @geocoder.locate 'x' }
@@ -57,7 +40,7 @@ module Graticule
     protected
 
       def prepare_response(id = :success)
-        URI::HTTP.responses << response('google', id)
+        URI::HTTP.responses << response('geonames', id)
       end
   
     end
