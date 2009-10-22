@@ -6,7 +6,7 @@ module Graticule
       def setup
         URI::HTTP.responses = []
         URI::HTTP.uris = []
-        @geocoder = Google.new
+        @geocoder = Google.new('APP_ID')
       end
       
       def test_success
@@ -89,6 +89,11 @@ module Graticule
       def test_locate_unknown_address
         return unless prepare_response(:unknown_address)
         assert_raises(AddressError) { @geocoder.locate 'x' }
+      end
+      
+      def test_bad_key
+        return unless prepare_response(:badkey)
+        assert_raises(CredentialsError) { @geocoder.locate('x') }
       end
 
     protected

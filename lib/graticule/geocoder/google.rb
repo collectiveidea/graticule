@@ -1,7 +1,10 @@
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
   
-    #   gg = Graticule.service(:google).new
+    # First you need a Google Maps API key.  You can register for one here:
+    # http://www.google.com/apis/maps/signup.html
+    # 
+    #   gg = Graticule.service(:google).new(MAPS_API_KEY)
     #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
     #   p location.coordinates
     #   #=> [37.423111, -122.081783
@@ -23,7 +26,8 @@ module Graticule #:nodoc:
         9 => :premise       # Premise (building name, property name, shopping center, etc.) level accuracy.
       }
 
-      def initialize
+      def initialize(key)
+        @key = key
         @url = URI.parse 'http://maps.google.com/maps/geo'
       end
 
@@ -116,7 +120,7 @@ module Graticule #:nodoc:
       # Creates a URL from the Hash +params+.
       # sets the output type to 'xml'.
       def make_url(params) #:nodoc:
-        super params.merge(:oe => 'utf8', :output => 'xml', :sensor => false)
+        super params.merge(:key => @key, :oe => 'utf8', :output => 'xml', :sensor => false)
       end
     end
   end
