@@ -7,14 +7,14 @@ module Graticule #:nodoc:
     class Yahoo < Base
 
       PRECISION = {
-        "country" => :country,
-        "state"   => :region,
-        "city"    => :locality,
-        "zip+4"   => :postal_code,
-        "zip+2"   => :postal_code,
-        "zip"     => :postal_code,
-        "street"  => :street,
-        "address" => :address
+        "country" => Precision::Country,
+        "state"   => Precision::Region,
+        "city"    => Precision::Locality,
+        "zip+4"   => Precision::PostalCode,
+        "zip+2"   => Precision::PostalCode,
+        "zip"     => Precision::PostalCode,
+        "street"  => Precision::Street,
+        "address" => Precision::Address
       }
 
       # Web services initializer.

@@ -13,19 +13,19 @@ module Graticule #:nodoc:
       # I would link to the documentation here, but there is none that will do anything but confuse you.
 
       PRECISION = {
-        'L1' => :address,
-        'I1' => :street,
-        'B1' => :street,
-        'B2' => :street,
-        'B3' => :street,
-        'Z3' => :postal_code,
-        'Z4' => :postal_code,
-        'Z2' => :postal_code,
-        'Z1' => :postal_code,
-        'A5' => :locality,
-        'A4' => :region,
-        'A3' => :region,
-        'A1' => :country
+        'L1' => Precision::Address,
+        'I1' => Precision::Street,
+        'B1' => Precision::Street,
+        'B2' => Precision::Street,
+        'B3' => Precision::Street,
+        'Z3' => Precision::PostalCode,
+        'Z4' => Precision::PostalCode,
+        'Z2' => Precision::PostalCode,
+        'Z1' => Precision::PostalCode,
+        'A5' => Precision::Locality,
+        'A4' => Precision::Region,
+        'A3' => Precision::Region,
+        'A1' => Precision::Country
       }
 
       def initialize(client_id, password)

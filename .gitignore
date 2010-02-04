@@ -3,3 +3,4 @@ test/config.yml
 pkg
 coverage
 rdoc
+.DS_Store

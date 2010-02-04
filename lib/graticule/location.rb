@@ -9,9 +9,13 @@ module Graticule
     
     def initialize(attrs = {})
       attrs.each do |key,value|
-        instance_variable_set "@#{key}", value
+        self.send("#{key}=", value)
       end
       self.precision ||= :unknown
+    end
+    
+    def precision=(precision)
+      @precision = Precision.new(precision.to_s)
     end
     
     def attributes

@@ -4,6 +4,7 @@ require 'active_support'
 
 require 'graticule/core_ext'
 require 'graticule/location'
+require 'graticule/precision'
 require 'graticule/geocoder'
 require 'graticule/geocoder/base'
 require 'graticule/geocoder/bogus'

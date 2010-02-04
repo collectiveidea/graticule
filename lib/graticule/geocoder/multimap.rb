@@ -10,12 +10,12 @@ module Graticule #:nodoc:
       # http://www.multimap.com/share/documentation/clientzone/gqcodes.htm
       
       PRECISION = {
-        6 => :country,
-        5 => :state,
-        4 => :postal_code,
-        3 => :locality,
-        2 => :street,
-        1 => :address
+        6 => Precision::Country,
+        5 => Precision::Region,
+        4 => Precision::PostalCode,
+        3 => Precision::Locality,
+        2 => Precision::Street,
+        1 => Precision::Address
       }
       
       # Web services initializer.

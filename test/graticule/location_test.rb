@@ -77,5 +77,10 @@ module Graticule
       chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
       assert_equal 'America/Chicago', chicago.time_zone
     end
+    
+    def test_casts_precision
+      assert_equal Precision::Region, Location.new(:precision => :region).precision
+      assert_equal Precision::Street, Location.new(:precision => Precision::Street).precision
+    end
   end
 end
