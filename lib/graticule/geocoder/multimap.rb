@@ -40,7 +40,7 @@ module Graticule #:nodoc:
         when Location
           get "street" => location.street, 
               "region" => location.region, 
-              "city" => location.city, 
+              "city" => location.locality, 
               "postalCode" => location.postal_code, 
               "countryCode" => location.country
         end

@@ -32,8 +32,8 @@ module Graticule
     
     def test_url_from_location
       prepare_response(:success)
-      @geocoder.locate(:street => 'Oxford Street', :city => 'London')
-      assert_equal 'http://clients.multimap.com/API/geocode/1.2/API_KEY?city=&countryCode=&postalCode=&region=&street=Oxford%20Street', URI::HTTP.uris.first
+      @geocoder.locate(:street => 'Oxford Street', :locality => 'London')
+      assert_equal 'http://clients.multimap.com/API/geocode/1.2/API_KEY?city=London&countryCode=&postalCode=&region=&street=Oxford%20Street', URI::HTTP.uris.first
     end
 
 
