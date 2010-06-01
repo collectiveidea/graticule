@@ -35,7 +35,7 @@ module Graticule #:nodoc:
       
       # Extracts and raises an error from +xml+, if any.
       def check_error(response) #:nodoc:
-        if response.status
+        if response && response.status
           case response.status.value
           when 14 then
             raise Error, reponse.status.message
