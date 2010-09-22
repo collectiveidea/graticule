@@ -1,30 +1,9 @@
-begin
-  require 'jeweler'
-rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
-  exit 1
-end
 require 'rubygems'
-require 'activesupport'
+require 'bundler/setup'
+require 'active_support'
 require 'rake/testtask'
 require 'rake/rdoctask'
 require 'rcov/rcovtask'
-
-Jeweler::Tasks.new do |s|
-  s.name              = "graticule"
-  s.rubyforge_project = "graticule"
-  s.author            = 'Brandon Keepers'
-  s.email             = 'brandon@opensoul.org'
-  s.summary           = "API for using all the popular geocoding services."
-  s.description       = 'Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta.'
-  s.homepage          = "http://github.com/collectiveidea/graticule"
-  s.add_dependency    "activesupport"
-  s.add_dependency    'happymapper', '>=0.3.0'
-  s.has_rdoc          = true
-  s.extra_rdoc_files  = ["README.txt"]
-  s.rdoc_options      = ["--main", "README.rdoc", "--inline-source", "--line-numbers"]
-  s.test_files        = Dir['test/**/*']
-end
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -56,28 +35,6 @@ namespace :test do
   end
 end
 
-require 'rake/contrib/sshpublisher'
-namespace :rubyforge do
-
-  desc "Release gem and RDoc documentation to RubyForge"
-  task :release => ["rubyforge:release:gem", "rubyforge:release:docs"]
-
-  namespace :release do
-    desc "Publish RDoc to RubyForge."
-    task :docs => [:rdoc] do
-      config = YAML.load(
-          File.read(File.expand_path('~/.rubyforge/user-config.yml'))
-      )
-
-      host = "#{config['username']}@rubyforge.org"
-      remote_dir = "/var/www/gforge-projects/the-perfect-gem/"
-      local_dir = 'rdoc'
-
-      Rake::SshDirPublisher.new(host, remote_dir, local_dir).upload
-    end
-  end
-end
-
 require 'active_support'
 require 'net/http'
 require 'uri'
@@ -94,7 +51,7 @@ end
 def test_config
   file = File.dirname(__FILE__) + '/test/config.yml'
   raise "Copy config.yml.default to config.yml and set the API keys" unless File.exists?(file)
-  @test_config ||= returning(YAML.load(File.read(file))) do |config|
+  @test_config ||= YAML.load(File.read(file)).tap do |config|
     config.each do |service,values|
       values['responses'].each {|file,url| update_placeholders!(values, url) }
     end
