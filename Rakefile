@@ -1,5 +1,7 @@
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require 'rubygems'
 require 'bundler/setup'
+require 'graticule/version'
 require 'active_support'
 require 'rake/testtask'
 require 'rake/rdoctask'
@@ -7,6 +9,14 @@ require 'rcov/rcovtask'
 
 desc 'Default: run unit tests.'
 task :default => :test
+
+task :build do
+  system "gem build graticule.gemspec"
+end
+ 
+task :release => :build do
+  system "gem push graticule-#{Graticule::VERSION}"
+end
 
 desc 'Run the unit tests'
 Rake::TestTask.new(:test) do |t|
