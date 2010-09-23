@@ -22,7 +22,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{API for using all the popular geocoding services.}
 
-  s.add_runtime_dependency 'activesupport', '~>2.0.0'
+  s.add_runtime_dependency 'activesupport', '~>3.0'
+  s.add_runtime_dependency 'i18n'
   s.add_runtime_dependency 'happymapper',   '>= 0.3.0'
   s.add_development_dependency 'mocha' 
   s.add_development_dependency 'rcov' 

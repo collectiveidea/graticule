@@ -22,7 +22,7 @@ module Graticule #:nodoc:
       end
       
       def parse_response(response) #:nodoc:
-        returning Location.new do |location|
+        Location.new.tap do |location|
           location.latitude = response['Latitude']
           location.longitude = response['Longitude']
           location.locality, location.region = response['City'].split(', ')

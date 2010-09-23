@@ -1,6 +1,7 @@
 $:.unshift(File.dirname(__FILE__))
 
 require 'active_support'
+require 'active_support/core_ext'
 
 require 'graticule/version'
 require 'graticule/core_ext'
