@@ -18,6 +18,10 @@ task :release => :build do
   system "gem push graticule-#{Graticule::VERSION}"
 end
 
+task :install => :build do
+  system "gem install graticule-#{Graticule::VERSION}.gem"
+end
+
 desc 'Run the unit tests'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib' << 'test'
