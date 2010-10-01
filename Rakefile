@@ -15,7 +15,7 @@ task :build do
 end
  
 task :release => :build do
-  system "gem push graticule-#{Graticule::VERSION}"
+  system "gem push graticule-#{Graticule::VERSION}.gem"
 end
 
 task :install => :build do
