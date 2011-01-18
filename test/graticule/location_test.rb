@@ -73,9 +73,9 @@ module Graticule
     def test_time_zone
       URI::HTTP.uris = []
       URI::HTTP.responses = []
-      URI::HTTP.responses << response('geonames', :success)
-      chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
-      assert_equal 'America/Chicago', chicago.time_zone
+      URI::HTTP.responses << response('simple_geo', :success, 'json')
+      los_angeles = Location.new(:latitude => 34.48, :longitude => -117.37)
+      assert_equal 'America/Los_Angeles', los_angeles.time_zone
     end
     
     def test_casts_precision

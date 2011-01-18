@@ -52,7 +52,7 @@ module Graticule
     alias_method :antipodal_location, :antipode
     
     def time_zone
-      Graticule::Geocoder::Geonames.new.time_zone self
+      Graticule::Geocoder::SimpleGeo.new('UHYsAGwU2XyWm9Qtp7D68EBQYpnCsWEG').time_zone(self)
     end
     
     def to_s(options = {})

@@ -22,6 +22,16 @@ module Graticule
         get :address => "#{query}"
       end
 
+      # reimplement Base#get so we can return only the time zone for replacing geonames
+      def time_zone(query)
+        response = prepare_response(make_url(:address => "#{query}").open('User-Agent' => USER_AGENT).read)
+        check_error(response)
+        return parse_time_zone(response)
+      rescue OpenURI::HTTPError => e
+        check_error(prepare_response(e.io.read))
+        raise
+      end
+
     private
 
       def prepare_response(response)
@@ -34,6 +44,12 @@ module Graticule
           :longitude   => response["query"]["longitude"],
           :precision   => :unknown
         )
+      end
+
+      def parse_time_zone(response)
+        response["features"].detect do |feature|
+          feature["classifiers"].first["category"] == "Time Zone"
+        end["name"]
       end
 
       def check_error(response)
