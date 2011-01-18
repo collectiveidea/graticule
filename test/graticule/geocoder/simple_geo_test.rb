@@ -20,7 +20,7 @@ module Graticule
         )
         assert_equal location, @geocoder.locate('1600 Amphitheatre Parkway, Mountain View, CA')
       end
-      
+
       def test_error
         prepare_response :error
         assert_raises(Error) { @geocoder.locate('') }
