@@ -70,14 +70,6 @@ module Graticule
       end
     end
 
-    def test_time_zone
-      URI::HTTP.uris = []
-      URI::HTTP.responses = []
-      URI::HTTP.responses << response('simple_geo', :success, 'json')
-      los_angeles = Location.new(:latitude => 34.48, :longitude => -117.37)
-      assert_equal 'America/Los_Angeles', los_angeles.time_zone
-    end
-
     def test_casts_precision
       assert_equal Precision::Region, Location.new(:precision => :region).precision
       assert_equal Precision::Street, Location.new(:precision => Precision::Street).precision

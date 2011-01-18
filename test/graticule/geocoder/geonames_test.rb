@@ -14,9 +14,16 @@ module Graticule
         
         chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
         assert_equal 'America/Chicago', @geocoder.time_zone(chicago)
-        
       end
-          
+
+      def test_time_zone
+        URI::HTTP.uris = []
+        URI::HTTP.responses = []
+        URI::HTTP.responses << response('geonames', :success)
+        chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
+        assert_equal 'America/Chicago', @geocoder.time_zone(chicago)
+      end
+
       # def test_locate_server_error
       #   return unless prepare_response(:server_error)
       #   assert_raises(Error) { @geocoder.locate 'x' }

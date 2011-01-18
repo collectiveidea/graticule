@@ -26,6 +26,14 @@ module Graticule
         assert_raises(Error) { @geocoder.locate('') }
       end
 
+      def test_time_zone
+        URI::HTTP.uris = []
+        URI::HTTP.responses = []
+        URI::HTTP.responses << response('simple_geo', :success, 'json')
+        los_angeles = Location.new(:latitude => 34.48, :longitude => -117.37)
+        assert_equal 'America/Los_Angeles', @geocoder.time_zone(los_angeles)
+      end
+
     private
 
       def prepare_response(id = :success)

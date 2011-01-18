@@ -51,10 +51,6 @@ module Graticule
     end
     alias_method :antipodal_location, :antipode
 
-    def time_zone
-      Graticule::Geocoder::SimpleGeo.new('UHYsAGwU2XyWm9Qtp7D68EBQYpnCsWEG').time_zone(self)
-    end
-
     def to_s(options = {})
       options = {:coordinates => false, :country => true}.merge(options)
       result = ""

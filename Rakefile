@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
-require 'rubygems'
+# require 'rubygems'
 require 'bundler/setup'
 require 'graticule/version'
 require 'active_support'
