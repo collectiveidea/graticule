@@ -45,7 +45,7 @@ module Graticule
       result = Graticule.service(options[:service]).new(*options[:api_key].split(',')).locate(options[:location])
       location = (result.is_a?(Array) ? result.first : result)
       if location
-        out << location.to_s(:coordinates => true)
+        out << location.to_s(:coordinates => true) + "\n"
         exit 0
       else
         out << "Location not found"
