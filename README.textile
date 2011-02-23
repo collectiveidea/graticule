@@ -4,25 +4,25 @@ Graticule is a geocoding API for looking up address coordinates.  It supports ma
 
 h2. Usage
 
-  require 'rubygems'
-  require 'graticule'
-  geocoder = Graticule.service(:google).new "api_key"
-  location = geocoder.locate "61 East 9th Street, Holland, MI"
+<pre><code>require 'rubygems'
+require 'graticule'
+geocoder = Graticule.service(:google).new "api_key"
+location = geocoder.locate "61 East 9th Street, Holland, MI"</code></pre>
 
 h2. Distance Calculation
 
 Graticule includes 3 different distance formulas, Spherical (simplest but least accurate), Vincenty (most accurate and most complicated), and Haversine (somewhere inbetween).
 
-  geocoder.locate("Holland, MI").distance_to(geocoder.locate("Chicago, IL"))
-  #=> 101.997458788177
+<pre><code>geocoder.locate("Holland, MI").distance_to(geocoder.locate("Chicago, IL"))
+#=> 101.997458788177</code></pre>
 
 h2. Command Line
 
 Graticule includes a command line interface (CLI).
 
-  $ geocode -s yahoo -a yahookey Washington, DC
-  Washington, DC US
-  latitude: 38.895222, longitude: -77.036758
+<pre><code>$ geocode -s yahoo -a yahookey Washington, DC
+Washington, DC US
+latitude: 38.895222, longitude: -77.036758</code></pre>
 
 h2. Mailing List
 
