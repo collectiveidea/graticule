@@ -12,9 +12,9 @@ Gem::Specification.new do |s|
   s.email = %q{brandon@opensoul.org}
   s.executables = ["geocode"]
   s.extra_rdoc_files = [
-    "README.txt"
+    "README.textile"
   ]
-  s.files = Dir.glob("{bin,lib}/**/*") + %w(CHANGELOG.txt LICENSE.txt README.txt)
+  s.files = Dir.glob("{bin,lib}/**/*") + %w(CHANGELOG.txt LICENSE.txt README.textile)
   s.homepage = %q{http://github.com/collectiveidea/graticule}
   s.rdoc_options = ["--main", "README.rdoc", "--inline-source", "--line-numbers"]
   s.require_paths = ["lib"]
