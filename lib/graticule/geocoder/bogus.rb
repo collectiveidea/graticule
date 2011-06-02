@@ -7,7 +7,7 @@ module Graticule #:nodoc:
       self.responses = []
       
       # A default location to use if the responses queue is empty
-      class_inheritable_accessor :default
+      class_attribute :default
       
       def locate(address)
         responses.shift || default || Location.new(:street => address)
