@@ -25,10 +25,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
   graticule!
-  happymapper (>= 0.3.0)
-  i18n
-  json
   mocha
   rcov
