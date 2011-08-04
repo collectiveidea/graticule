@@ -25,9 +25,25 @@ module Graticule
         )
         assert_equal location, @geocoder.locate('1600 Amphitheatre Parkway, Mountain View, CA')
       end
-      
-      # The #locate parameters are broad, so the XML response contains 
-      # multiple results at street-level precision. We expect to get the 
+
+      def test_encoding
+        return unless prepare_response(:encoding)
+
+        location = Location.new(
+          :street => "Rämistrasse 4",
+          :locality => "Zürich",
+          :region=>"Zürich",
+          :postal_code => "8001",
+          :country => "CH",
+          :longitude => 8.5457186,
+          :latitude => 47.3676211,
+          :precision => 'address'
+        )
+        assert_equal location.attributes, @geocoder.locate('Rämistrasse 4, 8001 Zürich, Switzerland').attributes
+      end
+
+      # The #locate parameters are broad, so the XML response contains
+      # multiple results at street-level precision. We expect to get the
       # first result back, and it should not contain a postal code.
       def test_success_multiple_results
         return unless prepare_response(:success_multiple_results)
