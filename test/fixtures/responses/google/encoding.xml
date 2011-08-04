@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Rämistrasse 4, 8001 Zürich, Switzerland</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Rämistrasse 4, 8001 Zurich, Switzerland</address>
+    <AddressDetails Accuracy="8" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>CH</CountryNameCode><CountryName>Schweiz</CountryName><AdministrativeArea><AdministrativeAreaName>Zürich</AdministrativeAreaName><SubAdministrativeArea><SubAdministrativeAreaName>Zürich</SubAdministrativeAreaName><Locality><LocalityName>Zürich</LocalityName><DependentLocality><DependentLocalityName>Kreis 1</DependentLocalityName><Thoroughfare><ThoroughfareName>Rämistrasse 4</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>8001</PostalCodeNumber></PostalCode></DependentLocality></Locality></SubAdministrativeArea></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="47.3689701" south="47.3662721" east="8.5470676" west="8.5443696" />
+    </ExtendedData>
+    <Point><coordinates>8.5457186,47.3676211,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
