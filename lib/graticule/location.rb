@@ -10,7 +10,7 @@ module Graticule
 
     def initialize(attrs = {})
       attrs.each do |key,value|
-        self.send("#{key}=", value.is_a?(String) ? value.force_encoding('UTF-8') : value)
+        self.send("#{key}=", value.respond_to?(:force_encoding) ? value.force_encoding('UTF-8') : value)
       end
       self.precision ||= :unknown
     end
