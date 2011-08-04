@@ -13,9 +13,9 @@ module Graticule #:nodoc:
       def locate(address)
         get :locate => address.is_a?(String) ? address : location_from_params(address).to_s(:country => false)
       end
-      
+
     private
-    
+
       class Response
         include HappyMapper
         tag 'geodata'
@@ -26,25 +26,25 @@ module Graticule #:nodoc:
         element :locality, String, :deep => true, :tag => 'city'
         element :postal_code, String, :tag => 'postal'
         element :region, String, :deep => true, :tag => 'prov'
-        
+
         class Error
           include HappyMapper
           tag 'error'
           element :code, Integer
           element :description, String
         end
-        
+
         has_one :error, Error
-        
+
         def street
           [street_number, street_name].join(' ')
         end
       end
-      
+
       def prepare_response(xml)
         Response.parse(xml, :single => true)
       end
-      
+
       def parse_response(response) #:nodoc:
         Location.new(
           :latitude  => response.latitude,

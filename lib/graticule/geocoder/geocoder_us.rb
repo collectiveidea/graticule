@@ -28,13 +28,13 @@ module Graticule #:nodoc:
       def locate(address)
         get :address => address.is_a?(String) ? address : location_from_params(address).to_s(:country => false)
       end
-      
+
     private
       class Point
         include HappyMapper
         tag 'Point'
         namespace 'http://www.w3.org/2003/01/geo/wgs84_pos#'
-        
+
         element :description, String, :namespace => 'http://purl.org/dc/elements/1.1/'
         element :longitude,   Float,  :tag => 'long'
         element :latitude,    Float,  :tag => 'lat'

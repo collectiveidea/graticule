@@ -6,10 +6,10 @@ module Graticule #:nodoc:
       # A queue of canned responses
       class_attribute :responses
       self.responses = []
-      
+
       # A default location to use if the responses queue is empty
       class_attribute :default
-      
+
       def locate(address)
         responses.shift || default || Location.new(:street => address)
       end

@@ -2,7 +2,7 @@
 require 'happymapper'
 
 module Graticule
-  
+
   # Get a geocoder for the given service
   #
   #   geocoder = Graticule.service(:google).new "api_key"
@@ -12,7 +12,7 @@ module Graticule
   def self.service(name)
     Geocoder.const_get name.to_s.camelize
   end
-  
+
   # Base error class
   class Error < RuntimeError; end
   class CredentialsError < Error; end

@@ -23,7 +23,7 @@ module Graticule #:nodoc:
     # perform URL customization, override +make_url+.
     #
     #   class FakeGeocoder < Base
-    #   
+    #
     #     def initialize(appid)
     #       @appid = appid
     #       @url = URI.parse 'http://example.com/test'
@@ -32,22 +32,22 @@ module Graticule #:nodoc:
     #     def locate(query)
     #       get :q => query
     #     end
-    #   
+    #
     #   private
-    #   
+    #
     #     def check_error(xml)
     #       raise Error, xml.elements['error'].text if xml.elements['error']
     #     end
-    #   
+    #
     #     def make_url(params)
     #       params[:appid] = @appid
     #       super params
     #     end
-    #   
+    #
     #     def parse_response(response)
     #       # return Location
     #     end
-    #   
+    #
     #   end
     #
     class Base
@@ -56,9 +56,9 @@ module Graticule #:nodoc:
       def initialize
         raise NotImplementedError
       end
-      
+
     private
-    
+
       def location_from_params(params)
         case params
         when Location then params
@@ -96,7 +96,7 @@ module Graticule #:nodoc:
         url.query = escaped_params.join '&'
         return url
       end
-      
+
       # Override to convert the response to something besides a String, which
       # will get passed to +check_error+ and +parse_response+.
       def prepare_response(response)

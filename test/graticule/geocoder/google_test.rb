@@ -9,10 +9,10 @@ module Graticule
         URI::HTTP.uris = []
         @geocoder = Google.new('APP_ID')
       end
-      
+
       def test_success
         return unless prepare_response(:success)
-        
+
         location = Location.new(
           :street => "1600 Amphitheatre Pkwy",
           :locality => "Mountain View",
@@ -60,17 +60,17 @@ module Graticule
         )
         assert_equal location, @geocoder.locate('Queen St West, Toronto, ON CA')
       end
-      
+
       def test_only_coordinates
         return unless prepare_response(:only_coordinates)
-        
+
         location = Location.new(:longitude => -17.000000, :latitude => 15.000000)
         assert_equal location, @geocoder.locate('15-17 & 16 Railroad Square, Nashua, NH, 03064')
       end
-      
+
       def test_partial
         return unless prepare_response(:partial)
-        
+
         location = Location.new(
           :locality => "San Francisco",
           :region => "CA",
@@ -79,15 +79,15 @@ module Graticule
           :latitude => 37.775206,
           :precision => :locality
         )
-        
+
         assert_equal location, @geocoder.locate('sf ca')
       end
-    
+
       def test_locate_missing_address
         return unless prepare_response(:missing_address)
         assert_raises(AddressError) { @geocoder.locate 'x' }
       end
-    
+
       def test_locate_server_error
         return unless prepare_response(:server_error)
         assert_raises(Error) { @geocoder.locate 'x' }
@@ -107,7 +107,7 @@ module Graticule
         return unless prepare_response(:unknown_address)
         assert_raises(AddressError) { @geocoder.locate 'x' }
       end
-      
+
       def test_bad_key
         return unless prepare_response(:badkey)
         assert_raises(CredentialsError) { @geocoder.locate('x') }
@@ -118,7 +118,7 @@ module Graticule
       def prepare_response(id = :success)
         URI::HTTP.responses << response('google', id)
       end
-  
+
     end
   end
 end

@@ -26,14 +26,14 @@ module Graticule
       prepare_response(:success)
       assert_equal @location, @geocoder.locate('701 First Street, Sunnyvale, CA')
     end
-  
+
     def test_url
       prepare_response(:success)
       @geocoder.locate('701 First Street, Sunnyvale, CA')
       assert_equal 'http://api.local.yahoo.com/MapsService/V1/geocode?appid=APP_ID&location=701%20First%20Street,%20Sunnyvale,%20CA&output=xml',
                    URI::HTTP.uris.first
     end
-  
+
 
     def test_locate_bad_address
       prepare_response(:unknown_address)
@@ -44,7 +44,7 @@ module Graticule
       def prepare_response(id)
         URI::HTTP.responses << response('yahoo', id)
       end
-  
+
     end
   end
 end

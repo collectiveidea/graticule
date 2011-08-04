@@ -8,7 +8,7 @@ module Graticule
     # for distance formulas.
     #
     class Haversine < DistanceFormula
-      
+
       # Calculate the distance between two Locations using the Haversine formula
       #
       #   Graticule::Distance::Haversine.distance(
@@ -26,9 +26,9 @@ module Graticule
         latitude_delta  = to_latitude - from_latitude
         longitude_delta = to_longitude - from_longitude
 
-        a = sin(latitude_delta/2)**2 + 
-            cos(from_latitude) * 
-            cos(to_latitude) * 
+        a = sin(latitude_delta/2)**2 +
+            cos(from_latitude) *
+            cos(to_latitude) *
             sin(longitude_delta/2)**2
 
         c = 2 * atan2(sqrt(a), sqrt(1-a))

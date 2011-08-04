@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
-    
+
     #  freethepostcode.org (http://www.freethepostcode.org/) is a
     #  free service to convert UK postcodes into geolocation data.
     #
@@ -18,13 +18,13 @@ module Graticule #:nodoc:
       def locate(postcode)
         get :postcode => postcode
       end
-      
+
     private
 
       def prepare_response(response)
         response.split("\n")[1]
       end
-      
+
       def parse_response(response)
         data = response.split
         Location.new(:latitude => data[0].to_f, :longitude => data[1].to_f, :precision => :unknown)
@@ -33,7 +33,7 @@ module Graticule #:nodoc:
       def check_error(response)
         raise AddressError, 'unknown address' if response.blank?
       end
-      
+
     end
   end
 end

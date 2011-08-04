@@ -4,11 +4,11 @@ require 'test_helper'
 module Graticule
   module Geocoder
     class GeocoderCaTest < Test::Unit::TestCase
-      
+
       def setup
         URI::HTTP.responses = []
         URI::HTTP.uris = []
-        
+
         @geocoder = GeocoderCa.new
         @location = Location.new(
           :latitude => 45.418076,
@@ -19,12 +19,12 @@ module Graticule
           :street => "200 MUTCALF  "
         )
       end
-      
+
       def test_success
         prepare_response(:success)
         assert_equal @location, @geocoder.locate('200 mutcalf, ottawa on')
       end
-      
+
       def test_url
         prepare_response(:success)
         @geocoder.locate('200 mutcalf, ottawa on')

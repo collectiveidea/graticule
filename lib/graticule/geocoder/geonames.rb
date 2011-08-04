@@ -2,30 +2,30 @@
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
     class Geonames < Base
-      
+
       def initialize
         @url = URI.parse 'http://ws.geonames.org/timezone'
       end
-      
+
       def time_zone(location)
-        get :formatted => 'true', :style => 'full', :lat => location.latitude, :lng => location.longitude        
+        get :formatted => 'true', :style => 'full', :lat => location.latitude, :lng => location.longitude
       end
-      
-    private 
+
+    private
       class Status
         include HappyMapper
         tag 'status'
         attribute :message, String
         attribute :value, String
       end
-      
+
       class Response
         include HappyMapper
         tag 'geonames'
         element :timezoneId, String, :deep => true
         has_one :status, Status
       end
-      
+
       def prepare_response(xml)
         Response.parse(xml, :single => true)
       end
@@ -33,7 +33,7 @@ module Graticule #:nodoc:
       def parse_response(response) #:nodoc:
         response.timezoneId
       end
-      
+
       # Extracts and raises an error from +xml+, if any.
       def check_error(response) #:nodoc:
         if response && response.status

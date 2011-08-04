@@ -1,10 +1,10 @@
 # encoding: UTF-8
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
-  
+
     # First you need a Google Maps API key.  You can register for one here:
     # http://www.google.com/apis/maps/signup.html
-    # 
+    #
     #   gg = Graticule.service(:google).new(MAPS_API_KEY)
     #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
     #   p location.coordinates
@@ -12,7 +12,7 @@ module Graticule #:nodoc:
     #
     class Google < Base
       # http://www.google.com/apis/maps/documentation/#Geocoding_HTTP_Request
-    
+
       # http://www.google.com/apis/maps/documentation/reference.html#GGeoAddressAccuracy
       PRECISION = {
         0 => Precision::Unknown,      # Unknown location.
@@ -45,15 +45,15 @@ module Graticule #:nodoc:
 
         attribute :accuracy, Integer, :tag => 'Accuracy'
       end
-    
+
       class Placemark
         include HappyMapper
         tag 'Placemark'
         element :coordinates, String, :deep => true
         has_one :address, Address
-      
+
         attr_reader :longitude, :latitude
-        
+
         with_options :deep => true, :namespace => 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0' do |map|
           map.element :street,      String, :tag => 'ThoroughfareName'
           map.element :locality,    String, :tag => 'LocalityName'
@@ -61,27 +61,27 @@ module Graticule #:nodoc:
           map.element :postal_code, String, :tag => 'PostalCodeNumber'
           map.element :country,     String, :tag => 'CountryNameCode'
         end
-      
+
         def coordinates=(coordinates)
           @longitude, @latitude, _ = coordinates.split(',').map { |v| v.to_f }
         end
-      
+
         def accuracy
           address.accuracy if address
         end
-      
+
         def precision
           PRECISION[accuracy] || :unknown
         end
       end
-    
+
       class Response
         include HappyMapper
         tag 'Response'
         element :code, Integer, :tag => 'code', :deep => true
         has_many :placemarks, Placemark
       end
-      
+
       def prepare_response(xml)
         Response.parse(xml, :single => true)
       end

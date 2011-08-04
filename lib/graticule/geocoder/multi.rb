@@ -4,7 +4,7 @@ require 'timeout'
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
     class Multi
-      
+
       # The Multi geocoder allows you to use multiple geocoders in succession.
       #
       #   geocoder = Graticule.service(:multi).new(
@@ -34,7 +34,7 @@ module Graticule #:nodoc:
         @acceptable = acceptable || lambda { true }
         @geocoders = geocoders.flatten
       end
-      
+
       def locate(address)
         @lookup = @options[:async] ? ParallelLookup.new : SerialLookup.new
         last_error = nil
@@ -54,16 +54,16 @@ module Graticule #:nodoc:
         end
         @lookup.result || raise(last_error || AddressError.new("Couldn't find '#{address}' with any of the services"))
       end
-      
+
       class SerialLookup #:nodoc:
         def initialize
           @blocks = []
         end
-        
+
         def perform(&block)
           @blocks << block
         end
-        
+
         def result
           result = nil
           @blocks.detect do |block|
@@ -72,19 +72,19 @@ module Graticule #:nodoc:
           result
         end
       end
-      
+
       class ParallelLookup #:nodoc:
         def initialize
           @threads = []
           @monitor = Monitor.new
         end
-        
+
         def perform(&block)
           @threads << Thread.new do
             self.result = block.call
           end
         end
-        
+
         def result=(result)
           if result
             @monitor.synchronize do
@@ -93,7 +93,7 @@ module Graticule #:nodoc:
             end
           end
         end
-        
+
         def result
           @threads.each(&:join)
           @result

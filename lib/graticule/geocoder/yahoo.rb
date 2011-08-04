@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
-  
+
     # Yahoo geocoding API.
     #
     # http://developer.yahoo.com/maps/rest/V1/geocode.html
@@ -43,13 +43,13 @@ module Graticule #:nodoc:
         # yahoo pukes on line breaks
         get :location => location.gsub("\n", ', ')
       end
-    
+
     private
-    
+
       class Address
         include HappyMapper
         tag 'Result'
-        
+
         attribute :precision, String
         attribute :warning, String
         element :latitude, Float, :tag => 'Latitude'
@@ -59,24 +59,24 @@ module Graticule #:nodoc:
         element :region, String, :tag => 'State'
         element :postal_code, String, :tag => 'Zip'
         element :country, String, :tag => 'Country'
-        
+
         def precision
           PRECISION[@precision] || :unknown
         end
       end
-      
+
       class Result
         include HappyMapper
         tag 'ResultSet'
         has_many :addresses, Address
       end
-      
+
       class Error
         include HappyMapper
         tag 'Error'
         element :message, String, :tag => 'Message'
       end
-      
+
       def parse_response(response) # :nodoc:
         addr = Result.parse(response, :single => true).addresses.first
         Location.new(
@@ -109,6 +109,6 @@ module Graticule #:nodoc:
       end
 
     end
-    
+
   end
 end

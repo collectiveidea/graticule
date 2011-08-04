@@ -41,7 +41,7 @@ module Graticule
       end
 
       protected
-      
+
       def prepare_response(id)
         URI::HTTP.responses << response('mapquest', id)
       end

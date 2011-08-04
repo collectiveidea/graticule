@@ -7,10 +7,10 @@ module Graticule #:nodoc:
     # http://developer.mapquest.com/Home/Register?_devAPISignup_WAR_devAPISignup_action=signup&_devAPISignup_WAR_devAPISignup_clientType=Developer
     #
     # mq = Graticule.service(:mapquest).new(CLIENT_ID, PASSWORD)
-    # location = gg.locate('44 Allen Rd., Lovell, ME 04051') 
+    # location = gg.locate('44 Allen Rd., Lovell, ME 04051')
     # [42.78942, -86.104424]
     #
-    class Mapquest < Base 
+    class Mapquest < Base
       # I would link to the documentation here, but there is none that will do anything but confuse you.
 
       PRECISION = {
@@ -49,7 +49,7 @@ module Graticule #:nodoc:
         url.query = URI.escape(query)
         url
       end
-      
+
       class Address
         include HappyMapper
         tag 'GeoAddress'
@@ -61,18 +61,18 @@ module Graticule #:nodoc:
         element :postal_code, String, :tag => 'PostalCode'
         element :country, String, :tag => 'AdminArea1'
         element :result_code, String, :tag => 'ResultCode'
-        
+
         def precision
           PRECISION[result_code.to_s[0,2]] || :unknown
         end
       end
-      
+
       class Result
         include HappyMapper
         tag 'GeocodeResponse'
         has_many :addresses, Address, :deep => true
       end
-      
+
       def prepare_response(xml)
         Result.parse(xml, :single => true)
       end

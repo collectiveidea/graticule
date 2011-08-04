@@ -26,7 +26,7 @@ module Graticule
             Math.sin(from_latitude) *
             Math.sin(to_latitude) +
 
-            Math.cos(from_latitude) * 
+            Math.cos(from_latitude) *
             Math.cos(to_latitude) *
             Math.cos(to_longitude - from_longitude)
         ) * EARTH_RADIUS[units.to_sym]
@@ -47,7 +47,7 @@ module Graticule
           ) * #{Graticule::Distance::EARTH_RADIUS[options[:units].to_sym]})
         }.gsub("\n", '').squeeze(" ")
       end
-  
+
     end
   end
 end

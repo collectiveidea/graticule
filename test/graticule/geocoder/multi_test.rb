@@ -24,7 +24,7 @@ module Graticule
         @mock_geocoders.last.expects(:locate).never
         assert_equal result, @geocoder.locate('test')
       end
-      
+
       def test_locate_with_custom_block
         @mock_geocoders.first.expects(:locate).returns(1)
         @mock_geocoders.last.expects(:locate).returns(2)
@@ -38,7 +38,7 @@ module Graticule
         @geocoder = Multi.new(*@mock_geocoders) {|r| r == 3 }
         assert_raises(Graticule::AddressError) { @geocoder.locate('test') }
       end
-      
+
       def test_timeout
         @mock = @mock_geocoders.first
         def @mock.locate(*x)

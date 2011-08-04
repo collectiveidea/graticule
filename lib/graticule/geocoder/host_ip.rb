@@ -14,14 +14,14 @@ module Graticule #:nodoc:
       def locate(address)
         get :ip => address, :position => true
       end
-    
+
     private
-    
+
       def prepare_response(response)
         # add new line so YAML.load doesn't puke
         YAML.load(response + "\n")
       end
-      
+
       def parse_response(response) #:nodoc:
         Location.new.tap do |location|
           location.latitude = response['Latitude']
