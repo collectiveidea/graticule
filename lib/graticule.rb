@@ -1,3 +1,4 @@
+# encoding: UTF-8
 $:.unshift(File.dirname(__FILE__))
 
 require 'active_support'

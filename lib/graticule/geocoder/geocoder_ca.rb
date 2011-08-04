@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
 

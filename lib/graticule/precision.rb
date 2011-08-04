@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module Graticule
   
   # Used to compare the precision of different geocoded locations

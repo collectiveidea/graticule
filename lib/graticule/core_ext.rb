@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module Graticule
   module RadiansAndDegrees
     # Convert from degrees to radians

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'graticule'
 require 'optparse'
 

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'open-uri'
 
 module Graticule #:nodoc:
