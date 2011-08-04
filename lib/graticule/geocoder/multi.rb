@@ -31,8 +31,8 @@ module Graticule #:nodoc:
       #
       def initialize(*geocoders, &acceptable)
         @options = {:timeout => 10, :async => false}.merge(geocoders.extract_options!)
-        @acceptable = acceptable || lambda { true }
-        @geocoders = geocoders.flatten
+        @acceptable = acceptable || Proc.new { true }
+        @geocoders = geocoders
       end
 
       def locate(address)
