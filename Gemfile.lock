@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    graticule (2.0.1)
+    graticule (2.1.0)
       activesupport
       happymapper (>= 0.3.0)
       i18n
