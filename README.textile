@@ -28,16 +28,37 @@ h2. Mailing List
 
 Join us on the "mailing list":http://groups.google.com/group/graticule.
 
-h2. How to contribute
+h2. Contributing
 
-If you find what you might think is a bug:
+In the spirit of "free software":http://www.fsf.org/licensing/essays/free-sw.html, **everyone** is encouraged to help improve this project.
 
-# Check the "GitHub issue tracker":http://github.com/collectiveidea/graticule/issues/ to see if anyone else has had the same issue.
-# If you don't see anything, create an issue with information on how to reproduce it.
+Here are some ways *you* can contribute:
 
-If you want to contribute an enhancement or a fix:
+* using alpha, beta, and prerelease versions
+* reporting bugs
+* suggesting new features
+* writing or editing documentation
+* writing specifications
+* writing code (**no patch is too small**: fix typos, add comments, clean up inconsistent whitespace)
+* refactoring code
+* closing "issues":https://github.com/collectiveidea/graticule/issues
+* reviewing patches
 
-# Fork "the project":http://github.com/collectiveidea/graticule/ on GitHub.
-# Make your changes with tests.
-# Commit the changes without making changes to the Rakefile, VERSION, or any other files that aren't related to your enhancement or fix
-# Send a pull request.
+h2. Submitting an Issue
+
+We use the "GitHub issue tracker":https://github.com/collectiveidea/graticule/issues to track bugs
+and features. Before submitting a bug report or feature request, check to make sure it hasn't already
+been submitted. You can indicate support for an existing issuse by voting it up. When submitting a
+bug report, please include a "Gist":https://gist.github.com/ that includes a stack trace and any
+details that may be necessary to reproduce the bug, including your gem version, Ruby version, and
+operating system. Ideally, a bug report should include a pull request with failing specs.
+
+h2. Submitting a Pull Request
+
+1. Fork the project.
+2. Create a topic branch.
+3. Implement your feature or bug fix.
+4. Add specs for your feature or bug fix.
+5. Run @bundle exec rake@. If your changes are not 100% covered and passing, go back to step 4.
+6. Commit and push your changes.
+7. Submit a pull request. Please do not include changes to the gemspec, version, or history file. (If you want to create your own version for some reason, please do so in a separate commit.)
