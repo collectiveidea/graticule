@@ -23,7 +23,7 @@ module Graticule
         from_latitude   = from.latitude.to_radians
         to_longitude    = to.longitude.to_radians
         to_latitude     = to.latitude.to_radians
-        
+
         earth_major_axis_radius = EARTH_MAJOR_AXIS_RADIUS[units.to_sym]
         earth_minor_axis_radius = EARTH_MINOR_AXIS_RADIUS[units.to_sym]
 
@@ -43,7 +43,7 @@ module Graticule
         while (lambda-lambda_p).abs > 1e-12 && (iteration_limit -= 1) > 0
           sin_lambda = sin(lambda)
           cos_lambda = cos(lambda)
-          sin_sigma = sqrt((cos_u2*sin_lambda) * (cos_u2*sin_lambda) + 
+          sin_sigma = sqrt((cos_u2*sin_lambda) * (cos_u2*sin_lambda) +
             (cos_u1*sin_u2-sin_u1*cos_u2*cos_lambda) * (cos_u1*sin_u2-sin_u1*cos_u2*cos_lambda))
           return 0 if sin_sigma == 0  # co-incident points
           cos_sigma = sin_u1*sin_u2 + cos_u1*cos_u2*cos_lambda
@@ -58,20 +58,19 @@ module Graticule
           lambda_p = lambda
           lambda = l + (1-c) * f * sin_alpha *
             (sigma + c*sin_sigma*(cos2SigmaM+c*cos_sigma*(-1+2*cos2SigmaM*cos2SigmaM)))
-       end
-       # formula failed to converge (happens on antipodal points)
-       # We'll call Haversine formula instead.
-       return Haversine.distance(from, to, units) if iteration_limit == 0 
+        end
+        # formula failed to converge (happens on antipodal points)
+        # We'll call Haversine formula instead.
+        return Haversine.distance(from, to, units) if iteration_limit == 0
 
-       uSq = cosSqAlpha * (earth_major_axis_radius**2 - earth_minor_axis_radius**2) / (earth_minor_axis_radius**2)
-       a = 1 + uSq/16384*(4096+uSq*(-768+uSq*(320-175*uSq)))
-       b = uSq/1024 * (256+uSq*(-128+uSq*(74-47*uSq)))
-       delta_sigma = b*sin_sigma*(cos2SigmaM+b/4*(cos_sigma*(-1+2*cos2SigmaM*cos2SigmaM)-
-         b/6*cos2SigmaM*(-3+4*sin_sigma*sin_sigma)*(-3+4*cos2SigmaM*cos2SigmaM)))
-         
+        uSq = cosSqAlpha * (earth_major_axis_radius**2 - earth_minor_axis_radius**2) / (earth_minor_axis_radius**2)
+        a = 1 + uSq/16384*(4096+uSq*(-768+uSq*(320-175*uSq)))
+        b = uSq/1024 * (256+uSq*(-128+uSq*(74-47*uSq)))
+        delta_sigma = b*sin_sigma*(cos2SigmaM+b/4*(cos_sigma*(-1+2*cos2SigmaM*cos2SigmaM)-
+          b/6*cos2SigmaM*(-3+4*sin_sigma*sin_sigma)*(-3+4*cos2SigmaM*cos2SigmaM)))
+
         earth_minor_axis_radius * a * (sigma-delta_sigma)
       end
-  
     end
   end
 end
