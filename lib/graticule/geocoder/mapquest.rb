@@ -46,7 +46,7 @@ module Graticule #:nodoc:
         query = "e=5&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Geocode Version=\"1\"> \
           #{address_string(params[:q])}#{authentication_string}</Geocode>"
         url = @url.dup
-        url.query = URI.escape(query)
+        url.query = escape(query)
         url
       end
 

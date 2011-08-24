@@ -89,7 +89,7 @@ module Graticule #:nodoc:
       # you need to add extra params like an application id or output type.
       def make_url(params)
         escaped_params = params.sort_by { |k,v| k.to_s }.map do |k,v|
-          "#{URI.escape k.to_s}=#{URI.escape v.to_s}"
+          "#{escape k.to_s}=#{escape v.to_s}"
         end
 
         url = @url.dup
@@ -108,6 +108,14 @@ module Graticule #:nodoc:
         raise NotImplementedError
       end
 
+      def escape(string)
+        if URI.const_defined?(:Parser)
+          parser = URI::Parser.new
+          parser.escape string
+        else
+          URI.escape string
+        end
+      end
     end
   end
 end
