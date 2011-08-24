@@ -13,7 +13,7 @@ task :default => :test
 task :build do
   system "gem build graticule.gemspec"
 end
- 
+
 task :release => :build do
   system "gem push graticule-#{Graticule::VERSION}.gem"
 end
@@ -67,7 +67,7 @@ def test_config
   raise "Copy config.yml.default to config.yml and set the API keys" unless File.exists?(file)
   @test_config ||= YAML.load(File.read(file)).tap do |config|
     config.each do |service,values|
-      values['responses'].each {|file,url| update_placeholders!(values, url) }
+      values['responses'].each {|f,url| update_placeholders!(values, url) }
     end
   end
 end
