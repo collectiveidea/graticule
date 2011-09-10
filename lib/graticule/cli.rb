@@ -33,7 +33,9 @@ module Graticule
           options[:service] = service
         end
 
-        opts.on("-a apikey", "--apikey apikey", "API key for the selected service")
+        opts.on("-a apikey", "--apikey apikey", "API key for the selected service") do |apikey|
+          options[:api_key] = apikey
+        end
 
         opts.on_tail("-h", "--help", "Help") do
           puts opts
