@@ -1,6 +1,6 @@
 h1. Graticule
 
-Graticule is a geocoding API for looking up address coordinates.  It supports many popular APIs, including Yahoo, Google, Geocoder.ca and Geocoder.us.
+Graticule is a geocoding API for looking up address coordinates.  It supports many popular APIs, including Yahoo, Google, Yandex, Geocoder.ca and Geocoder.us.
 
 h2. Usage
 
