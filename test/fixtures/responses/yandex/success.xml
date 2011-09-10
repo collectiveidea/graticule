@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<ymaps xmlns="http://maps.yandex.ru/ymaps/1.x" xmlns:x="http://www.yandex.ru/xscript" xmlns:xi="http://www.w3.org/2001/XInclude"> 
+  <GeoObjectCollection> 
+    <metaDataProperty xmlns="http://www.opengis.net/gml"> 
+      <GeocoderResponseMetaData xmlns="http://maps.yandex.ru/geocoder/1.x"> 
+        <request>Россия, Москва, ул. Моховая, д.18</request> 
+        <found>5</found> 
+        <results>10</results> 
+      </GeocoderResponseMetaData> 
+    </metaDataProperty> 
+    <featureMember xmlns="http://www.opengis.net/gml"> 
+      <GeoObject xmlns="http://maps.yandex.ru/ymaps/1.x"> 
+        <metaDataProperty xmlns="http://www.opengis.net/gml"> 
+          <GeocoderMetaData xmlns="http://maps.yandex.ru/geocoder/1.x"> 
+            <kind>house</kind> 
+            <text>Россия, Москва, Моховая улица, 18</text> 
+            <precision>exact</precision> 
+            <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"> 
+              <Country> 
+                <CountryNameCode>RU</CountryNameCode> 
+                <CountryName>Россия</CountryName> 
+                <Locality> 
+                  <LocalityName>Москва</LocalityName> 
+                  <Thoroughfare> 
+                    <ThoroughfareName>Моховая улица</ThoroughfareName> 
+                    <Premise> 
+                      <PremiseNumber>18</PremiseNumber> 
+                    </Premise> 
+                  </Thoroughfare> 
+                </Locality> 
+              </Country> 
+            </AddressDetails> 
+          </GeocoderMetaData> 
+        </metaDataProperty> 
+        <name xmlns="http://www.opengis.net/gml">Моховая улица, 18</name> 
+        <boundedBy xmlns="http://www.opengis.net/gml"> 
+          <Envelope> 
+            <lowerCorner>37.608176 55.751026</lowerCorner> 
+            <upperCorner>37.616387 55.755657</upperCorner> 
+          </Envelope> 
+        </boundedBy> 
+        <Point xmlns="http://www.opengis.net/gml"> 
+          <pos>37.612281 55.753342</pos> 
+        </Point> 
+      </GeoObject> 
+    </featureMember> 
+    <featureMember xmlns="http://www.opengis.net/gml"> 
+      <GeoObject xmlns="http://maps.yandex.ru/ymaps/1.x"> 
+        <metaDataProperty xmlns="http://www.opengis.net/gml"> 
+          <GeocoderMetaData xmlns="http://maps.yandex.ru/geocoder/1.x"> 
+            <kind>house</kind> 
+            <text>Россия, Московская область, Орехово-Зуево, Моховая улица, 16</text> 
+            <precision>near</precision> 
+            <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"> 
+              <Country> 
+                <CountryNameCode>RU</CountryNameCode> 
+                <CountryName>Россия</CountryName> 
+                <AdministrativeArea> 
+                  <AdministrativeAreaName>Московская область</AdministrativeAreaName> 
+                  <Locality> 
+                    <LocalityName>Орехово-Зуево</LocalityName> 
+                    <Thoroughfare> 
+                      <ThoroughfareName>Моховая улица</ThoroughfareName> 
+                      <Premise> 
+                        <PremiseNumber>16</PremiseNumber> 
+                      </Premise> 
+                    </Thoroughfare> 
+                  </Locality> 
+                </AdministrativeArea> 
+              </Country> 
+            </AddressDetails> 
+          </GeocoderMetaData> 
+        </metaDataProperty> 
+        <name xmlns="http://www.opengis.net/gml">Моховая улица, 16</name> 
+        <boundedBy xmlns="http://www.opengis.net/gml"> 
+          <Envelope> 
+            <lowerCorner>38.938195 55.805402</lowerCorner> 
+            <upperCorner>38.946405 55.810026</upperCorner> 
+          </Envelope> 
+        </boundedBy> 
+        <Point xmlns="http://www.opengis.net/gml"> 
+          <pos>38.942300 55.807714</pos> 
+        </Point> 
+      </GeoObject> 
+    </featureMember> 
+    <featureMember xmlns="http://www.opengis.net/gml"> 
+      <GeoObject xmlns="http://maps.yandex.ru/ymaps/1.x"> 
+        <metaDataProperty xmlns="http://www.opengis.net/gml"> 
+          <GeocoderMetaData xmlns="http://maps.yandex.ru/geocoder/1.x"> 
+            <kind>house</kind> 
+            <text>Россия, Московская область, Шатурский район, Шатура, Моховая улица, 18</text> 
+            <precision>exact</precision> 
+            <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"> 
+              <Country> 
+                <CountryNameCode>RU</CountryNameCode> 
+                <CountryName>Россия</CountryName> 
+                <AdministrativeArea> 
+                  <AdministrativeAreaName>Московская область</AdministrativeAreaName> 
+                  <SubAdministrativeArea> 
+                    <SubAdministrativeAreaName>Шатурский район</SubAdministrativeAreaName> 
+                    <Locality> 
+                      <LocalityName>Шатура</LocalityName> 
+                      <Thoroughfare> 
+                        <ThoroughfareName>Моховая улица</ThoroughfareName> 
+                        <Premise> 
+                          <PremiseNumber>18</PremiseNumber> 
+                        </Premise> 
+                      </Thoroughfare> 
+                    </Locality> 
+                  </SubAdministrativeArea> 
+                </AdministrativeArea> 
+              </Country> 
+            </AddressDetails> 
+          </GeocoderMetaData> 
+        </metaDataProperty> 
+        <name xmlns="http://www.opengis.net/gml">Моховая улица, 18</name> 
+        <boundedBy xmlns="http://www.opengis.net/gml"> 
+          <Envelope> 
+            <lowerCorner>39.551106 55.562490</lowerCorner> 
+            <upperCorner>39.559317 55.567143</upperCorner> 
+          </Envelope> 
+        </boundedBy> 
+        <Point xmlns="http://www.opengis.net/gml"> 
+          <pos>39.555211 55.564816</pos> 
+        </Point> 
+      </GeoObject> 
+    </featureMember> 
+    <featureMember xmlns="http://www.opengis.net/gml"> 
+      <GeoObject xmlns="http://maps.yandex.ru/ymaps/1.x"> 
+        <metaDataProperty xmlns="http://www.opengis.net/gml"> 
+          <GeocoderMetaData xmlns="http://maps.yandex.ru/geocoder/1.x"> 
+            <kind>street</kind> 
+            <text>Россия, Московская область, Дубна, Моховая улица</text> 
+            <precision>street</precision> 
+            <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"> 
+              <Country> 
+                <CountryNameCode>RU</CountryNameCode> 
+                <CountryName>Россия</CountryName> 
+                <AdministrativeArea> 
+                  <AdministrativeAreaName>Московская область</AdministrativeAreaName> 
+                  <Locality> 
+                    <LocalityName>Дубна</LocalityName> 
+                    <Thoroughfare> 
+                      <ThoroughfareName>Моховая улица</ThoroughfareName> 
+                    </Thoroughfare> 
+                  </Locality> 
+                </AdministrativeArea> 
+              </Country> 
+            </AddressDetails> 
+          </GeocoderMetaData> 
+        </metaDataProperty> 
+        <name xmlns="http://www.opengis.net/gml">Моховая улица</name> 
+        <boundedBy xmlns="http://www.opengis.net/gml"> 
+          <Envelope> 
+            <lowerCorner>37.200098 56.746648</lowerCorner> 
+            <upperCorner>37.204284 56.748163</upperCorner> 
+          </Envelope> 
+        </boundedBy> 
+        <Point xmlns="http://www.opengis.net/gml"> 
+          <pos>37.200745 56.746949</pos> 
+        </Point> 
+      </GeoObject> 
+    </featureMember> 
+    <featureMember xmlns="http://www.opengis.net/gml"> 
+      <GeoObject xmlns="http://maps.yandex.ru/ymaps/1.x"> 
+        <metaDataProperty xmlns="http://www.opengis.net/gml"> 
+          <GeocoderMetaData xmlns="http://maps.yandex.ru/geocoder/1.x"> 
+            <kind>street</kind> 
+            <text>Россия, Московская область, Озерский район, Озеры, улица Моховая</text> 
+            <precision>street</precision> 
+            <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"> 
+              <Country> 
+                <CountryNameCode>RU</CountryNameCode> 
+                <CountryName>Россия</CountryName> 
+                <AdministrativeArea> 
+                  <AdministrativeAreaName>Московская область</AdministrativeAreaName> 
+                  <SubAdministrativeArea> 
+                    <SubAdministrativeAreaName>Озерский район</SubAdministrativeAreaName> 
+                    <Locality> 
+                      <LocalityName>Озеры</LocalityName> 
+                      <Thoroughfare> 
+                        <ThoroughfareName>улица Моховая</ThoroughfareName> 
+                      </Thoroughfare> 
+                    </Locality> 
+                  </SubAdministrativeArea> 
+                </AdministrativeArea> 
+              </Country> 
+            </AddressDetails> 
+          </GeocoderMetaData> 
+        </metaDataProperty> 
+        <name xmlns="http://www.opengis.net/gml">улица Моховая</name> 
+        <boundedBy xmlns="http://www.opengis.net/gml"> 
+          <Envelope> 
+            <lowerCorner>38.539415 54.859891</lowerCorner> 
+            <upperCorner>38.539450 54.861559</upperCorner> 
+          </Envelope> 
+        </boundedBy> 
+        <Point xmlns="http://www.opengis.net/gml"> 
+          <pos>38.539415 54.859891</pos> 
+        </Point> 
+      </GeoObject> 
+    </featureMember> 
+  </GeoObjectCollection> 
+</ymaps> 
