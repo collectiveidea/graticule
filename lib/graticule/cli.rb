@@ -29,11 +29,13 @@ module Graticule
         opts.separator ""
         opts.separator "Options: "
 
-        opts.on("-s service", %w(yahoo google geocoder_us metacarta), "--service service", "Geocoding service") do |service|
+        opts.on("-s service", %w(yahoo google yandex geocoder_us metacarta), "--service service", "Geocoding service") do |service|
           options[:service] = service
         end
 
-        opts.on("-a apikey", "--apikey apikey", "API key for the selected service")
+        opts.on("-a apikey", "--apikey apikey", "API key for the selected service") do |apikey|
+          options[:api_key] = apikey
+        end
 
         opts.on_tail("-h", "--help", "Help") do
           puts opts
