@@ -1,3 +1,8 @@
+2.2.0 (2011-09-14)
+* Added yandex geocoder
+* Lots of other changes since September 2009.
+  Check https://github.com/collectiveidea/graticule/compare/v0.2.12...master for more info
+
 * Added freethepostcode.org geocoder [Chris Lowis]
 
 0.2.12 (2009-09-06)
