@@ -38,16 +38,15 @@ module Graticule
           :latitude_column => 'latitude',
           :longitude_column => 'longitude'
         }.merge(options)
-        %{(ACOS(
+        %{(ACOS(LEAST(1,
             SIN(RADIANS(#{options[:latitude]})) *
             SIN(RADIANS(#{options[:latitude_column]})) +
             COS(RADIANS(#{options[:latitude]})) *
             COS(RADIANS(#{options[:latitude_column]})) *
             COS(RADIANS(#{options[:longitude_column]}) - RADIANS(#{options[:longitude]}))
-          ) * #{Graticule::Distance::EARTH_RADIUS[options[:units].to_sym]})
+          )) * #{Graticule::Distance::EARTH_RADIUS[options[:units].to_sym]})
         }.gsub("\n", '').squeeze(" ")
       end
-
     end
   end
 end
