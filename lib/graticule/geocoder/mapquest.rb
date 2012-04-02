@@ -1,3 +1,5 @@
+require 'htmlentities'
+
 # encoding: UTF-8
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
@@ -44,10 +46,14 @@ module Graticule #:nodoc:
 
       def make_url(params) #:nodoc
         query = "e=5&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Geocode Version=\"1\"> \
-          #{address_string(params[:q])}#{authentication_string}</Geocode>"
+          #{address_string(xml_escaped_query(params[:q]))}#{authentication_string}</Geocode>"
         url = @url.dup
         url.query = escape(query)
         url
+      end
+
+      def xml_escaped_query(query)
+        HTMLEntities.new.encode(query, :basic)
       end
 
       class Address

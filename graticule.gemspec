@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'activesupport'
   s.add_runtime_dependency 'i18n'
+	s.add_runtime_dependency 'htmlentities'
   s.add_runtime_dependency 'happymapper',   '>= 0.3.0'
   s.add_runtime_dependency 'json'
   s.add_development_dependency 'mocha'

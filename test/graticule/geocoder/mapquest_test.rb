@@ -40,6 +40,11 @@ module Graticule
         assert_equal(location, @geocoder.locate('217 Union St., NY'))
       end
 
+      def test_xml_escaping
+        @geocoder.expects(:get).with(:q => "State &amp; Main")
+        @geocoder.locate("State &amp; Main")
+      end
+
       protected
 
       def prepare_response(id)
