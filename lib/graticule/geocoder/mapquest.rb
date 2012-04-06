@@ -45,15 +45,35 @@ module Graticule #:nodoc:
       protected
 
       def make_url(params) #:nodoc
-        query = "e=5&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Geocode Version=\"1\"> \
-          #{address_string(xml_escaped_query(params[:q]))}#{authentication_string}</Geocode>"
+        request = Mapquest::Request.new(params[:q], @client_id, @password)
         url = @url.dup
-        url.query = escape(query)
+        url.query = escape(request.query)
         url
       end
 
-      def xml_escaped_query(query)
-        HTMLEntities.new.encode(query, :basic)
+      class Request
+        def initialize(address, client_id, password)
+          @address = address
+          @client_id = client_id
+          @password = password
+        end
+
+        def query
+          "e=5&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Geocode Version=\"1\"> \
+            #{address_string}#{authentication_string}</Geocode>"
+        end
+
+        def address_string
+          "<Address><Street>#{escaped_address}</Street></Address><GeocodeOptionsCollection Count=\"0\"/>"
+        end
+        
+        def authentication_string
+          "<Authentication Version=\"2\"><Password>#{@password}</Password><ClientId>#{@client_id}</ClientId></Authentication>"
+        end
+
+        def escaped_address
+          HTMLEntities.new.encode(@address, :basic)
+        end
       end
 
       class Address
@@ -102,13 +122,6 @@ module Graticule #:nodoc:
       def check_error(xml) #:nodoc
       end
 
-      def authentication_string
-        "<Authentication Version=\"2\"><Password>#{@password}</Password><ClientId>#{@client_id}</ClientId></Authentication>"
-      end
-
-      def address_string(query)
-        "<Address><Street>#{query}</Street></Address><GeocodeOptionsCollection Count=\"0\"/>"
-      end
     end
   end
 end

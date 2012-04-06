@@ -41,8 +41,8 @@ module Graticule
       end
 
       def test_xml_escaping
-        @geocoder.expects(:get).with(:q => "State &amp; Main")
-        @geocoder.locate("State &amp; Main")
+        request = Mapquest::Request.new("State & Main", 1234, "password")
+        assert_equal(request.escaped_address, "State &amp; Main")
       end
 
       protected
