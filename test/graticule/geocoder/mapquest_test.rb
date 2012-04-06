@@ -40,6 +40,14 @@ module Graticule
         assert_equal(location, @geocoder.locate('217 Union St., NY'))
       end
 
+      def test_query_construction
+        request = Mapquest::Request.new("217 Union St., NY", 1234, "password")
+        query = %Q{e=5&<?xml version="1.0" encoding="ISO-8859-1"?><Geocode Version="1">\
+<Address><Street>217 Union St., NY</Street></Address><GeocodeOptionsCollection Count="0"/>\
+<Authentication Version="2"><Password>password</Password><ClientId>1234</ClientId></Authentication></Geocode>}
+        assert_equal(query, request.query)
+      end
+
       def test_xml_escaping
         request = Mapquest::Request.new("State & Main", 1234, "password")
         assert_equal(request.escaped_address, "State &amp; Main")

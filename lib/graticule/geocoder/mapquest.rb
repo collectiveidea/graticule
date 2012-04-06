@@ -59,8 +59,7 @@ module Graticule #:nodoc:
         end
 
         def query
-          "e=5&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Geocode Version=\"1\"> \
-            #{address_string}#{authentication_string}</Geocode>"
+          "e=5&<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Geocode Version=\"1\">#{address_string}#{authentication_string}</Geocode>"
         end
 
         def address_string
