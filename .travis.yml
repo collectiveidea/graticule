@@ -7,6 +7,8 @@ rvm:
 env:
   - DB=postgresql
   - DB=mysql
+before_script:
+  - cp test/config.yml.default test/config.yml
 only:
   - master
 notifications:
