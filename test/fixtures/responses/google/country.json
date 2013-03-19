@@ -1,0 +1,43 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "United States",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 71.3898880,
+                  "lng" : -66.94976079999999
+               },
+               "southwest" : {
+                  "lat" : 18.91106420,
+                  "lng" : 172.45469660
+               }
+            },
+            "location" : {
+               "lat" : 37.090240,
+               "lng" : -95.7128910
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 49.380,
+                  "lng" : -66.940
+               },
+               "southwest" : {
+                  "lat" : 25.820,
+                  "lng" : -124.390
+               }
+            }
+         },
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

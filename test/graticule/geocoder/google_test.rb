@@ -42,18 +42,69 @@ module Graticule
         assert_equal location, @geocoder.locate('Queen St West, Toronto, ON CA')
       end
 
-      def test_partial
-        return unless prepare_response(:partial)
+      def test_precision_region
+        return unless prepare_response(:region)
+        location = Location.new(
+          :latitude=> 36.7782610,
+          :longitude=>-119.41793240,
+          :region=>"CA",
+          :country=>"US",
+          :precision=>:region
+        )
+        assert_equal location, @geocoder.locate('CA US')
+      end
 
+      def test_precision_country
+        return unless prepare_response(:country)
+        location = Location.new(
+          :latitude=>37.090240,
+          :longitude=>-95.7128910,
+          :country=>"US",
+          :precision=>:country
+        )
+        assert_equal location, @geocoder.locate('US')
+      end
+
+      def test_precision_locality
+        return unless prepare_response(:locality)
         location = Location.new(
           :latitude=>37.7749295, 
           :longitude=>-122.4194155, 
-          :locality=>"San Francisco", 
-          :region=>"CA", 
-          :country=>"US", 
+          :country=>"US",
+          :region=>"CA",
+          :locality=>"San Francisco",
           :precision=>:locality
         )
-        assert_equal location, @geocoder.locate('sf ca')
+        assert_equal location, @geocoder.locate('San Francisco, CA US')
+      end
+
+      def test_precision_street
+        return unless prepare_response(:street)
+        location = Location.new(
+          :latitude=>37.42325960000001,
+          :longitude=>-122.08563830,
+          :country=>"US",
+          :region=>"CA",
+          :street=>"Amphitheatre Pkwy",
+          :locality=>"Mountain View",
+          :precision=>:street
+        )
+        assert_equal location, @geocoder.locate('Amphitheatre Pkwy, Mountain View CA US')
+      end
+
+      def test_precision_address
+        return unless prepare_response(:address)
+        location = Location.new(
+          :latitude=>37.421641,
+          :longitude=>-122.0855016,
+          :street=>"1600 Amphitheatre Pkwy",
+          :locality=>"Mountain View",
+          :region=>"CA",
+          :postal_code=>"94043",
+          :country=>"US",
+          :precision=>:address
+        )
+        assert_equal location, @geocoder.locate('1600 Amphitheatre Parkway, Mountain View, CA')
       end
 
       def test_locate_server_error
