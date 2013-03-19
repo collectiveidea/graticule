@@ -2,17 +2,13 @@
 require 'json'
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
-
-    # First you need a Google Maps API key.  You can register for one here:
-    # http://www.google.com/apis/maps/signup.html
-    #
-    #   gg = Graticule.service(:google).new(MAPS_API_KEY)
+    #   gg = Graticule.service(:google).new(MAPS_API_KEY) API Key is not required
     #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
     #   p location.coordinates
     #   #=> [37.423111, -122.081783
     #
     class Google < Base
-      # http://www.google.com/apis/maps/documentation/#Geocoding_HTTP_Request
+      # https://developers.google.com/maps/documentation/geocoding/
 
       def initialize(key)
         @key = key
