@@ -61,7 +61,7 @@ module Graticule #:nodoc:
         end
 
         def determine_precision(types)
-          precision = nil
+          precision = Precision::Unknown
           types.each do |type|
             precision = case type
             when "premise", "subpremise"
@@ -82,7 +82,7 @@ module Graticule #:nodoc:
               precision
             end
           end
-          return precision.blank? ? Precision::Unknown : precision
+          return precision
         end
       end
 
