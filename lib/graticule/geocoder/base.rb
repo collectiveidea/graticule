@@ -81,6 +81,7 @@ module Graticule #:nodoc:
         check_error(response)
         return parse_response(response)
       rescue OpenURI::HTTPError => e
+        raise e.inspect
         check_error(prepare_response(e.io.read))
         raise
       end
@@ -91,7 +92,6 @@ module Graticule #:nodoc:
         escaped_params = params.sort_by { |k,v| k.to_s }.map do |k,v|
           "#{escape k.to_s}=#{escape v.to_s}"
         end
-
         url = @url.dup
         url.query = escaped_params.join '&'
         return url
