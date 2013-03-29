@@ -1,0 +1,48 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "California",
+               "short_name" : "CA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "California, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 42.00951690,
+                  "lng" : -114.1312110
+               },
+               "southwest" : {
+                  "lat" : 32.53423210,
+                  "lng" : -124.40961960
+               }
+            },
+            "location" : {
+               "lat" : 36.7782610,
+               "lng" : -119.41793240
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.00951690,
+                  "lng" : -114.1312110
+               },
+               "southwest" : {
+                  "lat" : 32.53423210,
+                  "lng" : -124.40961960
+               }
+            }
+         },
+         "types" : [ "administrative_area_level_1", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

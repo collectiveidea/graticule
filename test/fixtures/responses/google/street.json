@@ -1,0 +1,58 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Amphitheatre Parkway",
+               "short_name" : "Amphitheatre Pkwy",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Mountain View",
+               "short_name" : "Mountain View",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "California",
+               "short_name" : "CA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Amphitheatre Parkway, Mountain View, CA, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 37.4267180,
+                  "lng" : -122.07792340
+               },
+               "southwest" : {
+                  "lat" : 37.42070340000001,
+                  "lng" : -122.09319780
+               }
+            },
+            "location" : {
+               "lat" : 37.42325960000001,
+               "lng" : -122.08563830
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.4267180,
+                  "lng" : -122.07792340
+               },
+               "southwest" : {
+                  "lat" : 37.42070340000001,
+                  "lng" : -122.09319780
+               }
+            }
+         },
+         "types" : [ "route" ]
+      }
+   ],
+   "status" : "OK"
+}

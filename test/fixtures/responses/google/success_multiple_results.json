@@ -1,0 +1,68 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Queen Street West",
+               "short_name" : "Queen St W",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Old Toronto",
+               "short_name" : "Old Toronto",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "Toronto",
+               "short_name" : "Toronto",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Toronto",
+               "short_name" : "Toronto",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Ontario",
+               "short_name" : "ON",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Canada",
+               "short_name" : "CA",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Queen Street West, Toronto, ON, Canada",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 43.65350280,
+                  "lng" : -79.37926539999999
+               },
+               "southwest" : {
+                  "lat" : 43.63874020,
+                  "lng" : -79.44593279999999
+               }
+            },
+            "location" : {
+               "lat" : 43.6453370,
+               "lng" : -79.4132080
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 43.65350280,
+                  "lng" : -79.37926539999999
+               },
+               "southwest" : {
+                  "lat" : 43.63874020,
+                  "lng" : -79.44593279999999
+               }
+            }
+         },
+         "types" : [ "route" ]
+      }
+   ],
+   "status" : "OK"
+}

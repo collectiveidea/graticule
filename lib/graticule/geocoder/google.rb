@@ -1,93 +1,102 @@
 # encoding: UTF-8
+require 'json'
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
-
-    # First you need a Google Maps API key.  You can register for one here:
-    # http://www.google.com/apis/maps/signup.html
-    #
-    #   gg = Graticule.service(:google).new(MAPS_API_KEY)
+    #   gg = Graticule.service(:google).new(MAPS_API_KEY) API Key is not required
     #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
     #   p location.coordinates
     #   #=> [37.423111, -122.081783
     #
     class Google < Base
-      # http://www.google.com/apis/maps/documentation/#Geocoding_HTTP_Request
-
-      # http://www.google.com/apis/maps/documentation/reference.html#GGeoAddressAccuracy
-      PRECISION = {
-        0 => Precision::Unknown,      # Unknown location.
-        1 => Precision::Country,      # Country level accuracy.
-        2 => Precision::Region,       # Region (state, province, prefecture, etc.) level accuracy.
-        3 => Precision::Region,       # Sub-region (county, municipality, etc.) level accuracy.
-        4 => Precision::Locality,     # Town (city, village) level accuracy.
-        5 => Precision::PostalCode,   # Post code (zip code) level accuracy.
-        6 => Precision::Street,       # Street level accuracy.
-        7 => Precision::Street,       # Intersection level accuracy.
-        8 => Precision::Address,      # Address level accuracy.
-        9 => Precision::Premise       # Premise (building name, property name, shopping center, etc.) level accuracy.
-      }
+      # https://developers.google.com/maps/documentation/geocoding/
 
       def initialize(key)
         @key = key
-        @url = URI.parse 'http://maps.google.com/maps/geo'
+        @url = URI.parse 'http://maps.googleapis.com/maps/api/geocode/json'
       end
 
       # Locates +address+ returning a Location
       def locate(address)
-        get :q => address.is_a?(String) ? address : location_from_params(address).to_s
+        get :address => address.is_a?(String) ? address : location_from_params(address).to_s
       end
 
     private
-      class Address
-        include HappyMapper
-        tag 'AddressDetails'
-        namespace 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0'
-
-        attribute :accuracy, Integer, :tag => 'Accuracy'
-      end
-
-      class Placemark
-        include HappyMapper
-        tag 'Placemark'
-        element :coordinates, String, :deep => true
-        has_one :address, Address
-
-        attr_reader :longitude, :latitude
-
-        with_options :deep => true, :namespace => 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0' do |map|
-          map.element :street,      String, :tag => 'ThoroughfareName'
-          map.element :locality,    String, :tag => 'LocalityName'
-          map.element :region,      String, :tag => 'AdministrativeAreaName'
-          map.element :postal_code, String, :tag => 'PostalCodeNumber'
-          map.element :country,     String, :tag => 'CountryNameCode'
+      class Result
+        attr_accessor :latitude, :longitude, :street_number, :route, :locality, :region, :postal_code, :country, :precision, :formatted_address
+        def initialize(attribs)
+          @latitude = attribs["geometry"]["location"]["lat"]
+          @longitude = attribs["geometry"]["location"]["lng"]
+          @formatted_address = attribs["formatted_address"]
+          @precision = determine_precision(attribs["types"])
+          parse_address_components(attribs["address_components"])
         end
 
-        def coordinates=(coordinates)
-          @longitude, @latitude, _ = coordinates.split(',').map { |v| v.to_f }
+        def parse_address_components(components)
+          components.each do |component|
+            component["types"].each do |type|
+              case type
+              when "street_number"
+                @street_number = component["short_name"]
+              when "route"
+                @route = component["short_name"]
+              when "locality"
+                @locality = component["long_name"]
+              when "administrative_area_level_1"
+                @region = component["short_name"]
+              when "country"
+                @country = component["short_name"]
+              when "postal_code"
+                @postal_code = component["long_name"]
+              end
+            end
+          end
         end
 
-        def accuracy
-          address.accuracy if address
+        def street
+          "#{@street_number.to_s}#{" " unless @street_number.blank? || @route.blank?}#{@route.to_s}"
         end
 
-        def precision
-          PRECISION[accuracy] || :unknown
+        def determine_precision(types)
+          precision = Precision::Unknown
+          types.each do |type|
+            precision = case type
+            when "premise", "subpremise"
+              Precision::Premise
+            when "street_address"
+              Precision::Address
+            when "route", "intersection"
+              Precision::Street
+            when "postal_code"
+              Precision::PostalCode
+            when "locality","sublocality","neighborhood"
+              Precision::Locality
+            when "administrative_area_level_1", "administrative_area_level_2","administrative_area_level_3"
+              Precision::Region
+            when "country"
+              Precision::Country
+            else
+              precision
+            end
+          end
+          return precision
         end
       end
 
       class Response
-        include HappyMapper
-        tag 'Response'
-        element :code, Integer, :tag => 'code', :deep => true
-        has_many :placemarks, Placemark
+        attr_reader :results, :status
+        def initialize(json)
+          result = JSON.parse(json)
+          @results = result["results"].collect{|attribs| Result.new(attribs)}
+          @status = result["status"]
+        end
       end
 
-      def prepare_response(xml)
-        Response.parse(xml, :single => true)
+      def prepare_response(json)
+        Response.new(json)
       end
 
       def parse_response(response) #:nodoc:
-        result = response.placemarks.first
+        result = response.results.first
         Location.new(
           :latitude    => result.latitude,
           :longitude   => result.longitude,
@@ -100,31 +109,28 @@ module Graticule #:nodoc:
         )
       end
 
-      # Extracts and raises an error from +xml+, if any.
+      # Extracts and raises an error from +json+, if any.
       def check_error(response) #:nodoc:
-        case response.code
-        when 200 then # ignore, ok
-        when 500 then
-          raise Error, 'server error'
-        when 601 then
-          raise AddressError, 'missing address'
-        when 602 then
+        case response.status
+        when "OK" then # ignore, ok
+        when "ZERO_RESULTS" then
           raise AddressError, 'unknown address'
-        when 603 then
-          raise AddressError, 'unavailable address'
-        when 610 then
-          raise CredentialsError, 'invalid key'
-        when 620 then
-          raise CredentialsError, 'too many queries'
+        when "OVER_QUERY_LIMIT"
+          raise CredentialsError, 'over query limit'
+        when "REQUEST_DENIED"
+          raise CredentialsError, 'request denied'
+        when "INVALID_REQUEST"
+          raise AddressError, 'missing address'
+        when "UNKNOWN_ERROR"
+          raise Error, "unknown server error. Try again."
         else
-          raise Error, "unknown error #{response.code}"
+          raise Error, "unkown error #{response.status}"
         end
       end
 
-      # Creates a URL from the Hash +params+.
-      # sets the output type to 'xml'.
+      # Creates a URL from the Hash +params+..
       def make_url(params) #:nodoc:
-        super params.merge(:key => @key, :oe => 'utf8', :output => 'xml', :sensor => false)
+        super params.merge(:key => @key, :sensor => false)
       end
     end
   end
