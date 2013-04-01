@@ -1,3 +1,7 @@
+2.3.0 (2013-04-01)
+* Google v3 API [Adamlb]
+* Escape XML entities in GeoCoder::MapQuest queries [Simon Coffey]
+
 2.2.0 (2011-09-14)
 * Added yandex geocoder
 * Lots of other changes since September 2009.
