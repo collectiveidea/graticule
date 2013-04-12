@@ -6,6 +6,7 @@ require 'active_support'
 require 'rake/testtask'
 require 'rake/rdoctask'
 require 'rcov/rcovtask'
+require 'yaml'
 
 desc 'Default: run unit tests.'
 task :default => :test
