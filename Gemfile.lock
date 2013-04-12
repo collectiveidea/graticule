@@ -9,7 +9,7 @@ PATH
       json
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (3.2.12)
       i18n (~> 0.6)
@@ -24,12 +24,11 @@ GEM
       rake
     multi_json (1.7.2)
     rake (0.8.7)
-    rcov (0.9.9)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 1.0)
   graticule!
   mocha
-  rcov

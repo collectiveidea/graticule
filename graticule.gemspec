@@ -1,33 +1,29 @@
-# -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib/', __FILE__)
-$:.unshift lib unless $:.include?(lib)
-require 'graticule/version'
+# encoding: utf-8
 
-Gem::Specification.new do |s|
-  s.name = %q{graticule}
-  s.version = Graticule::VERSION
-  s.authors = ["Brandon Keepers", "Daniel Morrison"]
-  s.default_executable = %q{geocode}
-  s.description = %q{Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta.}
-  s.email = %q{brandon@opensoul.org}
-  s.executables = ["geocode"]
-  s.extra_rdoc_files = [
-    "README.textile"
-  ]
-  s.files = Dir.glob("{bin,lib}/**/*") + %w(CHANGELOG.txt LICENSE.txt README.textile)
-  s.homepage = %q{http://github.com/collectiveidea/graticule}
-  s.rdoc_options = ["--main", "README.rdoc", "--inline-source", "--line-numbers"]
-  s.require_paths = ["lib"]
-  s.rubyforge_project = %q{graticule}
-  s.rubygems_version = %q{1.3.5}
-  s.summary = %q{API for using all the popular geocoding services.}
+require File.expand_path("../lib/graticule/version.rb", __FILE__)
 
-  s.add_runtime_dependency 'activesupport'
-  s.add_runtime_dependency 'i18n'
-	s.add_runtime_dependency 'htmlentities'
-  s.add_runtime_dependency 'happymapper',   '>= 0.3.0'
-  s.add_runtime_dependency 'json'
-  s.add_development_dependency 'mocha'
-  s.add_development_dependency 'rcov'
+Gem::Specification.new do |spec|
+  spec.name    = "graticule"
+  spec.version = Graticule::VERSION
+
+  spec.authors     = ["Brandon Keepers", "Daniel Morrison"]
+  spec.email       = ["brandon@opensoul.org", "daniel@collectiveidea.com"]
+  spec.description = "Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta."
+  spec.summary     = "API for using all the popular geocoding services"
+  spec.homepage    = "https://github.com/collectiveidea/graticule"
+  spec.license     = "MIT"
+
+  spec.files         = `git ls-files`.split($\)
+  spec.test_files    = spec.files.grep(/^test/)
+  spec.executables   = ["geocode"]
+  spec.require_paths = ["lib"]
+
+  spec.add_dependency "activesupport"
+  spec.add_dependency "i18n"
+  spec.add_dependency "htmlentities"
+  spec.add_dependency "happymapper", ">= 0.3.0"
+  spec.add_dependency "json"
+
+  spec.add_development_dependency "bundler", "~> 1.0"
 end
 

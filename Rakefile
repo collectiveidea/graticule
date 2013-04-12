@@ -5,7 +5,6 @@ require 'graticule/version'
 require 'active_support'
 require 'rake/testtask'
 require 'rake/rdoctask'
-require 'rcov/rcovtask'
 require 'yaml'
 
 desc 'Default: run unit tests.'
@@ -37,17 +36,6 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README.txt')
   rdoc.rdoc_files.include('lib/**/*.rb')
-end
-
-namespace :test do
-  desc "just rcov minus html output"
-  Rcov::RcovTask.new(:coverage) do |t|
-    # t.libs << 'test'
-    t.test_files = FileList['test/**/*_test.rb']
-    t.output_dir = 'coverage'
-    t.verbose = true
-    t.rcov_opts = %w(--exclude test,/usr/lib/ruby,/Library/Ruby,$HOME/.gem --sort coverage)
-  end
 end
 
 require 'active_support'
