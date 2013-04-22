@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'graticule/version'
 require 'active_support'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'yaml'
 
 desc 'Default: run unit tests.'
@@ -30,7 +30,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 desc 'Generate documentatio'
-Rake::RDocTask.new(:rdoc) do |rdoc|
+RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'Graticule'
   rdoc.options << '--line-numbers' << '--inline-source'
