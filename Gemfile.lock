@@ -23,7 +23,9 @@ GEM
     mocha (0.9.8)
       rake
     multi_json (1.7.2)
-    rake (0.8.7)
+    rake (10.0.4)
+    rdoc (3.12.2)
+      json (~> 1.4)
 
 PLATFORMS
   ruby
@@ -32,3 +34,5 @@ DEPENDENCIES
   bundler (~> 1.0)
   graticule!
   mocha
+  rake (>= 0.9.2)
+  rdoc (>= 2.4.2)

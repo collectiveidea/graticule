@@ -2,16 +2,21 @@
 require 'json'
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
-    #   gg = Graticule.service(:google).new(MAPS_API_KEY) API Key is not required
+    #   gg = Graticule.service(:google).new
     #   location = gg.locate '1600 Amphitheater Pkwy, Mountain View, CA'
     #   p location.coordinates
     #   #=> [37.423111, -122.081783
     #
+    # If you have a Google business account, initialize with:
+    #
+    #   gg = Graticule.service(:google).new(MAPS_API_KEY, MAPS_CLIENT_ID)
+    #
     class Google < Base
       # https://developers.google.com/maps/documentation/geocoding/
 
-      def initialize(key)
+      def initialize(key=nil, client_id=nil)
         @key = key
+        @client_id = client_id
         @url = URI.parse 'http://maps.googleapis.com/maps/api/geocode/json'
       end
 
@@ -129,9 +134,33 @@ module Graticule #:nodoc:
       end
 
       # Creates a URL from the Hash +params+..
+      #
+      # If initialized with a key and client id for a Business account, signs
+      # the url as required by v3 of the library:
+      #
+      # https://developers.google.com/maps/documentation/business/webservices#digital_signatures
+      # 
       def make_url(params) #:nodoc:
-        super params.merge(:key => @key, :sensor => false)
+        if @key && @client_id
+          url = super params.merge(:sensor => false, :client => @client_id)
+          make_signed_url(url)
+        else
+          super params.merge(:sensor => false)
+        end
       end
+
+      def make_signed_url(original_url) #:nodoc:
+        require "base64"
+        require 'openssl'
+        url_to_sign = "#{original_url.path}?#{original_url.query}"
+        decoded_key = Base64.decode64(@key.tr("-_", "+/"))
+        signature = OpenSSL::HMAC.digest('sha1', decoded_key, url_to_sign)
+        encoded_signature = Base64.encode64(signature).tr("+/", "-_")
+        signed_url = original_url.to_s + "&signature=#{encoded_signature}"
+        #puts signed_url
+        URI.parse signed_url
+      end
+
     end
   end
 end

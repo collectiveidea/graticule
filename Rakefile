@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'graticule/version'
 require 'active_support'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'yaml'
 
 desc 'Default: run unit tests.'
@@ -30,7 +30,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 desc 'Generate documentatio'
-Rake::RDocTask.new(:rdoc) do |rdoc|
+RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'Graticule'
   rdoc.options << '--line-numbers' << '--inline-source'
@@ -53,7 +53,12 @@ end
 
 def test_config
   file = File.dirname(__FILE__) + '/test/config.yml'
-  raise "Copy config.yml.default to config.yml and set the API keys" unless File.exists?(file)
+  unless File.exists?(file)
+    raise "API keys not found.  Add them by:
+            cp #{file}.default #{file}
+            vi #{file}
+          "
+  end
   @test_config ||= YAML.load(File.read(file)).tap do |config|
     config.each do |service,values|
       values['responses'].each {|f,url| update_placeholders!(values, url) }
