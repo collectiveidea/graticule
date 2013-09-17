@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activesupport"
   spec.add_dependency "i18n"
-  spec.add_dependency "htmlentities"
   spec.add_dependency "happymapper", ">= 0.3.0"
   spec.add_dependency "json"
 
