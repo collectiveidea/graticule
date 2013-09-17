@@ -1,1 +1,317 @@
-<?xml version="1.0" encoding="ISO-8859-1"?><GeocodeResponse><LocationCollection Count="10"><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Suffolk County</AdminArea4><AdminArea5>Stony Brook</AdminArea5><LatLng><Lat>40.925598</Lat><Lng>-73.141403</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Rockland County</AdminArea4><AdminArea5>Stony Point</AdminArea5><LatLng><Lat>41.229401</Lat><Lng>-73.987503</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Dutchess County</AdminArea4><AdminArea5>Staatsburg</AdminArea5><LatLng><Lat>41.849701</Lat><Lng>-73.930603</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Delaware County</AdminArea4><AdminArea5>Stamford</AdminArea5><LatLng><Lat>42.407200</Lat><Lng>-74.614700</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Clinton County</AdminArea4><AdminArea5>Standish</AdminArea5><LatLng><Lat>44.689201</Lat><Lng>-73.949402</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Albany County</AdminArea4><AdminArea5>Stanford Heights</AdminArea5><LatLng><Lat>42.765598</Lat><Lng>-73.889397</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Dutchess County</AdminArea4><AdminArea5>Stanfordville</AdminArea5><LatLng><Lat>41.867199</Lat><Lng>-73.714699</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Allegany County</AdminArea4><AdminArea5>Stannards</AdminArea5><LatLng><Lat>42.086399</Lat><Lng>-77.922501</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Saint Lawrence County</AdminArea4><AdminArea5>Star Lake</AdminArea5><LatLng><Lat>44.159698</Lat><Lng>-75.031898</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>NY</AdminArea3><AdminArea4>Rensselaer County</AdminArea4><AdminArea5>Stephentown</AdminArea5><LatLng><Lat>42.548599</Lat><Lng>-73.374397</Lng></LatLng><ResultCode>A5XCX</ResultCode><SourceId>gaz_us</SourceId></GeoAddress></LocationCollection></GeocodeResponse>
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <info>
+    <statusCode>0</statusCode>
+    <messages/>
+    <copyright>
+      <imageUrl>http://api.mqcdn.com/res/mqlogo.gif</imageUrl>
+      <imageAltText>© 2013 MapQuest, Inc.</imageAltText>
+      <text>© 2013 MapQuest, Inc.</text>
+    </copyright>
+  </info>
+  <results>
+    <result>
+      <providedLocation>
+        <location>217 Union St., NY</location>
+      </providedLocation>
+      <locations>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Stony Brook</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Suffolk County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>40.925598</lat>
+              <lng>-73.141403</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>40.925598</lat>
+            <lng>-73.141403</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-1,40.925598,-73.141403,0,0|&center=40.925598,-73.141403&zoom=12&rand=-222523709]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Stony Point</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Rockland County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>41.229401</lat>
+              <lng>-73.987503</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>41.229401</lat>
+            <lng>-73.987503</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-2,41.229401,-73.987503,0,0|&center=41.229401,-73.987503&zoom=12&rand=-222523709]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Staatsburg</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Dutchess County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>41.849701</lat>
+              <lng>-73.930603</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>41.849701</lat>
+            <lng>-73.930603</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-3,41.849701,-73.930603,0,0|&center=41.849701,-73.930603&zoom=12&rand=-222523709]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Stamford</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Delaware County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>42.4072</lat>
+              <lng>-74.6147</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>42.4072</lat>
+            <lng>-74.6147</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-4,42.4072,-74.6147,0,0|&center=42.4072,-74.6147&zoom=12&rand=-222523709]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Standish</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Clinton County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>44.689201</lat>
+              <lng>-73.949402</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>44.689201</lat>
+            <lng>-73.949402</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-5,44.689201,-73.949402,0,0|&center=44.689201,-73.949402&zoom=12&rand=-222523709]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Stanford Heights</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Albany County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>42.765598</lat>
+              <lng>-73.889397</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>42.765598</lat>
+            <lng>-73.889397</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-6,42.765598,-73.889397,0,0|&center=42.765598,-73.889397&zoom=12&rand=-222908458]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Stanfordville</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Dutchess County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>41.867199</lat>
+              <lng>-73.714699</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>41.867199</lat>
+            <lng>-73.714699</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-7,41.867199,-73.714699,0,0|&center=41.867199,-73.714699&zoom=12&rand=-222908458]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Stannards</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Allegany County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>42.086399</lat>
+              <lng>-77.922501</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>42.086399</lat>
+            <lng>-77.922501</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-8,42.086399,-77.922501,0,0|&center=42.086399,-77.922501&zoom=12&rand=-222908458]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Star Lake</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Saint Lawrence County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>44.159698</lat>
+              <lng>-75.031898</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>44.159698</lat>
+            <lng>-75.031898</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-9,44.159698,-75.031898,0,0|&center=44.159698,-75.031898&zoom=12&rand=-222908458]]>
+          </mapUrl>
+        </location>
+        <location>
+          <street>
+          </street>
+          <adminArea5 type="City">Stephentown</adminArea5>
+          <adminArea3 type="State">NY</adminArea3>
+          <adminArea4 type="County">Rensselaer County</adminArea4>
+          <postalCode>
+          </postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>CITY</geocodeQuality>
+          <geocodeQualityCode>A5XCX</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>N</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>42.548599</lat>
+              <lng>-73.374397</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>42.548599</lat>
+            <lng>-73.374397</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-10,42.548599,-73.374397,0,0|&center=42.548599,-73.374397&zoom=12&rand=-222908458]]>
+          </mapUrl>
+        </location>
+      </locations>
+    </result>
+  </results>
+  <options>
+    <maxResults>-1</maxResults>
+    <thumbMaps>true</thumbMaps>
+    <ignoreLatLngInput>false</ignoreLatLngInput>
+    <boundingBox/>
+  </options>
+</response>
