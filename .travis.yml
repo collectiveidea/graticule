@@ -2,9 +2,7 @@ language: ruby
 rvm:
   - 1.8.7
   - 1.9.3
-env:
-  - DB=postgresql
-  - DB=mysql
+  - 2.0.0
 before_script:
   - cp test/config.yml.default test/config.yml
 only:
