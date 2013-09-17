@@ -7,6 +7,7 @@ module Graticule
     attr_reader :name
 
     NAMES = [
+      :point,
       :unknown,
       :country,
       :region,
@@ -23,6 +24,7 @@ module Graticule
     end
 
     Unknown    = Precision.new(:unknown)
+    Point      = Precision.new(:point)
     Country    = Precision.new(:country)
     Region     = Precision.new(:region)
     Locality   = Precision.new(:locality)

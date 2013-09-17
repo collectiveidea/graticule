@@ -7,18 +7,18 @@ module Graticule
       def setup
         URI::HTTP.responses = []
         URI::HTTP.uris = []
-        @geocoder = Mapquest.new('client_id', 'password')
+        @geocoder = Mapquest.new('api_key')
       end
 
       def test_success
         prepare_response(:success)
         location = Location.new(
           :country => "US",
-          :latitude => 44.152019,
+          :latitude => 44.15175,
           :locality => "Lovell",
-          :longitude => -70.892706,
+          :longitude => -70.893,
           :postal_code => "04051-3919",
-          :precision => :address,
+          :precision => :point,
           :region => "ME",
           :street => "44 Allen Rd"
         )
@@ -41,16 +41,9 @@ module Graticule
       end
 
       def test_query_construction
-        request = Mapquest::Request.new("217 Union St., NY", 1234, "password")
-        query = %Q{e=5&<?xml version="1.0" encoding="ISO-8859-1"?><Geocode Version="1">\
-<Address><Street>217 Union St., NY</Street></Address><GeocodeOptionsCollection Count="0"/>\
-<Authentication Version="2"><Password>password</Password><ClientId>1234</ClientId></Authentication></Geocode>}
+        request = Mapquest::Request.new("217 Union St., NY", "api_key")
+        query = %Q{key=api_key&outFormat=xml&inFormat=kvp&location=217%20Union%20St.,%20NY}
         assert_equal(query, request.query)
-      end
-
-      def test_xml_escaping
-        request = Mapquest::Request.new("State & Main", 1234, "password")
-        assert_equal(request.escaped_address, "State &amp; Main")
       end
 
       protected

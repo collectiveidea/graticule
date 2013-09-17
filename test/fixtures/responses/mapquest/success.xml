@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="ISO-8859-1"?><GeocodeResponse><LocationCollection Count="1"><GeoAddress><AdminArea1>US</AdminArea1><AdminArea3>ME</AdminArea3><AdminArea4>Oxford County</AdminArea4><AdminArea5>Lovell</AdminArea5><PostalCode>04051-3919</PostalCode><Street>44 Allen Rd</Street><LatLng><Lat>44.152019</Lat><Lng>-70.892706</Lng></LatLng><ResultCode>L1AAA</ResultCode><SourceId>navt</SourceId></GeoAddress></LocationCollection></GeocodeResponse>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<response>
+  <info>
+    <statusCode>0</statusCode>
+    <messages/>
+    <copyright>
+      <imageUrl>http://api.mqcdn.com/res/mqlogo.gif</imageUrl>
+      <imageAltText>© 2013 MapQuest, Inc.</imageAltText>
+      <text>© 2013 MapQuest, Inc.</text>
+    </copyright>
+  </info>
+  <results>
+    <result>
+      <providedLocation>
+        <location>44 Allen Rd., Lovell, ME 04051</location>
+      </providedLocation>
+      <locations>
+        <location>
+          <street>44 Allen Rd</street>
+          <adminArea5 type="City">Lovell</adminArea5>
+          <adminArea3 type="State">ME</adminArea3>
+          <adminArea4 type="County">Oxford County</adminArea4>
+          <postalCode>04051-3919</postalCode>
+          <adminArea1 type="Country">US</adminArea1>
+          <geocodeQuality>POINT</geocodeQuality>
+          <geocodeQualityCode>P1AAA</geocodeQualityCode>
+          <dragPoint>false</dragPoint>
+          <sideOfStreet>L</sideOfStreet>
+          <displayLatLng>
+            <latLng>
+              <lat>44.15175</lat>
+              <lng>-70.893</lng>
+            </latLng>
+          </displayLatLng>
+          <linkId>0</linkId>
+          <type>s</type>
+          <latLng>
+            <lat>44.15218</lat>
+            <lng>-70.89297</lng>
+          </latLng>
+          <mapUrl>
+            <![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnu,7w=o5-9utnh0&type=map&size=225,160&pois=purple-1,44.15218,-70.89297,0,0|&center=44.15218,-70.89297&zoom=15&rand=2024978506]]>
+          </mapUrl>
+        </location>
+      </locations>
+    </result>
+  </results>
+  <options>
+    <maxResults>-1</maxResults>
+    <thumbMaps>true</thumbMaps>
+    <ignoreLatLngInput>false</ignoreLatLngInput>
+    <boundingBox/>
+  </options>
+</response>
