@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.name    = "graticule"
   spec.version = Graticule::VERSION
 
-  spec.authors     = ["Brandon Keepers", "Daniel Morrison"]
-  spec.email       = ["brandon@opensoul.org", "daniel@collectiveidea.com"]
+  spec.authors     = ["Brandon Keepers", "Daniel Morrison", "Collective Idea"]
+  spec.email       = ["brandon@opensoul.org", "daniel@collectiveidea.com", "code@collectiveidea.com"]
   spec.description = "Graticule is a geocoding API that provides a common interface to all the popular services, including Google, Yahoo, Geocoder.us, and MetaCarta."
   spec.summary     = "API for using all the popular geocoding services"
   spec.homepage    = "https://github.com/collectiveidea/graticule"
@@ -22,7 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "i18n"
   spec.add_dependency "happymapper", ">= 0.3.0"
   spec.add_dependency "json"
-
-  spec.add_development_dependency "bundler", "~> 1.0"
 end
 
