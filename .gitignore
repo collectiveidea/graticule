@@ -1,3 +1,4 @@
+Gemfile.lock
 test/config.yml
 *.gem
 pkg
