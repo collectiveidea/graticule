@@ -23,13 +23,15 @@ module Graticule
 
     def self.start(args, out = STDOUT)
       options = { :service => :yahoo, :api_key => 'YahooDemo' }
+      supported_services = %w(yahoo google yandex geocoder_us metacarta)
 
       OptionParser.new do |opts|
         opts.banner = "Usage: geocode [options] location"
         opts.separator ""
         opts.separator "Options: "
 
-        opts.on("-s service", %w(yahoo google yandex geocoder_us metacarta), "--service service", "Geocoding service") do |service|
+        opts.on("-s service", supported_services, "--service service",
+                "Geocoding service.", "Currently supported services: #{supported_services.join(", ")}") do |service|
           options[:service] = service
         end
 

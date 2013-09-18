@@ -77,7 +77,7 @@ Graticule::Distance::Haversine.distance(holland, chicago, :kilometers)
 
 #### Command Line
 
-Graticule includes a command line interface (CLI).
+Graticule includes a command line interface (CLI). The CLI does not currently support all of the implemented services.
 
 ```
 $ geocode -s google -a [api_key] Washington, DC
