@@ -1,10 +1,9 @@
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
-# require 'rubygems'
+
 require 'bundler/setup'
 require 'graticule/version'
 require 'active_support'
 require 'rake/testtask'
-require 'rdoc/task'
 require 'yaml'
 
 desc 'Default: run unit tests.'
@@ -27,15 +26,6 @@ Rake::TestTask.new(:test) do |t|
   t.libs << 'lib' << 'test'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
-end
-
-desc 'Generate documentatio'
-RDoc::Task.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Graticule'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.txt')
-  rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
 require 'active_support'
