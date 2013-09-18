@@ -5,7 +5,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'test/unit'
 require 'graticule'
-require 'mocha'
+require 'mocha/setup'
 require 'mocks/uri'
 
 TEST_RESPONSE_PATH = File.dirname(__FILE__) + '/fixtures/responses'
