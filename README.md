@@ -48,12 +48,32 @@ For specific service documentation, please visit the [RDOCS -- rdoc.info link].
 
 #### Distance Calculation
 
-Graticule includes 3 different distance formulas, Spherical (simplest but least accurate), Vincenty (most accurate and most complicated), and Haversine (somewhere inbetween).
+Graticule includes 3 different distance formulas, Spherical (simplest but least accurate), Vincenty (most accurate and most complicated), and Haversine (somewhere inbetween). The default is Haversine. There are two ways to calculate the distance between two points.
+
+First is `Location#distance_to`:
 
 ```
-geocoder.locate("Holland, MI").distance_to(geocoder.locate("Chicago, IL"))
+holland = geocoder.locate("Holland, MI")
+chicago = geocoder.locate("Chicago, IL")
+holland.distance_to(chicago, :formula => :haversine) # or :spherical or :vincenty
 # => 101.997458788177
 ```
+
+You can also use the formula classes directly:
+
+```
+Graticule::Distance::Haversine.distance(holland, chicago)
+# => 101.997458788177
+```
+
+All units are miles by default, but you can switch to kilometers with the `units` option
+
+```
+holland.distance_to(chicago, :units => :kilometers)
+#
+Graticule::Distance::Haversine.distance(holland, chicago, :kilometers)
+```
+
 
 #### Command Line
 
