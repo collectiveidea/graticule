@@ -1,4 +1,4 @@
-Copyright 2006 Brandon Keepers, Collective Idea.  All rights reserved.
+Copyright 2013 Brandon Keepers, Collective Idea.  All rights reserved.
 
 Original geocoding code:
   Copyright 2006 Eric Hodel, The Robot Co-op.  All rights reserved.
