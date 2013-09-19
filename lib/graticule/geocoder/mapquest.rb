@@ -26,7 +26,7 @@ module Graticule #:nodoc:
       def make_url(params) #:nodoc
         request = Mapquest::Request.new(params[:q], @api_key)
         url = @url.dup
-        url.query = escape(request.query)
+        url.query = request.query
         url
       end
 
@@ -37,7 +37,7 @@ module Graticule #:nodoc:
         end
 
         def query
-          "key=#{@api_key}&outFormat=xml&inFormat=kvp&location=#{URI.escape(@address)}"
+          "key=#{URI.escape(@api_key)}&outFormat=xml&inFormat=kvp&location=#{URI.escape(@address)}"
         end
       end
 
