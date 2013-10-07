@@ -44,7 +44,7 @@ geocoder = Graticule.service(:google).new "api_key"
 location = geocoder.locate("61 East 9th Street, Holland, MI")
 ```
 
-For specific service documentation, please visit the [RDOCS -- rdoc.info link].
+For specific service documentation, please visit the [documentation](http://rdoc.info/github/collectiveidea/graticule).
 
 #### Distance Calculation
 
