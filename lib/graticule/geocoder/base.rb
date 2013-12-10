@@ -81,7 +81,6 @@ module Graticule #:nodoc:
         check_error(response)
         return parse_response(response)
       rescue OpenURI::HTTPError => e
-        raise e.inspect
         check_error(prepare_response(e.io.read))
         raise
       end
