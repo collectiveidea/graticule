@@ -44,8 +44,8 @@ module Graticule #:nodoc:
                 @street_number = component["short_name"]
               when "route"
                 @route = component["short_name"]
-              when "locality"
-                @locality = component["long_name"]
+              when "locality", "sublocality"
+                @locality = component["long_name"] 
               when "administrative_area_level_1"
                 @region = component["short_name"]
               when "country"
