@@ -73,7 +73,7 @@ module Graticule
       end
 
       def make_url(params)
-        query = URI.escape(params[:q])
+        query = URI.escape(params[:q].to_s)
         url   = "#{BASE_URL}/v3/#{@api_key}/geocode/#{query}.json"
 
         URI.parse(url)
