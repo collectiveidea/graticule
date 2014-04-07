@@ -40,25 +40,27 @@ module Graticule
 
         def initialize(input)
           self.precision = ::Graticule::Precision::Unknown
+          self.lat = input.first["lat"]
+          self.lon = input.first["lon"]
 
           input.each do |tuple|
             case tuple["type"]
-            when "address"
-              self.lat = tuple["lat"]
-              self.lon = tuple["lon"]
-              self.address = tuple["name"]
-
-              set_higher_precision(::Graticule::Precision::Address)
-            when "city"
-              self.city = tuple["name"]
-              set_higher_precision(::Graticule::Precision::Locality)
-              self.postal_code = tuple["id"].split(".")[1]
-            when "province"
-              self.province = tuple["name"]
-              set_higher_precision(::Graticule::Precision::Region)
-            when "country"
-              self.country = tuple["name"]
-              set_higher_precision(::Graticule::Precision::Country)
+              when "zipcode"
+                self.postal_code = tuple["name"]
+                set_higher_precision(::Graticule::Precision::PostalCode)
+              when "address"
+                self.address = tuple["name"]
+                set_higher_precision(::Graticule::Precision::Address)
+              when "city"
+                self.city = tuple["name"]
+                set_higher_precision(::Graticule::Precision::Locality)
+                self.postal_code = tuple["id"].split(".")[1]
+              when "province"
+                self.province = tuple["name"]
+                set_higher_precision(::Graticule::Precision::Region)
+              when "country"
+                self.country = tuple["name"]
+                set_higher_precision(::Graticule::Precision::Country)
             end
           end
         end
@@ -73,7 +75,7 @@ module Graticule
       end
 
       def make_url(params)
-        query = URI.escape(params[:q])
+        query = URI.escape(params[:q].to_s)
         url   = "#{BASE_URL}/v3/#{@api_key}/geocode/#{query}.json"
 
         URI.parse(url)
