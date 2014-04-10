@@ -11,9 +11,13 @@ module Graticule #:nodoc:
     #
     class Mapquest < Base
 
-      def initialize(api_key)
+      def initialize(api_key, open = false)
         @api_key = api_key
-        @url = URI.parse('http://www.mapquestapi.com/geocoding/v1/address')
+        @url = if open
+                 URI.parse('http://open.mapquestapi.com/geocoding/v1/address')
+               else
+                 URI.parse('http://www.mapquestapi.com/geocoding/v1/address')
+               end
       end
 
       # Locates +address+ returning a Location
