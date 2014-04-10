@@ -5,7 +5,7 @@ module Graticule
   module Geocoder
     class MapboxTest < Test::Unit::TestCase
       def setup
-        @geocoder = Mapbox.new("breakthrough.hm6lgdkl")
+        @geocoder = Mapbox.new("api_key")
       end
 
       def test_locate_success
