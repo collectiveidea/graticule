@@ -7,10 +7,10 @@ module Graticule
       def setup
         URI::HTTP.responses = []
         URI::HTTP.uris = []
-        @geocoder = Mapquest.new('api_key')
       end
 
       def test_success
+        @geocoder = Mapquest.new('api_key')
         prepare_response(:success)
         location = Location.new(
           :country => "US",
@@ -26,6 +26,7 @@ module Graticule
       end
 
       def test_multi_result
+        @geocoder = Mapquest.new('api_key')
         prepare_response(:multi_result)
         location = Location.new(
           :country => "US",
@@ -38,6 +39,22 @@ module Graticule
           :street => nil
         )
         assert_equal(location, @geocoder.locate('217 Union St., NY'))
+      end
+
+      def test_multi_country
+        @geocoder = Mapquest.new('api_key', false, 'US')
+        prepare_response(:multi_country_success)
+        location = Location.new(
+            :country => "US",
+            :latitude => 30.280046,
+            :locality => "",
+            :longitude => -90.786583,
+            :postal_code => "12345",
+            :precision => :postal_code,
+            :region => "LA",
+            :street => nil
+        )
+        assert_equal(location, @geocoder.locate('12345 us'))
       end
 
       def test_query_construction
