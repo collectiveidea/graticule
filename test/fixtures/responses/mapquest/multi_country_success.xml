@@ -1,0 +1,171 @@
+<response>
+<info>
+<statusCode>0</statusCode>
+<messages/>
+<copyright>
+<imageUrl>http://api.mqcdn.com/res/mqlogo.gif</imageUrl>
+<imageAltText>© 2014 MapQuest, Inc.</imageAltText>
+<text>© 2014 MapQuest, Inc.</text>
+</copyright>
+</info>
+<results>
+<result>
+<providedLocation>
+<location>12345 US</location>
+</providedLocation>
+<locations>
+<location>
+<street/>
+<adminArea5 type="City">Us</adminArea5>
+<adminArea3 type="State">Ile-de-France</adminArea3>
+<adminArea4 type="County">Pontoise</adminArea4>
+<postalCode/>
+<adminArea1 type="Country">FR</adminArea1>
+<geocodeQuality>CITY</geocodeQuality>
+<geocodeQualityCode>A5XXX</geocodeQualityCode>
+<dragPoint>false</dragPoint>
+<sideOfStreet>N</sideOfStreet>
+<displayLatLng>
+<latLng>
+<lat>49.100945</lat>
+<lng>1.967247</lng>
+</latLng>
+</displayLatLng>
+<linkId>0</linkId>
+<type>s</type>
+<latLng>
+<lat>49.100945</lat>
+<lng>1.967247</lng>
+</latLng>
+<mapUrl>
+<![CDATA[
+http://open.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnq,8w=o5-9utlur&type=map&size=225,160&pois=purple-1,49.1009451,1.9672466,0,0|&center=49.1009451,1.9672466&zoom=12&rand=-1921049987
+]]>
+</mapUrl>
+</location>
+<location>
+<street/>
+<adminArea5 type="City">Us</adminArea5>
+<adminArea3 type="State">Bourgogne</adminArea3>
+<adminArea4 type="County">Louhans</adminArea4>
+<postalCode/>
+<adminArea1 type="Country">FR</adminArea1>
+<geocodeQuality>CITY</geocodeQuality>
+<geocodeQualityCode>A5XXX</geocodeQualityCode>
+<dragPoint>false</dragPoint>
+<sideOfStreet>N</sideOfStreet>
+<displayLatLng>
+<latLng>
+<lat>46.818792</lat>
+<lng>5.281419</lng>
+</latLng>
+</displayLatLng>
+<linkId>0</linkId>
+<type>s</type>
+<latLng>
+<lat>46.818792</lat>
+<lng>5.281419</lng>
+</latLng>
+<mapUrl>
+<![CDATA[
+http://open.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnq,8w=o5-9utlur&type=map&size=225,160&pois=purple-2,46.8187918,5.2814186,0,0|&center=46.8187918,5.2814186&zoom=12&rand=-1921049987
+]]>
+</mapUrl>
+</location>
+<location>
+<street/>
+<adminArea5 type="City">Us</adminArea5>
+<adminArea3 type="State"/>
+<adminArea4 type="County"/>
+<postalCode/>
+<adminArea1 type="Country">ID</adminArea1>
+<geocodeQuality>CITY</geocodeQuality>
+<geocodeQualityCode>A5XXX</geocodeQualityCode>
+<dragPoint>false</dragPoint>
+<sideOfStreet>N</sideOfStreet>
+<displayLatLng>
+<latLng>
+<lat>-2.771829</lat>
+<lng>132.186285</lng>
+</latLng>
+</displayLatLng>
+<linkId>0</linkId>
+<type>s</type>
+<latLng>
+<lat>-2.771829</lat>
+<lng>132.186285</lng>
+</latLng>
+<mapUrl>
+<![CDATA[
+http://open.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnq,8w=o5-9utlur&type=map&size=225,160&pois=purple-3,-2.771829,132.1862852,0,0|&center=-2.771829,132.1862852&zoom=12&rand=-1921049987
+]]>
+</mapUrl>
+</location>
+<location>
+<street/>
+<adminArea5 type="City"/>
+<adminArea3 type="State">LA</adminArea3>
+<adminArea4 type="County">Ascension Parish</adminArea4>
+<postalCode>12345</postalCode>
+<adminArea1 type="Country">US</adminArea1>
+<geocodeQuality>ZIP</geocodeQuality>
+<geocodeQualityCode>Z1XXA</geocodeQualityCode>
+<dragPoint>false</dragPoint>
+<sideOfStreet>N</sideOfStreet>
+<displayLatLng>
+<latLng>
+<lat>30.280046</lat>
+<lng>-90.786583</lng>
+</latLng>
+</displayLatLng>
+<linkId>0</linkId>
+<type>s</type>
+<latLng>
+<lat>30.280046</lat>
+<lng>-90.786583</lng>
+</latLng>
+<mapUrl>
+<![CDATA[
+http://open.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnq,8w=o5-9utlur&type=map&size=225,160&pois=purple-4,30.2800464733256,-90.7865829472683,0,0|&center=30.2800464733256,-90.7865829472683&zoom=12&rand=-1921049987
+]]>
+</mapUrl>
+</location>
+<location>
+<street/>
+<adminArea5 type="City">Uz</adminArea5>
+<adminArea3 type="State">Midi-Pyrénées</adminArea3>
+<adminArea4 type="County">Argelès-Gazost</adminArea4>
+<postalCode/>
+<adminArea1 type="Country">FR</adminArea1>
+<geocodeQuality>CITY</geocodeQuality>
+<geocodeQualityCode>A5XXX</geocodeQualityCode>
+<dragPoint>false</dragPoint>
+<sideOfStreet>N</sideOfStreet>
+<displayLatLng>
+<latLng>
+<lat>42.966369</lat>
+<lng>-0.085232</lng>
+</latLng>
+</displayLatLng>
+<linkId>0</linkId>
+<type>s</type>
+<latLng>
+<lat>42.966369</lat>
+<lng>-0.085232</lng>
+</latLng>
+<mapUrl>
+<![CDATA[
+http://open.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luub2hutnq,8w=o5-9utlur&type=map&size=225,160&pois=purple-5,42.9663688,-0.0852324,0,0|&center=42.9663688,-0.0852324&zoom=12&rand=-1921049987
+]]>
+</mapUrl>
+</location>
+</locations>
+</result>
+</results>
+<options>
+<maxResults>-1</maxResults>
+<thumbMaps>true</thumbMaps>
+<ignoreLatLngInput>false</ignoreLatLngInput>
+<boundingBox/>
+</options>
+</response>

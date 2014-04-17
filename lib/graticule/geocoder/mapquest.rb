@@ -11,13 +11,14 @@ module Graticule #:nodoc:
     #
     class Mapquest < Base
 
-      def initialize(api_key, open = false)
+      def initialize(api_key, open = false, restrict_to_country = nil)
         @api_key = api_key
         @url = if open
                  URI.parse('http://open.mapquestapi.com/geocoding/v1/address')
                else
                  URI.parse('http://www.mapquestapi.com/geocoding/v1/address')
                end
+        @country_filter = restrict_to_country
       end
 
       # Locates +address+ returning a Location
@@ -101,7 +102,11 @@ module Graticule #:nodoc:
 
       # Extracts a location from +xml+.
       def parse_response(response) #:nodoc:
-        addr = response.result.locations.addresses.first
+        if @country_filter
+          addr = response.result.locations.addresses.select{|address| address.country == @country_filter}.first
+        else
+          addr = response.result.locations.addresses.first
+        end
         Location.new(
           :latitude    => addr.latitude,
           :longitude   => addr.longitude,
