@@ -11,14 +11,14 @@ module Graticule #:nodoc:
     #
     class Mapquest < Base
 
-      def initialize(api_key, open = false, limited_to_country = nil)
+      def initialize(api_key, open = false, restrict_to_country = nil)
         @api_key = api_key
         @url = if open
                  URI.parse('http://open.mapquestapi.com/geocoding/v1/address')
                else
                  URI.parse('http://www.mapquestapi.com/geocoding/v1/address')
                end
-        @country_filter = limited_to_country
+        @country_filter = restrict_to_country
       end
 
       # Locates +address+ returning a Location
