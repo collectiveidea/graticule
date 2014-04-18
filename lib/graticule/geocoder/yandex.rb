@@ -36,11 +36,28 @@ module Graticule #:nodoc:
 
     private
 
+      class Country
+        include HappyMapper
+
+        register_namespace "xmlns", "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"
+
+        tag "Country"
+
+        element :street,      String, :deep => true, :tag => 'ThoroughfareName'
+        element :locality,    String, :deep => true, :tag => 'LocalityName'
+        element :region,      String, :deep => true, :tag => 'AdministrativeAreaName'
+        element :postal_code, String, :deep => true, :tag => 'PostalCodeNumber'
+        element :country,     String, :deep => true, :tag => 'CountryNameCode'
+      end
+
       class GeocoderMetaData
         include HappyMapper
 
-        tag 'GeocoderMetaData'
-        namespace 'http://maps.yandex.ru/geocoder/1.x'
+        register_namespace "xmlns", "http://maps.yandex.ru/geocoder/1.x"
+
+        tag "GeocoderMetaData"
+
+        has_one :address, Country
 
         element :kind, String, :tag => 'kind'
       end
@@ -48,22 +65,15 @@ module Graticule #:nodoc:
       class FeatureMember
         include HappyMapper
 
-        tag 'featureMember'
-        namespace 'http://www.opengis.net/gml'
+        register_namespace "xmlns", "http://www.opengis.net/gml"
+
+        tag "featureMember"
 
         has_one :geocoder_meta_data, GeocoderMetaData
 
         attr_reader :longitude, :latitude
 
         element :coordinates, String, :tag => 'pos', :deep => true
-
-        with_options :deep => true, :namespace => 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0' do |map|
-          map.element :street,      String, :tag => 'ThoroughfareName'
-          map.element :locality,    String, :tag => 'LocalityName'
-          map.element :region,      String, :tag => 'AdministrativeAreaName'
-          map.element :postal_code, String, :tag => 'PostalCodeNumber'
-          map.element :country,     String, :tag => 'CountryNameCode'
-        end
 
         def coordinates=(coordinates)
           @longitude, @latitude = coordinates.split(' ').map { |v| v.to_f }
@@ -78,6 +88,7 @@ module Graticule #:nodoc:
         include HappyMapper
 
         tag 'error'
+
         element :status, Integer, :tag => 'status'
         element :message, String, :tag => 'message'
       end
@@ -85,8 +96,18 @@ module Graticule #:nodoc:
       class Response
         include HappyMapper
 
+        register_namespace 'xmlns', 'http://maps.yandex.ru/ymaps/1.x'
+
         tag 'GeoObjectCollection'
+
         has_many :feature_members, FeatureMember
+
+        with_nokogiri_config do |config|
+          config.nsclean
+          config.strict
+          config.dtdload
+          config.dtdvalid
+        end
 
         def status
           200
@@ -102,9 +123,9 @@ module Graticule #:nodoc:
         Location.new(
           :latitude    => result.latitude,
           :longitude   => result.longitude,
-          :street      => result.street,
-          :locality    => result.locality,
-          :country     => result.country,
+          :street      => result.geocoder_meta_data.address.street,
+          :locality    => result.geocoder_meta_data.address.locality,
+          :country     => result.geocoder_meta_data.address.country,
           :precision   => result.precision
         )
       end
