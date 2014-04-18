@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
+  - 2.1.1
+before_install:
+  - sudo apt-get install libxslt-dev libxml2-dev
 before_script:
   - cp test/config.yml.default test/config.yml
 only:
