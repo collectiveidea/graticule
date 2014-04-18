@@ -1,8 +1,12 @@
 # encoding: UTF-8
 $:.unshift(File.dirname(__FILE__))
 
-require 'active_support'
-require 'active_support/core_ext'
+require 'active_support/inflections'
+require 'active_support/core_ext/class/attribute'
+require 'active_support/core_ext/hash/keys'
+require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/object/with_options'
+require 'active_support/core_ext/string/inflections'
 
 require 'graticule/version'
 require 'graticule/core_ext'
