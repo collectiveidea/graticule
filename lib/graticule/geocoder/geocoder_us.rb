@@ -33,9 +33,9 @@ module Graticule #:nodoc:
       class Point
         include HappyMapper
         tag 'Point'
-        namespace 'http://www.w3.org/2003/01/geo/wgs84_pos#'
+        namespace 'geo'
 
-        element :description, String, :namespace => 'http://purl.org/dc/elements/1.1/'
+        element :description, String, :namespace => 'dc'
         element :longitude,   Float,  :tag => 'long'
         element :latitude,    Float,  :tag => 'lat'
       end
