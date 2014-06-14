@@ -28,6 +28,12 @@ module Graticule
       end
 
       def test_locate_not_found
+        URI::HTTP.responses << response("mapbox", "empty_results", "json")
+
+        assert_raises(AddressError) { @geocoder.locate 'asdfjkl' }
+      end
+      
+      def test_no_results_returned
         URI::HTTP.responses << response("mapbox", "no_results", "json")
 
         assert_raises(AddressError) { @geocoder.locate 'asdfjkl' }

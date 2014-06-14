@@ -82,7 +82,7 @@ module Graticule
       end
 
       def check_error(response)
-        raise AddressError, 'unknown address' if response["results"].empty?
+        raise AddressError, 'unknown address' if (response["results"].nil? || response["results"].empty?)
       end
 
       def prepare_response(response)
