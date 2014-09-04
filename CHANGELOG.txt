@@ -1,3 +1,8 @@
+2.5.0 (2014-09-04)
+* Add Mapbox geocoder
+* Add Open MapQuest
+* Use Nokogiri
+
 2.4.0 (--)
 * Update MapQuest handler to use the current API
 

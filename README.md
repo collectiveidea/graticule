@@ -8,6 +8,7 @@ Graticule
 
 Graticule is a geocoding API for looking up address coordinates and performing distance calculations. It supports many popular APIs:
 
+* Mapbox
 * Yahoo
 * Google
 * MapQuest
@@ -101,7 +102,7 @@ Here are some ways you can contribute:
 
 ### Submitting an Issue
 
-We use the [GitHub issue tracker](https://github.com/collectiveidea/graticule/issues) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't already been submitted. When submitting a bug report, please include a [Gist](https://gist.github.com/) that includes a stack trace and any details that may be necessary to reproduce the bug, including your gem version, Ruby version, and operating system. 
+We use the [GitHub issue tracker](https://github.com/collectiveidea/graticule/issues) to track bugs and features. Before submitting a bug report or feature request, check to make sure it hasn't already been submitted. When submitting a bug report, please include a [Gist](https://gist.github.com/) that includes a stack trace and any details that may be necessary to reproduce the bug, including your gem version, Ruby version, and operating system.
 
 ### Submitting a Pull Request
 
