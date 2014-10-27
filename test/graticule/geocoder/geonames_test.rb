@@ -7,14 +7,7 @@ module Graticule
       def setup
         URI::HTTP.responses = []
         URI::HTTP.uris = []
-        @geocoder = Geonames.new
-      end
-
-      def test_time_zone
-        return unless prepare_response(:success)
-
-        chicago = Location.new(:latitude => 41.85, :longitude => -87.65)
-        assert_equal 'America/Chicago', @geocoder.time_zone(chicago)
+        @geocoder = Geonames.new("demo")
       end
 
       def test_time_zone
