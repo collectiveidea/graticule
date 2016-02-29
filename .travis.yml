@@ -6,6 +6,7 @@ rvm:
   - ruby-head
 before_install:
   - sudo apt-get install libxslt-dev libxml2-dev
+  - gem install bundler
 before_script:
   - cp test/config.yml.default test/config.yml
 only:
