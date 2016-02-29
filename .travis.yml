@@ -1,14 +1,18 @@
 language: ruby
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.1
+  - 2.1
+  - 2.2.4
+  - 2.3.0
+  - ruby-head
 before_install:
   - sudo apt-get install libxslt-dev libxml2-dev
 before_script:
   - cp test/config.yml.default test/config.yml
 only:
   - master
+matrix:
+  allow_failures:
+    - rvm: ruby-head
 notifications:
   email: false
   webhooks:
