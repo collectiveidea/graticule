@@ -1,1 +1,8 @@
-{"query":["asdfjkl"],"attribution":{"mapbox-places":"<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"}}
+{
+  "type": "FeatureCollection",
+  "query": [
+    "asdfjkl"
+  ],
+  "features": [],
+  "attribution": "NOTICE: © 2017 Mapbox and its suppliers. All rights reserved. Use of this data is subject to the Mapbox Terms of Service (https://www.mapbox.com/about/maps/). This response and the information it contains may not be retained."
+}
