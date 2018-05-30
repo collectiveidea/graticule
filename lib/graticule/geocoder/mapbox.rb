@@ -2,10 +2,10 @@ require 'json'
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
     class Mapbox < Base
+      BASE_URL = "http://api.mapbox.com/geocoding/v5/mapbox.places"
 
       def initialize(api_key)
         @api_key = api_key
-        @url = "http://api.mapbox.com"
       end
 
       def locate(address)
@@ -15,22 +15,20 @@ module Graticule #:nodoc:
       protected
 
       class Result
-        attr_accessor :lat, :lon, :address, :city, :province, :country, :precision, :postal_code
+        attr_accessor :lat, :lon, :precision
 
-        def initialize(input)
+        def initialize(attributes)
           self.precision = ::Graticule::Precision::Unknown
-          self.lon = input["center"][0]
-          self.lat = input["center"][1]
+          self.lon = attributes["center"][0]
+          self.lat = attributes["center"][1]
         end
-
-        private
       end
 
       def make_url(params)
         query = URI.escape(params[:q].to_s)
-        @url = "http://api.mapbox.com/geocoding/v5/mapbox.places/#{query}.json?access_token=#{@api_key}"
+        url = "#{BASE_URL}/#{query}.json?access_token=#{@api_key}"
 
-        URI.parse(@url)
+        URI.parse(url)
       end
 
       def check_error(response)
@@ -46,8 +44,8 @@ module Graticule #:nodoc:
         result = Result.new(response["features"][0])
 
         Location.new(
-          :latitude    => result.lat,
-          :longitude   => result.lon,
+          :latitude  => result.lat,
+          :longitude => result.lon,
         )
       end
     end
