@@ -1,4 +1,3 @@
-require 'json'
 module Graticule #:nodoc:
   module Geocoder #:nodoc:
     class Mapbox < Base
