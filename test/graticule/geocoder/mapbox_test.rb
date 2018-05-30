@@ -11,7 +11,7 @@ module Graticule
       end
 
       def test_locate_success
-        return unless prepare_response(:success)
+        prepare_response(:success)
 
         expected = Location.new(
           :latitude    => 37.331524,
@@ -24,13 +24,13 @@ module Graticule
       end
 
       def test_locate_not_found
-        return unless prepare_response(:empty_results)
+        prepare_response(:empty_results)
 
         assert_raises(AddressError) { @geocoder.locate 'asdfjkl' }
       end
 
       def test_no_results_returned
-        return unless prepare_response(:no_results)
+        prepare_response(:no_results)
 
         assert_raises(AddressError) { @geocoder.locate 'asdfjkl' }
       end
