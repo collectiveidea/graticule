@@ -5,21 +5,17 @@ module Graticule
   module Geocoder
     class MapboxTest < Test::Unit::TestCase
       def setup
+        URI::HTTP.responses = []
+        URI::HTTP.uris = []
         @geocoder = Mapbox.new("api_key")
       end
 
       def test_locate_success
-        URI::HTTP.responses << response("mapbox", "success", "json")
+        prepare_response(:success)
 
         expected = Location.new(
-          :country     => "United States",
-          :latitude    => 37.33054,
-          :longitude   => -122.02912,
-          :street      => "1 Infinite Loop",
-          :locality    => "Cupertino",
-          :region      => "California",
-          :postal_code => "95014",
-          :precision   => :address
+          :latitude    => 37.331524,
+          :longitude   => -122.03023,
         )
 
         actual = @geocoder.locate("1 Infinite Loop, Cupertino, CA")
@@ -28,15 +24,21 @@ module Graticule
       end
 
       def test_locate_not_found
-        URI::HTTP.responses << response("mapbox", "empty_results", "json")
+        prepare_response(:empty_results)
 
         assert_raises(AddressError) { @geocoder.locate 'asdfjkl' }
       end
-      
+
       def test_no_results_returned
-        URI::HTTP.responses << response("mapbox", "no_results", "json")
+        prepare_response(:no_results)
 
         assert_raises(AddressError) { @geocoder.locate 'asdfjkl' }
+      end
+
+      protected
+
+      def prepare_response(id = :success)
+        URI::HTTP.responses << response('mapbox', id, 'json')
       end
     end
   end

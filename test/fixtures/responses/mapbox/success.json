@@ -1,1 +1,229 @@
-{"query":["1","infinite","loop","cupertino","ca"],"attribution":{"mapbox-places":"<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"},"results":[[{"id":"address.110173544177","lon":-122.02912,"lat":37.33054,"name":"1 Infinite Loop","type":"address"},{"id":"mapbox-places.95014","name":"Cupertino","type":"city"},{"id":"province.1112151813","name":"California","type":"province"},{"id":"country.4150104525","name":"United States","type":"country"}]]}
+{
+  "type": "FeatureCollection",
+  "query": [
+    "1",
+    "infinite",
+    "loop",
+    "cupertino",
+    "ca"
+  ],
+  "features": [
+    {
+      "id": "address.6395221899832142",
+      "type": "Feature",
+      "place_type": [
+        "address"
+      ],
+      "relevance": 1,
+      "properties": {},
+      "text": "Infinite Loop",
+      "place_name": "1 Infinite Loop, Cupertino, California 95014, United States",
+      "center": [
+        -122.03023,
+        37.331524
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.03023,
+          37.331524
+        ]
+      },
+      "address": "1",
+      "context": [
+        {
+          "id": "postcode.17583069324210830",
+          "text": "95014"
+        },
+        {
+          "id": "place.8489369485676010",
+          "wikidata": "Q189471",
+          "text": "Cupertino"
+        },
+        {
+          "id": "region.3591",
+          "short_code": "US-CA",
+          "wikidata": "Q99",
+          "text": "California"
+        },
+        {
+          "id": "country.3145",
+          "short_code": "us",
+          "wikidata": "Q30",
+          "text": "United States"
+        }
+      ]
+    },
+    {
+      "id": "place.8489369485676010",
+      "type": "Feature",
+      "place_type": [
+        "place"
+      ],
+      "relevance": 0.5,
+      "properties": {
+        "wikidata": "Q189471"
+      },
+      "text": "Cupertino",
+      "place_name": "Cupertino, California, United States",
+      "bbox": [
+        -122.143825004601,
+        37.2479929816717,
+        -121.995539980292,
+        37.3415970152769
+      ],
+      "center": [
+        -122.0323,
+        37.323
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0323,
+          37.323
+        ]
+      },
+      "context": [
+        {
+          "id": "region.3591",
+          "short_code": "US-CA",
+          "wikidata": "Q99",
+          "text": "California"
+        },
+        {
+          "id": "country.3145",
+          "short_code": "us",
+          "wikidata": "Q30",
+          "text": "United States"
+        }
+      ]
+    },
+    {
+      "id": "neighborhood.285073",
+      "type": "Feature",
+      "place_type": [
+        "neighborhood"
+      ],
+      "relevance": 0.49,
+      "properties": {},
+      "text": "Calvert",
+      "place_name": "Calvert, Cupertino, California 95014, United States",
+      "bbox": [
+        -122.024501,
+        37.316342,
+        -121.986694,
+        37.331914
+      ],
+      "center": [
+        -122.0138,
+        37.3258
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.0138,
+          37.3258
+        ]
+      },
+      "context": [
+        {
+          "id": "postcode.17583069324210830",
+          "text": "95014"
+        },
+        {
+          "id": "place.8489369485676010",
+          "wikidata": "Q189471",
+          "text": "Cupertino"
+        },
+        {
+          "id": "region.3591",
+          "short_code": "US-CA",
+          "wikidata": "Q99",
+          "text": "California"
+        },
+        {
+          "id": "country.3145",
+          "short_code": "us",
+          "wikidata": "Q30",
+          "text": "United States"
+        }
+      ]
+    },
+    {
+      "id": "country.3179",
+      "type": "Feature",
+      "place_type": [
+        "country"
+      ],
+      "relevance": 0.3333333333333333,
+      "properties": {
+        "wikidata": "Q16",
+        "short_code": "ca"
+      },
+      "text": "Canada",
+      "place_name": "Canada",
+      "bbox": [
+        -141.10275,
+        39.943435,
+        -47.597809,
+        86.553514
+      ],
+      "center": [
+        -105.750596,
+        55.585901
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.750596,
+          55.585901
+        ]
+      }
+    },
+    {
+      "id": "place.7943223081734240",
+      "type": "Feature",
+      "place_type": [
+        "place"
+      ],
+      "relevance": 0.3333333333333333,
+      "properties": {
+        "wikidata": "Q36312"
+      },
+      "text": "Calgary",
+      "place_name": "Calgary, Alberta, Canada",
+      "bbox": [
+        -114.315773841495,
+        50.842824406804,
+        -113.859901837937,
+        51.2124248116277
+      ],
+      "center": [
+        -114.0626,
+        51.0531
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0626,
+          51.0531
+        ]
+      },
+      "context": [
+        {
+          "id": "region.219693",
+          "short_code": "CA-AB",
+          "wikidata": "Q1951",
+          "text": "Alberta"
+        },
+        {
+          "id": "country.3179",
+          "short_code": "ca",
+          "wikidata": "Q16",
+          "text": "Canada"
+        }
+      ]
+    }
+  ],
+  "attribution": "NOTICE: © 2017 Mapbox and its suppliers. All rights reserved. Use of this data is subject to the Mapbox Terms of Service (https://www.mapbox.com/about/maps/). This response and the information it contains may not be retained."
+}
