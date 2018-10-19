@@ -17,7 +17,7 @@ module Graticule #:nodoc:
       def initialize(key=nil, client_id=nil)
         @key = key
         @client_id = client_id
-        @url = URI.parse 'http://maps.googleapis.com/maps/api/geocode/json'
+        @url = URI.parse 'https://maps.googleapis.com/maps/api/geocode/json'
       end
 
       # Locates +address+ returning a Location
