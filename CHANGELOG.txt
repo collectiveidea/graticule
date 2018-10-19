@@ -1,3 +1,6 @@
+2.7.1 (2018-05-31)
+* Update Google to use https and include API key
+
 2.6.0 (2018-05-31)
 * Update Mapbox to use the current v5 API
 
